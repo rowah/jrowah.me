@@ -1,0 +1,14 @@
+.jrowah {
+  border-radius: 50%;
+  width: 45%;
+}
+.aeso {
+  width: 45%;
+  line-height: 30px;
+}
+section {
+  display: flex;
+}
+li {
+  list-style: none;
+}
