@@ -29,3 +29,21 @@ a {
   transition: transform 250ms;
   display: inline-block;
 }
+.linkedin {
+  color: #49a1eb;
+}
+.youtube {
+  color: #eb3223;
+}
+.github {
+  color: black;
+}
+.twitter {
+  color: #49a1eb;
+}
+.instagram {
+  color: black;
+}
+.medium {
+  color: black;
+}
