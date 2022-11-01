@@ -30,6 +30,8 @@ footer {
 }
 .socialcontainer {
   padding: 25px 50px;
+  text-align: center;
+  padding-top: 0%;
 }
 a.social {
   margin: 0 1rem;

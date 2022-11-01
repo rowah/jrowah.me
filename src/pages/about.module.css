@@ -16,7 +16,16 @@ li {
 a {
   text-decoration: none;
 }
-.skillset,
-.socialcontainer {
+.skillset {
   text-align: center;
+}
+.linkedin,
+.youtube,
+.github,
+.twitter,
+.instagram,
+.medium {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
 }

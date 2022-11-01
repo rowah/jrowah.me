@@ -1,7 +1,18 @@
 import * as React from "react";
 import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
-import { jrowah, aeso, intro, skillset } from "./about.module.css";
+import {
+  jrowah,
+  aeso,
+  intro,
+  skillset,
+  linkedin,
+  youtube,
+  github,
+  twitter,
+  instagram,
+  medium,
+} from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
 import SocialFollow from "../components/SocialFollow";
@@ -28,11 +39,13 @@ const AboutPage = () => {
               Self and community taught software developer from Nairobi, Kenya.{" "}
               <br /> Interested in AI, Data Science, and Object Oriented
               Programming.
+              <br />
               <br /> Professional biochemist, and educator. <br />
               Also a technical writer on{" "}
               <a href="https://medium.com/@jrowah">Medium</a>. <br />
               Check out my <a href="">Blog</a>. <br />
             </p>
+            <br />
             <p>
               Read about <a href="">My Journey</a> into Tech!
             </p>
@@ -99,29 +112,26 @@ const AboutPage = () => {
           <h2>Find Me On.....</h2>
           <a
             href="https://www.linkedin.com/in/james-rowa/"
-            className="linkedin social"
+            className={linkedin}
           >
             <FontAwesomeIcon icon={faLinkedin} size="2x" />
           </a>
           <a
             href="https://www.youtube.com/channel/UCEK7np5CO33sbDAmmR6UWHg"
-            className="youtube social"
+            className={youtube}
           >
             <FontAwesomeIcon icon={faYoutube} size="2x" />
           </a>
-          <a href="https://github.com/rowah" className="github social">
+          <a href="https://github.com/rowah" className={github}>
             <FontAwesomeIcon icon={faGithub} size="2x" />
           </a>
-          <a href="https://twitter.com/Jrowah" className="twitter social">
+          <a href="https://twitter.com/Jrowah" className={twitter}>
             <FontAwesomeIcon icon={faTwitter} size="2x" />
           </a>
-          <a
-            href="https://www.instagram.com/jrowah/"
-            className="instagram social"
-          >
+          <a href="https://www.instagram.com/jrowah/" className={instagram}>
             <FontAwesomeIcon icon={faInstagram} size="2x" />
           </a>
-          <a href="https://medium.com/@jrowah" className="medium social">
+          <a href="https://medium.com/@jrowah" className={medium}>
             <FontAwesomeIcon icon={faMedium} size="2x" />
           </a>
         </SocialFollow>
