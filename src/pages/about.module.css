@@ -47,3 +47,12 @@ a {
 .medium {
   color: black;
 }
+
+@media (max-width: 768px) {
+  .aeso {
+    width: 100%;
+  }
+  .intro {
+    display: block;
+  }
+}
