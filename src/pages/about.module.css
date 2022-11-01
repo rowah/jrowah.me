@@ -5,10 +5,14 @@
 .aeso {
   width: 45%;
   line-height: 30px;
+  font-size: larger;
 }
-section {
+.intro {
   display: flex;
 }
 li {
   list-style: none;
+}
+a {
+  text-decoration: none;
 }
