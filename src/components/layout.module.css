@@ -4,7 +4,7 @@
   font-family: sans-serif;
 }
 .heading {
-  color: rebeccapurple;
+  color: blue;
 }
 .nav-links {
   display: flex;
@@ -16,4 +16,15 @@
 }
 .nav-link-text {
   color: black;
+}
+h1,
+h2 {
+  color: rebeccapurple;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 35px; /* Height of the footer */
+  text-align: center;
 }
