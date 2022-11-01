@@ -28,3 +28,11 @@ footer {
   height: 35px; /* Height of the footer */
   text-align: center;
 }
+.socialcontainer {
+  padding: 25px 50px;
+}
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+}

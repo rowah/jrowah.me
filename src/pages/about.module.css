@@ -16,6 +16,7 @@ li {
 a {
   text-decoration: none;
 }
-.skillset {
+.skillset,
+.socialcontainer {
   text-align: center;
 }

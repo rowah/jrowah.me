@@ -4,6 +4,17 @@ import { StaticImage } from "gatsby-plugin-image";
 import { jrowah, aeso, intro, skillset } from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
+import SocialFollow from "../components/SocialFollow";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faYoutube,
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faMedium,
+  faGithub,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 
 const AboutPage = () => {
   return (
@@ -78,67 +89,44 @@ const AboutPage = () => {
           <span>
             <strong>Gyming</strong>
           </span>
-          <h2>Find Me On.....</h2>
-          <div class="col-12">
-            <ul class="social">
-              <li>
-                <a
-                  href="https://twitter.com/Jrowah"
-                  class="icon brands fa-twitter"
-                >
-                  <span class="label">Twitter</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/james-rowa-7075/"
-                  class="icon brands fa-linkedin-in"
-                >
-                  <span class="label">LinkedIn</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/jrowah/"
-                  class="icon brands fa-instagram"
-                >
-                  <span class="label">Instagram</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://myaccount.google.com/profile"
-                  class="icon brands fa-google-plus"
-                >
-                  <span class="label">Google+</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://github.com/rowah"
-                  class="icon brands fa-github"
-                >
-                  <span class="label">Github</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.youtube.com/channel/UCEK7np5CO33sbDAmmR6UWHg"
-                  class="icon brands fa-youtube"
-                >
-                  <span class="label">YouTube</span>
-                </a>
-              </li>
-            </ul>
-          </div>
           <p>
             <a href="https://docs.google.com/document/d/1FTQeq39RQMhv7aaWRh9Nxlp3MgQIy9O8/edit">
               Resume
             </a>
           </p>
         </div>
+        <SocialFollow>
+          <h2>Find Me On.....</h2>
+          <a
+            href="https://www.linkedin.com/in/james-rowa/"
+            className="linkedin social"
+          >
+            <FontAwesomeIcon icon={faLinkedin} size="2x" />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCEK7np5CO33sbDAmmR6UWHg"
+            className="youtube social"
+          >
+            <FontAwesomeIcon icon={faYoutube} size="2x" />
+          </a>
+          <a href="https://github.com/rowah" className="github social">
+            <FontAwesomeIcon icon={faGithub} size="2x" />
+          </a>
+          <a href="https://twitter.com/Jrowah" className="twitter social">
+            <FontAwesomeIcon icon={faTwitter} size="2x" />
+          </a>
+          <a
+            href="https://www.instagram.com/jrowah/"
+            className="instagram social"
+          >
+            <FontAwesomeIcon icon={faInstagram} size="2x" />
+          </a>
+          <a href="https://medium.com/@jrowah" className="medium social">
+            <FontAwesomeIcon icon={faMedium} size="2x" />
+          </a>
+        </SocialFollow>
       </Skills>
+
       <Footer>
         <ul id="copyright">
           <li>
