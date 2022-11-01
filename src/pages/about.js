@@ -15,7 +15,7 @@ import {
 } from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
-import SocialFollow from "../components/SocialFollow";
+import SocialFollow from "../components/socialFollow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faYoutube,
