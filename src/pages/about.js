@@ -26,10 +26,12 @@ import {
   faGithub,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import Favicon from "react-favicon";
 
 const AboutPage = () => {
   return (
     <main>
+      <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon>
       <Layout pageTitle="James Rowa">
         <h1>Software Developer</h1>
         <hr />
