@@ -1,5 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
+import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
 import {
   jrowah,
@@ -151,5 +152,5 @@ const AboutPage = () => {
     </main>
   );
 };
-export const Head = () => <title>Home Page</title>;
+export const Head = () => <Seo title="James Rowa" />;
 export default AboutPage;

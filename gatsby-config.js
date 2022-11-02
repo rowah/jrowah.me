@@ -7,7 +7,7 @@ module.exports = {
 };
 module.exports = {
   siteMetadata: {
-    title: "My Website",
+    title: "James Rowa",
   },
   plugins: ["gatsby-plugin-image", "gatsby-plugin-sharp"],
 };
