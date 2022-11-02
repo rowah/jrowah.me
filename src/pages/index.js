@@ -39,8 +39,8 @@ const AboutPage = () => {
           <div className={aeso}>
             <p>
               Self and community taught software developer from Nairobi, Kenya.{" "}
-              <br /> Interested in AI, Data Science, and Object Oriented
-              Programming.
+              <br /> Interested in AI, Data Science, Functional and Object
+              Oriented Programming.
               <br />
               <br /> Professional biochemist, and educator. <br />
               Also a technical writer on{" "}
@@ -90,7 +90,12 @@ const AboutPage = () => {
           &nbsp;
           <span>
             {" "}
-            <strong>Tailwind</strong>
+            <strong>Tailwind</strong> ~
+          </span>
+          &nbsp;
+          <span>
+            {" "}
+            <strong>Elixir (currently learning)</strong>
           </span>
           <h2>Fun Time ?</h2>
           <span>

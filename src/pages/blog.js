@@ -2,12 +2,18 @@ import * as React from "react";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Footer from "../components/footer";
+import { graphql } from "gatsby";
 
-const BlogPost = () => {
+const BlogPage = ({ data }) => {
   return (
     <main>
       <Layout pageTitle="My Blog Posts">
         <p>Here is where I am going to have my blog posts</p>
+        <ul>
+          {data.allFile.nodes.map((node) => (
+            <li key={node.name}>{node.name}</li>
+          ))}
+        </ul>
       </Layout>
       <Footer>
         <ul id="copyright">
@@ -22,5 +28,14 @@ const BlogPost = () => {
     </main>
   );
 };
+export const query = graphql`
+  query {
+    allFile {
+      nodes {
+        name
+      }
+    }
+  }
+`;
 export const Head = () => <Seo pageTitle="My Blog Posts" />;
-export default BlogPost;
+export default BlogPage;

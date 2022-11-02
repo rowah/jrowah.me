@@ -1,13 +1,17 @@
 module.exports = {
   siteMetadata: {
-    title: `MyWebsite`,
+    title: "James Rowa",
     siteUrl: `https://jrowah.com`,
   },
-  plugins: [],
-};
-module.exports = {
-  siteMetadata: {
-    title: "James Rowa",
-  },
-  plugins: ["gatsby-plugin-image", "gatsby-plugin-sharp"],
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `blog`,
+        path: `${__dirname}/blog`,
+      },
+    },
+  ],
 };
