@@ -1,12 +1,13 @@
 import * as React from "react";
-import Layout from "../components/layout";
 import Footer from "../components/footer";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
-const IndexPage = () => {
+const ProjectsPage = () => {
   return (
     <main>
-      <Layout pageTitle="My Journey">
-        <p>My Journey</p>
+      <Layout pageTitle="Projects">
+        <p>These are some of my Projects</p>
       </Layout>
       <Footer>
         <ul>
@@ -21,7 +22,5 @@ const IndexPage = () => {
     </main>
   );
 };
-
-export default IndexPage;
-
-export const Head = () => <title>Blog</title>;
+export const Head = () => <Seo title="Projects" />;
+export default ProjectsPage;
