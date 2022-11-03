@@ -7,7 +7,9 @@ const IndexPage = () => {
     <main>
       <Layout pageTitle="My Journey">
         <p>My Journey into Tech</p>
+        <p>100 DEVS!!!!!</p>
       </Layout>
+
       <Footer>
         <ul>
           <li>
