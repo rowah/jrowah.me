@@ -9,6 +9,7 @@
 }
 .intro {
   display: flex;
+  justify-content: space-between;
 }
 li {
   list-style: none;
@@ -47,6 +48,21 @@ a {
 .medium {
   color: black;
 }
+.blogs {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: auto;
+}
+.blogs article {
+  width: 350px;
+  border: 2px solid blue;
+  height: 200px;
+  padding: 2%;
+  margin-top: 2em;
+  box-shadow: 10px 0 10px;
+}
 
 @media (max-width: 768px) {
   .aeso {
@@ -57,5 +73,8 @@ a {
   }
   .jrowah {
     margin-left: 25%;
+  }
+  .blogs {
+    display: block;
   }
 }

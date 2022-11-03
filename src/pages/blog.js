@@ -3,15 +3,17 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Footer from "../components/footer";
 import { graphql } from "gatsby";
+import { blogs } from "./about.module.css";
 
 const BlogPage = ({ data }) => {
   return (
     <main>
       <Layout pageTitle="My Blog Posts">
-        <div>
+        <div className={blogs}>
           {data.allMdx.nodes.map((node) => (
             <article key={node.id}>
               <h2>{node.frontmatter.title}</h2>
+              <hr />
               <p>Posted: {node.frontmatter.date}</p>
             </article>
           ))}
