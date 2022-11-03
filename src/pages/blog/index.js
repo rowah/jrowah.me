@@ -1,9 +1,9 @@
 import * as React from "react";
-import Layout from "../components/layout";
-import Seo from "../components/seo";
-import Footer from "../components/footer";
+import Layout from "../../components/layout";
+import Seo from "../../components/seo";
+import Footer from "../../components/footer";
 import { graphql } from "gatsby";
-import { blogs } from "./about.module.css";
+import { blogs } from "../../pages/about.module.css";
 
 const BlogPage = ({ data }) => {
   return (
