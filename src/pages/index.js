@@ -110,7 +110,11 @@ const AboutPage = () => {
             <strong>Gyming</strong>
           </span>
           <p>
-            <a href="https://docs.google.com/document/d/1FTQeq39RQMhv7aaWRh9Nxlp3MgQIy9O8/edit">
+            <a
+              href="https://docs.google.com/document/d/1FTQeq39RQMhv7aaWRh9Nxlp3MgQIy9O8/edit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Resume
             </a>
           </p>
@@ -119,26 +123,50 @@ const AboutPage = () => {
           <h2>Find Me On.....</h2>
           <a
             href="https://www.linkedin.com/in/james-rowa/"
+            target="_blank"
+            rel="noopener noreferrer"
             className={linkedin}
           >
             <FontAwesomeIcon icon={faLinkedin} size="2x" />
           </a>
           <a
             href="https://www.youtube.com/channel/UCEK7np5CO33sbDAmmR6UWHg"
+            target="_blank"
+            rel="noopener noreferrer"
             className={youtube}
           >
             <FontAwesomeIcon icon={faYoutube} size="2x" />
           </a>
-          <a href="https://github.com/rowah" className={github}>
+          <a
+            href="https://github.com/rowah"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={github}
+          >
             <FontAwesomeIcon icon={faGithub} size="2x" />
           </a>
-          <a href="https://twitter.com/Jrowah" className={twitter}>
+          <a
+            href="https://twitter.com/Jrowah"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={twitter}
+          >
             <FontAwesomeIcon icon={faTwitter} size="2x" />
           </a>
-          <a href="https://www.instagram.com/jrowah/" className={instagram}>
+          <a
+            href="https://www.instagram.com/jrowah/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={instagram}
+          >
             <FontAwesomeIcon icon={faInstagram} size="2x" />
           </a>
-          <a href="https://medium.com/@jrowah" className={medium}>
+          <a
+            href="https://medium.com/@jrowah"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={medium}
+          >
             <FontAwesomeIcon icon={faMedium} size="2x" />
           </a>
         </SocialFollow>
