@@ -8,12 +8,14 @@ const BlogPage = ({ data }) => {
   return (
     <main>
       <Layout pageTitle="My Blog Posts">
-        <p>Here is where I am going to have my blog posts</p>
-        <ul>
-          {data.allFile.nodes.map((node) => (
-            <li key={node.name}>{node.name}</li>
+        <div>
+          {data.allMdx.nodes.map((node) => (
+            <article key={node.id}>
+              <h2>{node.frontmatter.title}</h2>
+              <p>Posted: {node.frontmatter.date}</p>
+            </article>
           ))}
-        </ul>
+        </div>
       </Layout>
       <Footer>
         <ul id="copyright">
@@ -29,10 +31,15 @@ const BlogPage = ({ data }) => {
   );
 };
 export const query = graphql`
-  query {
-    allFile {
+  query MyQuery {
+    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
-        name
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          title
+        }
+        id
+        excerpt
       }
     }
   }
