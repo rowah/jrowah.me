@@ -111,7 +111,7 @@ const AboutPage = () => {
           </span>
           <p>
             <a
-              href="https://docs.google.com/document/d/1FTQeq39RQMhv7aaWRh9Nxlp3MgQIy9O8/edit"
+              href="https://drive.google.com/file/d/1ofgxq3MV0ODsi8qMP7lLieHfpfoTzEdm/view?usp=share_link"
               target="_blank"
               rel="noopener noreferrer"
             >
