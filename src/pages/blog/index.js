@@ -6,7 +6,6 @@ import { Link, graphql } from "gatsby";
 import { blogs } from "../../pages/about.module.css";
 
 const BlogPage = ({ data }) => {
-  console.log(data);
   return (
     <main>
       <Layout pageTitle="My Blog Posts">

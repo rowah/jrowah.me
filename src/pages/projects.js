@@ -2,25 +2,27 @@ import * as React from "react";
 import Footer from "../components/footer";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-import { container } from "../components/layout.module.css";
+import { project } from "../components/layout.module.css";
+import { StaticImage } from "gatsby-plugin-image";
 
 const ProjectsPage = () => {
   return (
     <main>
       <Layout pageTitle="Projects">
-        <div className={container}>
-          <a
-            href="https://product-expiry-tracker.cyclic.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            PTracker
-          </a>
-          <p>
-            PTracker helps minimize westage through disposal of expired goods by
-            making it easy to track the expiry dates of products.
-          </p>
-        </div>
+        <a
+          href="https://product-expiry-tracker.cyclic.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className={project}>
+            <p>PTracker</p>
+            <StaticImage alt="Jrowah's picture" src="../images/expity5.jpeg" />
+            <p>
+              PTracker helps minimize westage through disposal of expired goods
+              by making it easy to track the expiry dates of products.
+            </p>
+          </div>
+        </a>
       </Layout>
       <Footer>
         <ul>
