@@ -9,20 +9,20 @@ const ProjectsPage = () => {
   return (
     <main>
       <Layout pageTitle="Projects">
-        <a
-          href="https://product-expiry-tracker.cyclic.app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div className={project}>
-            <p>PTracker</p>
-            <StaticImage alt="Jrowah's picture" src="../images/expity5.jpeg" />
-            <p>
-              PTracker helps minimize westage through disposal of expired goods
-              by making it easy to track the expiry dates of products.
-            </p>
-          </div>
-        </a>
+        <div className={project}>
+          <p>PTracker</p>
+          <a
+            href="https://product-expiry-tracker.cyclic.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StaticImage alt="Jrowah's picture" src="../images/track.png" />
+          </a>
+          <p>
+            PTracker helps minimize westage through disposal of expired goods by
+            making it easy to track the expiry dates of products.
+          </p>
+        </div>
       </Layout>
       <Footer>
         <ul>
