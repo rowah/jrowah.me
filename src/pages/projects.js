@@ -21,8 +21,9 @@ const ProjectsPage = () => {
             <StaticImage alt="Jrowah's picture" src="../images/track.png" />
           </a>
           <p>
-            PTracker helps minimize westage through disposal of expired goods by
-            making it easy to track the expiry dates of products.
+            PTracker helps minimize westage that happen through disposal of
+            expired goods by making it easy to track the expiry dates of
+            products.
           </p>
         </div>
       </Layout>
