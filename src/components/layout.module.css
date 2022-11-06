@@ -4,7 +4,7 @@
   font-family: sans-serif;
 }
 .heading {
-  color: blue;
+  color: red;
   font-size: x-large;
 }
 .nav-links {
@@ -16,7 +16,10 @@
   padding-right: 2rem;
 }
 .nav-link-text {
-  color: black;
+  color: blue;
+}
+a.nav-link-text:focus {
+  text-decoration: underline;
 }
 h1,
 h2 {

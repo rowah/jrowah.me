@@ -63,6 +63,9 @@ a {
   margin-top: 2em;
   box-shadow: 10px 0 10px;
 }
+.links {
+  color: blue;
+}
 
 @media (max-width: 768px) {
   .aeso {

@@ -13,6 +13,7 @@ import {
   twitter,
   instagram,
   medium,
+  links,
 } from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
@@ -44,12 +45,28 @@ const AboutPage = () => {
               <br />
               <br /> Professional biochemist, and educator. <br />
               Also a technical writer on{" "}
-              <a href="https://medium.com/@jrowah">Medium</a>. <br />
-              Check out my <a href="/projects">Projects</a>. <br />
+              <a
+                className={links}
+                href="https://medium.com/@jrowah"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Medium
+              </a>
+              . <br />
+              Check out my{" "}
+              <a className={links} href="/projects">
+                Projects
+              </a>
+              . <br />
             </p>
             <br />
             <p>
-              Read about <a href="/about">My Journey</a> into Tech!
+              Read about{" "}
+              <a className={links} href="/journey">
+                My Journey
+              </a>{" "}
+              into Tech!
             </p>
           </div>
           <StaticImage

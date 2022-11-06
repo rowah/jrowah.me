@@ -7,12 +7,12 @@ const IndexPage = () => {
   return (
     <main class="pt-4 pl-4">
       <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon>
-      <Layout pageTitle="My Journey">
+      <Layout>
         {/* <!-- component --> */}
         <div class="container">
           <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
             {/* <!-- left --> */}
-            <div class="flex flex-row-reverse md:contents">
+            {/* <div class="flex flex-row-reverse md:contents">
               <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
                 <h3 class="font-semibold text-lg mb-1">Lorem ipsum</h3>
                 <p class="leading-tight text-justify">
@@ -26,7 +26,7 @@ const IndexPage = () => {
                 </div>
                 <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
               </div>
-            </div>
+            </div> */}
             {/* <!-- right --> */}
             <div class="flex md:contents">
               <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
@@ -36,15 +36,37 @@ const IndexPage = () => {
                 <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
               </div>
               <div class="bg-blue-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
-                <h3 class="font-semibold text-lg mb-1">Lorem ipsum</h3>
-                <p class="leading-tight text-justify">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Vitae, facilis.
+                <h1>From September 2022 &#8594; Present</h1>
+                <hr />
+                <h2 class="font-semibold text-lg mb-1">Software Developer</h2>
+                <h3 class="font-semibold text-lg mb-1">
+                  {" "}
+                  <a
+                    href="https://expivot.tech/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      class="w-20"
+                      src="https://avatars.githubusercontent.com/u/54973894?s=200&v=4"
+                      alt="expivot logo"
+                    />
+                    ExPivot Labs
+                  </a>
+                </h3>
+                <h4>Tech Stack</h4>
+                <span>JavaScript, </span> <span> HTML/CSS/Tailwind, </span>{" "}
+                <span>Elixir, </span> <span>PostgreSQL, </span>{" "}
+                <span>Python.</span>
+                <p class="leading-tight text-slate-900">
+                  Understanding the codebase of the company's product written in
+                  Elixir and Python. Learning Elixir and Python. Maintaining the
+                  company website.
                 </p>
               </div>
             </div>
             {/* <!-- left --> */}
-            <div class="flex flex-row-reverse md:contents">
+            {/* <div class="flex flex-row-reverse md:contents">
               <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
                 <h1>From February 2022 &#8594; Present</h1>
                 <hr />
@@ -79,11 +101,11 @@ const IndexPage = () => {
                 </div>
                 <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
               </div>
-            </div>
+            </div> */}
             {/* <!-- left --> */}
             <div class="flex flex-row-reverse md:contents">
               <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
-                <h1>From January 2022 &#8594; Present</h1>
+                <h1>From January 2022 &#8594; November 2022</h1>
                 <hr />
                 <h2 class="font-semibold text-lg mb-1">Software Developer</h2>
                 <h3 class="font-semibold text-lg mb-1">
@@ -102,15 +124,16 @@ const IndexPage = () => {
                   </a>
                 </h3>
                 <h4>Tech Stack</h4>
-                <span>NodeJS, </span> <span>MongoDB</span>{" "}
+                <span>NodeJS, </span> <span>MongoDB, </span>{" "}
                 <span>Express, </span>
-                <span>JavaScript, </span> <span>HTML, </span>{" "}
+                <span>JavaScript, </span> <span>Gatsby, </span>{" "}
+                <span>ReactJS, </span> <span>HTML, </span>{" "}
                 <span>TailwindCSS.</span>
                 <p class="leading-tight text-slate-900">
-                  I work on several collaborative projects with other folks
+                  I worked on several collaborative projects with other folks
                   developing fullstack apps from start to finish. Building
                   websites for clients. Working with maultiple teams, deliver
-                  client projects!
+                  client projects. Built my own website from scratch.
                 </p>
               </div>
               <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
@@ -129,7 +152,7 @@ const IndexPage = () => {
                 <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
               </div>
               <div class="bg-blue-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
-                <h1>From February 2022 &#8594; Present</h1>
+                <h1>From February 2022 &#8594; September 2022</h1>
                 <hr />
                 <h2 class="font-semibold text-lg mb-1">
                   Software Developer Intern
@@ -150,7 +173,7 @@ const IndexPage = () => {
                   </a>
                 </h3>
                 <h4>Tech Stack:</h4>
-                <span>JavaScript, </span> <span>PostGress, </span>{" "}
+                <span>JavaScript, </span> <span>PostgreSQL, </span>{" "}
                 <span>HTML, </span> <span>TailwindCSS.</span>
                 <p class="leading-tight text-slate-900">
                   At my first interniship, I managed and updated the Company's
