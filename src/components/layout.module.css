@@ -5,6 +5,7 @@
 }
 .heading {
   color: blue;
+  font-size: x-large;
 }
 .nav-links {
   display: flex;

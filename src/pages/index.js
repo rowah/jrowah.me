@@ -30,10 +30,10 @@ import Favicon from "react-favicon";
 
 const AboutPage = () => {
   return (
-    <main>
+    <main class="pl-4 pt-4">
       <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon>
       <Layout pageTitle="James Rowa">
-        <h1>Software Developer</h1>
+        <h1 class="text-2xl">Software Developer</h1>
         <hr />
         <section className={intro}>
           <div className={aeso}>
@@ -62,7 +62,7 @@ const AboutPage = () => {
       </Layout>
       <Skills>
         <div className={skillset}>
-          <h2>Skill Set ?</h2>
+          <h2 class="text-2xl mt-4">Skill Set ?</h2>
           <p>MERN stack developer with proficiency in:</p>
           <span>
             <strong>JavaScript</strong> ~{" "}
@@ -97,7 +97,7 @@ const AboutPage = () => {
             {" "}
             <strong>Elixir (currently learning)</strong>
           </span>
-          <h2>Fun Time ?</h2>
+          <h2 class="text-2xl mt-4">Fun Time ?</h2>
           <span>
             <strong>Cooking</strong> ~
           </span>
@@ -109,7 +109,7 @@ const AboutPage = () => {
           <span>
             <strong>Gyming</strong>
           </span>
-          <p>
+          <p class="text-2xl mt-2">
             <a
               href="https://drive.google.com/file/d/1ofgxq3MV0ODsi8qMP7lLieHfpfoTzEdm/view?usp=share_link"
               target="_blank"
@@ -120,7 +120,7 @@ const AboutPage = () => {
           </p>
         </div>
         <SocialFollow>
-          <h2>Find Me On.....</h2>
+          <h2 class="text-2xl mt-4">Find Me On.....</h2>
           <a
             href="https://www.linkedin.com/in/james-rowa/"
             target="_blank"

@@ -4,6 +4,7 @@ module.exports = {
     siteUrl: `https://jrowah.com`,
   },
   plugins: [
+    "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     {
