@@ -7,7 +7,7 @@ import { blogs } from "../../pages/about.module.css";
 
 const BlogPage = ({ data }) => {
   return (
-    <main>
+    <main class="pl-4 pt-4">
       <Layout pageTitle="My Blog Posts">
         <div className={blogs}>
           {data.allMdx.nodes.map((node) => (
