@@ -26,6 +26,23 @@ const ProjectsPage = () => {
             products.
           </p>
         </div>
+        <div className={project}>
+          <p>Ayesha Salon website</p>
+          <a
+            href="https://saloun-website.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StaticImage
+              alt="Ayesha"
+              src="https://images.pexels.com/photos/1987301/pexels-photo-1987301.jpeg?auto=compress&cs=tinysrgb&w=600"
+            />
+          </a>
+          <p>
+            This was a website that I built for a client who owned a berber shop
+            and salon.
+          </p>
+        </div>
       </Layout>
       <Footer>
         <ul>
