@@ -126,7 +126,7 @@ const AboutPage = () => {
           <span>
             <strong>Gyming</strong>
           </span>
-          <p class="text-2xl mt-2">
+          <p class="text-2xl mt-2 text-blue-700">
             <a
               href="https://drive.google.com/file/d/1ofgxq3MV0ODsi8qMP7lLieHfpfoTzEdm/view?usp=share_link"
               target="_blank"
@@ -208,5 +208,5 @@ const AboutPage = () => {
     </main>
   );
 };
-export const Head = () => <Seo title="James Rowa" />;
+export const Head = () => <Seo title="JRowah" />;
 export default AboutPage;

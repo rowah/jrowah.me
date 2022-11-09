@@ -15,7 +15,7 @@ const Seo = ({ title }) => {
 
   return (
     <title>
-      {title} || {data.site.siteMetadata.title}
+      {data.site.siteMetadata.title} | {title}
     </title>
   );
 };

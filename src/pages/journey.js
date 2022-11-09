@@ -2,12 +2,13 @@ import * as React from "react";
 import Layout from "../components/layout";
 import Footer from "../components/footer";
 import Favicon from "react-favicon";
+import Seo from "../components/seo";
 
 const IndexPage = () => {
   return (
     <main class="pt-4 pl-4">
       <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon>
-      <Layout>
+      <Layout pageTitle="My Journey">
         {/* <!-- component --> */}
         <div class="container">
           <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
@@ -206,6 +207,5 @@ const IndexPage = () => {
   );
 };
 
+export const Head = () => <Seo title="Journey" />;
 export default IndexPage;
-
-export const Head = () => <title>Blog</title>;
