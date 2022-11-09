@@ -11,10 +11,11 @@ const Seo = ({ title }) => {
       }
     }
   `);
+  console.log(data);
 
   return (
     <title>
-      {title} | {data.site.siteMetadata.title}
+      {title} || {data.site.siteMetadata.title}
     </title>
   );
 };
