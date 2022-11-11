@@ -11,7 +11,6 @@ const Seo = ({ title }) => {
       }
     }
   `);
-  console.log(data);
 
   return (
     <title>
