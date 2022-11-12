@@ -1,40 +1,40 @@
+// Step 1: Import React
 import * as React from "react";
 import Layout from "../components/layout";
-import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
+import Seo from "../components/seo";
 import {
   jrowah,
   aeso,
   intro,
   skillset,
-  linkedin,
-  youtube,
-  github,
-  twitter,
-  instagram,
-  medium,
+  // linkedin,
+  // youtube,
+  // github,
+  // twitter,
+  // instagram,
+  // medium,
   links,
 } from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
 import SocialFollow from "../components/socialFollow";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faYoutube,
-  faTwitter,
-  faInstagram,
-  faMedium,
-  faGithub,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
-import Favicon from "react-favicon";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faYoutube,
+//   faTwitter,
+//   faInstagram,
+//   faMedium,
+//   faGithub,
+//   faLinkedin,
+// } from "@fortawesome/free-brands-svg-icons";
+// import Favicon from "react-favicon";
 
+// Step 2: Define your component
 const AboutPage = () => {
   return (
     <main class="pl-4 pt-4">
-      <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon>
-      <Layout pageTitle="James Rowa">
-        <h1 class="text-2xl">Software Developer</h1>
+      <Layout pageTitle="James Rowa - Software Developer">
         <hr />
         <section className={intro}>
           <div className={aeso}>
@@ -71,7 +71,7 @@ const AboutPage = () => {
           </div>
           <StaticImage
             alt="Jrowah's picture"
-            src="../images/devjay.jpeg"
+            src="../images/devjay.png"
             className={jrowah}
           />
         </section>
@@ -138,7 +138,7 @@ const AboutPage = () => {
         </div>
         <SocialFollow>
           <h2 class="text-2xl mt-4">Find Me On.....</h2>
-          <a
+          {/* <a
             href="https://www.linkedin.com/in/james-rowa/"
             target="_blank"
             rel="noopener noreferrer"
@@ -185,10 +185,9 @@ const AboutPage = () => {
             className={medium}
           >
             <FontAwesomeIcon icon={faMedium} size="2x" />
-          </a>
+          </a> */}
         </SocialFollow>
       </Skills>
-
       <Footer>
         <ul id="copyright">
           <li>
@@ -208,5 +207,9 @@ const AboutPage = () => {
     </main>
   );
 };
-export const Head = () => <Seo title="JRowah" />;
+
+// You'll learn about this in the next task, just copy it for now
+export const Head = () => <Seo title="About" />;
+
+// Step 3: Export your component
 export default AboutPage;

@@ -1,7 +1,10 @@
+/**
+ * @type {import('gatsby').GatsbyConfig}
+ */
 module.exports = {
   siteMetadata: {
-    title: "James Rowa",
-    siteUrl: `https://jrowah.com`,
+    title: `James Rowa`,
+    siteUrl: `https://www.jrowah.com`,
   },
   plugins: [
     "gatsby-plugin-postcss",

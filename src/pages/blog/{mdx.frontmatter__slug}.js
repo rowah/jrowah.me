@@ -11,6 +11,7 @@ const BlogPost = ({ data, children }) => {
     </Layout>
   );
 };
+
 export const query = graphql`
   query ($id: String) {
     mdx(id: { eq: $id }) {
@@ -22,6 +23,6 @@ export const query = graphql`
   }
 `;
 
-export const Head = () => <Seo title="Super Cool Blog Posts" />;
+export const Head = ({ data }) => <Seo title={data.mdx.frontmatter.title} />;
 
 export default BlogPost;

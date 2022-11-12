@@ -3,12 +3,12 @@ import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 import Footer from "../../components/footer";
 import { Link, graphql } from "gatsby";
-import Favicon from "react-favicon";
+// import Favicon from "react-favicon";
 
 const BlogPage = ({ data }) => {
   return (
     <main class="pt-4 pl-4">
-      <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon>
+      {/* <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon> */}
       <Layout>
         <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-4xl dark:text-white pt-8">
           My Blog
@@ -66,7 +66,7 @@ const BlogPage = ({ data }) => {
 };
 export const query = graphql`
   query MyQuery {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")

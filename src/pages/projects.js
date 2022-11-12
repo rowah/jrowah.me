@@ -4,12 +4,12 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 import { project } from "../components/layout.module.css";
 import { StaticImage } from "gatsby-plugin-image";
-import Favicon from "react-favicon";
+// import Favicon from "react-favicon";
 
 const ProjectsPage = () => {
   return (
     <main class="pt-4 pl-4">
-      <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon>
+      {/* <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon> */}
       <Layout pageTitle="Projects">
         <div className={project}>
           <p>PTracker</p>

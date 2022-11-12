@@ -9,6 +9,15 @@ import {
 } from "./layout.module.css";
 
 const Layout = ({ pageTitle, children }) => {
+  // const data = useStaticQuery(graphql`
+  //   query {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `);
   return (
     <div className={container}>
       {/* <header>{data.site.siteMetadata.title}</header> */}
@@ -16,18 +25,14 @@ const Layout = ({ pageTitle, children }) => {
         <ul className={navLinks}>
           <li className={navLinkItem}>
             <Link to="/" className={navLinkText}>
-              About Me
+              About
             </Link>
           </li>
           <li className={navLinkItem}>
-            <Link to="/journey" className={navLinkText}>
-              My Journey
-            </Link>
+            <Link to="/journey">Journey</Link>
           </li>
           <li className={navLinkItem}>
-            <Link to="/blog" className={navLinkText}>
-              Blog
-            </Link>
+            <Link to="/blog">Blogs</Link>
           </li>
         </ul>
       </nav>
