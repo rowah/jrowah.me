@@ -1,7 +1,6 @@
 import * as React from "react";
 import Layout from "../components/layout";
 import Footer from "../components/footer";
-// import Favicon from "react-favicon";
 import Seo from "../components/seo";
 
 const IndexPage = () => {
