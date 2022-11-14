@@ -17,6 +17,11 @@ const BlogPage = ({ data }) => {
           <div class="grid grid-cols-1 gap-8 mt-1 md:mt-16 md:grid-cols-2">
             {data.allMdx.nodes.map((node) => (
               <div class="lg:flex h-50 " key={node.id}>
+                <img
+                  class="object-cover w-full h-56 rounded-lg lg:w-64"
+                  src={node.frontmatter.hero_image_credit_link}
+                  alt=""
+                />
                 <div class="flex flex-col justify-between py-6 lg:mx-6">
                   <Link to={`/blog/${node.frontmatter.slug}`}>
                     <a
