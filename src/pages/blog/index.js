@@ -3,6 +3,7 @@ import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 import Footer from "../../components/footer";
 import { Link, graphql } from "gatsby";
+import { mse } from "../../components/footer";
 
 const BlogPage = ({ data }) => {
   return (
@@ -18,9 +19,9 @@ const BlogPage = ({ data }) => {
             {data.allMdx.nodes.map((node) => (
               <div class="lg:flex" key={node.id}>
                 <img
-                  class="w-full h-56 rounded-lg lg:w-64"
+                  class="object-cover w-full h-56 rounded-lg lg:w-64"
                   src={node.frontmatter.hero_image_credit_link}
-                  alt=""
+                  alt="hero image"
                 />
                 <div class="flex flex-col justify-between py-6 lg:mx-6">
                   <Link to={`/blog/${node.frontmatter.slug}`}>
