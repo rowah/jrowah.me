@@ -3,7 +3,6 @@ import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 import Footer from "../../components/footer";
 import { Link, graphql } from "gatsby";
-import { mse } from "../../components/footer";
 
 const BlogPage = ({ data }) => {
   return (
