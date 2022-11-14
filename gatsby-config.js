@@ -5,6 +5,7 @@ module.exports = {
   siteMetadata: {
     title: `James Rowa`,
     siteUrl: `https://www.jrowah.com`,
+    // favicon: `./src/images/jr.png`,
   },
   plugins: [
     "gatsby-plugin-postcss",
@@ -18,5 +19,18 @@ module.exports = {
       },
     },
     "gatsby-plugin-mdx",
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Jrowah`,
+        short_name: `JR`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+        icon: `./src/images/jr.png`,
+      },
+    },
+    "gatsby-plugin-offline",
   ],
 };

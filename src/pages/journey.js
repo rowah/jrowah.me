@@ -7,7 +7,6 @@ import Seo from "../components/seo";
 const IndexPage = () => {
   return (
     <main class="pt-4 pl-4">
-      {/* <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon> */}
       <Layout pageTitle="My Journey">
         {/* <!-- component --> */}
         <div class="container">

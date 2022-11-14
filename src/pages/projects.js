@@ -9,7 +9,6 @@ import { StaticImage } from "gatsby-plugin-image";
 const ProjectsPage = () => {
   return (
     <main class="pt-4 pl-4">
-      {/* <Favicon url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS8gkooPaNpNaUNStPjOaoRXlJgBheU0T8_w&usqp=CAU"></Favicon> */}
       <Layout pageTitle="Projects">
         <div className={project}>
           <p>PTracker</p>

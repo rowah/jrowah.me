@@ -7,6 +7,7 @@ import {
   navLinkItem,
   navLinkText,
 } from "./layout.module.css";
+import Favicon from "react-favicon";
 
 const Layout = ({ pageTitle, children }) => {
   // const data = useStaticQuery(graphql`
@@ -20,7 +21,7 @@ const Layout = ({ pageTitle, children }) => {
   // `);
   return (
     <div className={container}>
-      {/* <header>{data.site.siteMetadata.title}</header> */}
+      <Favicon url="https://ibb.co/n7pTQqc" />
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
@@ -29,10 +30,14 @@ const Layout = ({ pageTitle, children }) => {
             </Link>
           </li>
           <li className={navLinkItem}>
-            <Link to="/journey">Journey</Link>
+            <Link to="/journey" className={navLinkText}>
+              Journey
+            </Link>
           </li>
           <li className={navLinkItem}>
-            <Link to="/blog">Blogs</Link>
+            <Link to="/blog" className={navLinkText}>
+              Blog
+            </Link>
           </li>
         </ul>
       </nav>
