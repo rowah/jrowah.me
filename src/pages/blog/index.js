@@ -20,7 +20,7 @@ const BlogPage = ({ data }) => {
                 <img
                   class="object-cover w-full h-56 rounded-lg lg:w-64"
                   src={node.frontmatter.hero_image_credit_link}
-                  alt="hero image"
+                  alt="hero"
                 />
                 <div class="flex flex-col justify-between py-6 lg:mx-6">
                   <Link to={`/blog/${node.frontmatter.slug}`}>
