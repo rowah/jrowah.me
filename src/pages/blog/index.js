@@ -18,7 +18,7 @@ const BlogPage = ({ data }) => {
             {data.allMdx.nodes.map((node) => (
               <div class="lg:flex" key={node.id}>
                 <img
-                  class="object-cover w-full h-56 rounded-lg lg:w-64"
+                  class="w-full h-56 rounded-lg lg:w-64"
                   src={node.frontmatter.hero_image_credit_link}
                   alt=""
                 />

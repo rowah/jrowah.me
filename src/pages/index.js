@@ -3,32 +3,10 @@ import * as React from "react";
 import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
 import Seo from "../components/seo";
-import {
-  jrowah,
-  aeso,
-  intro,
-  skillset,
-  // linkedin,
-  // youtube,
-  // github,
-  // twitter,
-  // instagram,
-  // medium,
-  links,
-} from "./about.module.css";
+import { jrowah, aeso, intro, skillset, links } from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
 import SocialFollow from "../components/socialFollow";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faYoutube,
-//   faTwitter,
-//   faInstagram,
-//   faMedium,
-//   faGithub,
-//   faLinkedin,
-// } from "@fortawesome/free-brands-svg-icons";
-// import Favicon from "react-favicon";
 
 // Step 2: Define your component
 const AboutPage = () => {
