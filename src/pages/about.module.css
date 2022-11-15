@@ -22,16 +22,6 @@ a {
 .skillset {
   text-align: center;
 }
-.linkedin,
-.youtube,
-.github,
-.twitter,
-.instagram,
-.medium {
-  margin: 0 1rem;
-  transition: transform 250ms;
-  display: inline-block;
-}
 .blogs {
   display: flex;
   flex-direction: row-reverse;
@@ -47,10 +37,31 @@ a {
   margin-top: 2em;
   box-shadow: 10px 0 10px;
 }
-.links {
-  color: blue;
+.links,
+.blue {
+  color: rgb(37 99 235);
 }
-
+.purple {
+  color: rgb(126 34 206);
+}
+.green {
+  color: rgb(21 128 61);
+}
+.css {
+  color: rgb(30 64 175);
+}
+.yellow {
+  color: rgb(234 179 8);
+}
+.tee {
+  color: rgb(234 88 12);
+}
+.em {
+  color: rgb(220 38 38);
+}
+.el {
+  color: rgb(156 163 175);
+}
 @media (max-width: 768px) {
   .aeso {
     width: 100%;

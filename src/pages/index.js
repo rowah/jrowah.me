@@ -3,7 +3,21 @@ import * as React from "react";
 import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
 import Seo from "../components/seo";
-import { jrowah, aeso, intro, skillset, links } from "./about.module.css";
+import {
+  jrowah,
+  aeso,
+  intro,
+  skillset,
+  links,
+  purple,
+  green,
+  blue,
+  css,
+  yellow,
+  tee,
+  em,
+  el
+} from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
 import SocialFollow from "../components/socialFollow";
@@ -63,23 +77,35 @@ const AboutPage = () => {
           </p>
           <span>
             <strong>
-              <span class="text-yellow-500">Java</span>
+              <span class="text-yellow-500" className={yellow}>
+                Java
+              </span>
               <span>Script</span>
             </strong>{" "}
             ~{" "}
           </span>
           &nbsp;
           <span>
-            <strong class="text-blue-600/100">ReactJS</strong> ~{" "}
+            <strong class="text-blue-600/100" className={blue}>
+              ReactJS
+            </strong>{" "}
+            ~{" "}
           </span>
           &nbsp;
           <span>
-            <strong class="text-green-700">MongoDB</strong> ~
+            <strong class="text-green-700" className={green}>
+              MongoDB
+            </strong>{" "}
+            ~
           </span>
           &nbsp;
           <span>
             <strong>
-              N<span class="text-green-700">o</span>deJS
+              N
+              <span class="text-green-700" className={green}>
+                o
+              </span>
+              deJS
             </strong>{" "}
             ~
           </span>
@@ -87,25 +113,33 @@ const AboutPage = () => {
           <span>
             <strong>
               <span>H</span>
-              <span class="text-orange-600">T</span>
-              <span class="text-red-600">M</span>
-              <span class="text-gray-400">L</span>
+              <span class="text-orange-600" className={tee}>T</span>
+              <span class="text-red-600" className={em}>M</span>
+              <span class="text-gray-400" className={el}>L</span>
             </strong>{" "}
             ~
           </span>
           &nbsp;
           <span>
-            <strong class="text-blue-800">CSS</strong> ~
+            <strong class="text-blue-800" className={css}>
+              CSS
+            </strong>{" "}
+            ~
           </span>
           &nbsp;
           <span>
             {" "}
-            <strong class="text-blue-600">Tailwind</strong> ~
+            <strong className={blue} class="text-blue-600">
+              Tailwind
+            </strong>{" "}
+            ~
           </span>
           &nbsp;
           <span>
             {" "}
-            <strong class="text-purple-700">Elixir</strong>
+            <strong class="text-purple-700" className={purple}>
+              Elixir
+            </strong>
             <span>(currently learning)</span>
           </span>
           <h2 class="text-2xl mt-6 mb-4">Fun Time ?</h2>
