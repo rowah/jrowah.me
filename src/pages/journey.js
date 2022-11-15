@@ -37,7 +37,9 @@ const IndexPage = () => {
               <div class="bg-blue-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
                 <h1>From September 2022 &#8594; Present</h1>
                 <hr />
-                <h2 class="font-semibold text-lg mb-1">Software Developer</h2>
+                <h2 class="font-semibold text-lg mb-1">
+                  Software Developer ~ Part Time
+                </h2>
                 <h3 class="font-semibold text-lg mb-1">
                   {" "}
                   <a
@@ -131,8 +133,8 @@ const IndexPage = () => {
                 <p class="leading-tight text-slate-900">
                   I worked on several collaborative projects with other folks
                   developing fullstack apps from start to finish. Building
-                  websites for clients. Working with maultiple teams, deliver
-                  client projects. Built my own website from scratch.
+                  websites for clients. Working with maultiple teams to deliver
+                  client projects on time. Built my own website from scratch.
                 </p>
               </div>
               <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">

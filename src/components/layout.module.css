@@ -18,9 +18,6 @@
 .nav-link-text {
   color: blue;
 }
-a.nav-link-text:focus {
-  text-decoration: underline;
-}
 h1,
 h2 {
   color: rebeccapurple;
