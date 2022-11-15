@@ -16,7 +16,7 @@ const AboutPage = () => {
         <hr />
         <section className={intro}>
           <div className={aeso}>
-            <p>
+            <p class="text-gray-700">
               Self and community taught software developer from Nairobi, Kenya.{" "}
               <br /> Interested in AI, Data Science, Functional and Object
               Oriented Programming.
@@ -58,41 +58,57 @@ const AboutPage = () => {
       <Skills>
         <div className={skillset}>
           <h2 class="text-2xl mt-4">Skill Set ?</h2>
-          <p>MERN stack developer with proficiency in:</p>
+          <p class="text-xl mt-4 mb-3">
+            MERN stack developer with proficiency in:
+          </p>
           <span>
-            <strong>JavaScript</strong> ~{" "}
+            <strong>
+              <span class="text-yellow-500">Java</span>
+              <span>Script</span>
+            </strong>{" "}
+            ~{" "}
           </span>
           &nbsp;
           <span>
-            <strong>ReactJS</strong> ~{" "}
+            <strong class="text-blue-600/100">ReactJS</strong> ~{" "}
           </span>
           &nbsp;
           <span>
-            <strong>MongoDB</strong> ~
+            <strong class="text-green-700">MongoDB</strong> ~
           </span>
           &nbsp;
           <span>
-            <strong>NodeJS</strong> ~
+            <strong>
+              N<span class="text-green-700">o</span>deJS
+            </strong>{" "}
+            ~
           </span>
           &nbsp;
           <span>
-            <strong>HTML</strong> ~
+            <strong>
+              <span>H</span>
+              <span class="text-orange-600">T</span>
+              <span class="text-red-600">M</span>
+              <span class="text-gray-400">L</span>
+            </strong>{" "}
+            ~
           </span>
           &nbsp;
           <span>
-            <strong>CSS</strong> ~
+            <strong class="text-blue-800">CSS</strong> ~
           </span>
           &nbsp;
           <span>
             {" "}
-            <strong>Tailwind</strong> ~
+            <strong class="text-blue-600">Tailwind</strong> ~
           </span>
           &nbsp;
           <span>
             {" "}
-            <strong>Elixir (currently learning)</strong>
+            <strong class="text-purple-700">Elixir</strong>
+            <span>(currently learning)</span>
           </span>
-          <h2 class="text-2xl mt-4">Fun Time ?</h2>
+          <h2 class="text-2xl mt-6 mb-4">Fun Time ?</h2>
           <span>
             <strong>Cooking</strong> ~
           </span>

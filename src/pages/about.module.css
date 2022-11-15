@@ -3,9 +3,11 @@
   width: 40%;
 }
 .aeso {
-  width: 45%;
+  width: 55%;
   line-height: 30px;
   font-size: larger;
+  margin: 2em;
+  font-size: x-large;
 }
 .intro {
   display: flex;
@@ -52,6 +54,7 @@ a {
 @media (max-width: 768px) {
   .aeso {
     width: 100%;
+    margin-left: 0.2em;
   }
   .intro {
     display: block;
