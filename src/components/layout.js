@@ -21,7 +21,8 @@ const Layout = ({ pageTitle, children }) => {
   // `);
   return (
     <div className={container}>
-      <Favicon url="https://ibb.co/n7pTQqc" />
+      <Favicon url="https://www.linkpicture.com/q/jr_1.png" />
+      {/* <Favicon url="https://ibb.co/n7pTQqc" /> */}
       <nav>
         <ul className={navLinks}>
           <li className={navLinkItem}>
