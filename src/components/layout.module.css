@@ -4,7 +4,6 @@
   font-family: sans-serif;
 }
 .heading {
-  color: black;
   font-size: xx-large;
 }
 .nav-links {
@@ -18,7 +17,7 @@
 .nav-link-text {
   color: blue;
 }
-h1,
+
 h2 {
   color: rebeccapurple;
 }
