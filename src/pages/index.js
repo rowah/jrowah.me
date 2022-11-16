@@ -16,7 +16,7 @@ import {
   yellow,
   tee,
   em,
-  el
+  el,
 } from "./about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
@@ -77,34 +77,23 @@ const AboutPage = () => {
           </p>
           <span>
             <strong>
-              <span class="text-yellow-500" className={yellow}>
-                Java
-              </span>
+              <span className={yellow}>Java</span>
               <span>Script</span>
             </strong>{" "}
             ~{" "}
           </span>
           &nbsp;
           <span>
-            <strong class="text-blue-600/100" className={blue}>
-              ReactJS
-            </strong>{" "}
-            ~{" "}
+            <strong className={blue}>ReactJS</strong> ~{" "}
           </span>
           &nbsp;
           <span>
-            <strong class="text-green-700" className={green}>
-              MongoDB
-            </strong>{" "}
-            ~
+            <strong className={green}>MongoDB</strong> ~
           </span>
           &nbsp;
           <span>
             <strong>
-              N
-              <span class="text-green-700" className={green}>
-                o
-              </span>
+              N<span className={green}>o</span>
               deJS
             </strong>{" "}
             ~
@@ -113,33 +102,25 @@ const AboutPage = () => {
           <span>
             <strong>
               <span>H</span>
-              <span class="text-orange-600" className={tee}>T</span>
-              <span class="text-red-600" className={em}>M</span>
-              <span class="text-gray-400" className={el}>L</span>
+              <span className={tee}>T</span>
+              <span className={em}>M</span>
+              <span className={el}>L</span>
             </strong>{" "}
             ~
           </span>
           &nbsp;
           <span>
-            <strong class="text-blue-800" className={css}>
-              CSS
-            </strong>{" "}
-            ~
-          </span>
-          &nbsp;
-          <span>
-            {" "}
-            <strong className={blue} class="text-blue-600">
-              Tailwind
-            </strong>{" "}
-            ~
+            <strong className={css}>CSS</strong> ~
           </span>
           &nbsp;
           <span>
             {" "}
-            <strong class="text-purple-700" className={purple}>
-              Elixir
-            </strong>
+            <strong className={blue}>Tailwind</strong> ~
+          </span>
+          &nbsp;
+          <span>
+            {" "}
+            <strong className={purple}>Elixir</strong>
             <span>(currently learning)</span>
           </span>
           <h2 class="text-2xl mt-6 mb-4">Fun Time ?</h2>

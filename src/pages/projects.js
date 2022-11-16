@@ -2,9 +2,6 @@ import * as React from "react";
 import Footer from "../components/footer";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
-// import { project } from "../components/layout.module.css";
-// import { StaticImage } from "gatsby-plugin-image";
-// // import Favicon from "react-favicon";
 
 const ProjectsPage = () => {
   return (
