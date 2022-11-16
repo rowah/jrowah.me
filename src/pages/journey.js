@@ -6,26 +6,10 @@ import Seo from "../components/seo";
 const IndexPage = () => {
   return (
     <main class="pt-4 pl-4">
-      <Layout pageTitle="My Journey">
+      <Layout>
         {/* <!-- component --> */}
         <div class="container">
           <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
-            {/* <!-- left --> */}
-            {/* <div class="flex flex-row-reverse md:contents">
-              <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
-                <h3 class="font-semibold text-lg mb-1">Lorem ipsum</h3>
-                <p class="leading-tight text-justify">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi,
-                  quaerat?
-                </p>
-              </div>
-              <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-                <div class="h-full w-6 flex items-center justify-center">
-                  <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
-                </div>
-                <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
-              </div>
-            </div> */}
             {/* <!-- right --> */}
             <div class="flex md:contents">
               <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
@@ -66,43 +50,7 @@ const IndexPage = () => {
                 </p>
               </div>
             </div>
-            {/* <!-- left --> */}
-            {/* <div class="flex flex-row-reverse md:contents">
-              <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
-                <h1>From February 2022 &#8594; Present</h1>
-                <hr />
-                <h2 class="font-semibold text-lg mb-1">Software Developer</h2>
-                <h3 class="font-semibold text-lg mb-1">
-                  {" "}
-                  <a
-                    href="https://expivot.tech/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      class="w-20"
-                      src="https://avatars.githubusercontent.com/u/54973894?s=200&v=4"
-                      alt="expivot logo"
-                    />
-                    ExPivot Labs
-                  </a>
-                </h3>
-                <h4>Tech Stack</h4>
-                <span>JavaScript, </span> <span> HTML/CSS/Tailwind, </span>{" "}
-                <span>Elixir, </span> <span>Python.</span>
-                <p class="leading-tight text-slate-900">
-                  Understanding the codebase of the company's product written in
-                  Elixir and Python. Learning Elixir and Python. Maintaining the
-                  company website.
-                </p>
-              </div>
-              <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-                <div class="h-full w-6 flex items-center justify-center">
-                  <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
-                </div>
-                <div class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-500 shadow"></div>
-              </div>
-            </div> */}
+
             {/* <!-- left --> */}
             <div class="flex flex-row-reverse md:contents">
               <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
