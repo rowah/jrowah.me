@@ -43,7 +43,7 @@ const IndexPage = () => {
                 <span>JavaScript, </span> <span> HTML/CSS/Tailwind, </span>{" "}
                 <span>Elixir, </span> <span>PostgreSQL, </span>{" "}
                 <span>Python.</span>
-                <p class="leading-tight text-slate-900">
+                <p class="leading-tight text-slate-900 font-sans font-serif">
                   Understanding the codebase of the company's product written in
                   Elixir and Python. Learning Elixir and Python. Maintaining the
                   company website.
@@ -78,7 +78,7 @@ const IndexPage = () => {
                 <span>JavaScript, </span> <span>Gatsby, </span>{" "}
                 <span>ReactJS, </span> <span>HTML, </span>{" "}
                 <span>TailwindCSS.</span>
-                <p class="leading-tight text-slate-900">
+                <p class="leading-tight text-slate-900 font-sans font-serif">
                   I worked on several collaborative projects with other folks
                   developing fullstack apps from start to finish. Building
                   websites for clients. Working with maultiple teams to deliver
@@ -124,7 +124,7 @@ const IndexPage = () => {
                 <h4>Tech Stack:</h4>
                 <span>JavaScript, </span> <span>PostgreSQL, </span>{" "}
                 <span>HTML, </span> <span>TailwindCSS.</span>
-                <p class="leading-tight text-slate-900">
+                <p class="leading-tight text-slate-900 font-sans font-serif">
                   At my first interniship, I managed and updated the Company's
                   product landing page. I also contributed JavaScript code to
                   the Comapany's app, Yweri which is on Google and App stores.

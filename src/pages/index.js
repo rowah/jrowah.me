@@ -30,7 +30,7 @@ const AboutPage = () => {
         <hr />
         <section className={intro}>
           <div className={aeso}>
-            <p class="text-gray-700">
+            <p class="text-gray-700 font-sans font-serif">
               Self and community taught software developer from Nairobi, Kenya.{" "}
               <br /> Interested in AI, Data Science, Functional and Object
               Oriented Programming.
@@ -72,7 +72,7 @@ const AboutPage = () => {
       <Skills>
         <div className={skillset}>
           <h2 class="text-2xl mt-4">Skill Set ?</h2>
-          <p class="text-xl mt-4 mb-3">
+          <p class="text-xl mt-4 mb-3 font-sans font-serif">
             MERN stack developer with proficiency in:
           </p>
           <span>
