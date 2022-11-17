@@ -29,7 +29,8 @@ const ProjectsPage = () => {
               <span class="text-sm text-gray-500 dark:text-gray-300">
                 PTracker helps minimize westage that happen through disposal of
                 expired goods by making it easy to track the expiry dates of
-                products.
+                products. I used NodeJS, Express, MongoDB, Cloudinary, EJS, and
+                Tailwind to build the app.
               </span>
             </div>
           </div>
@@ -51,7 +52,8 @@ const ProjectsPage = () => {
 
               <span class="text-sm text-gray-500 dark:text-gray-300">
                 This was a website that I built for a client who owned a berber
-                shop and salon.
+                shop and salon. The technologies I used to build the website
+                include HTML, CSS and Tailwind.
               </span>
             </div>
           </div>
@@ -72,7 +74,10 @@ const ProjectsPage = () => {
               </a>
 
               <span class="text-sm text-gray-500 dark:text-gray-300">
-                My Website
+                This is my portolio website which I have build from scratch to
+                showcase my abilities, boost my online availability, and
+                showcase my skills. The tech stack I have used here include
+                GatsbyJS, JavaScript, ReactJS, Graphql, TailwindCSS and CSS.
               </span>
             </div>
           </div>
