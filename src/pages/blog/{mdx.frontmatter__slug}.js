@@ -13,8 +13,10 @@ const BlogPost = ({ data, children }) => {
       <GatsbyImage image={image} className={blogImg} />
       <section class="bg-slate-100 w-5/6 shadow-2xl p-8 font-serif leading-relaxed text-lg">
         {children}
-        <h3 align="center">Connect With Me</h3>
-        <p class="flex justify-center">
+        <h3 align="right" class="mr-4">
+          Connect With Me
+        </h3>
+        <p class="flex justify-end mt-4">
           <span class="px-4">
             <a href="https://twitter.com/jrowah" target="blank">
               <img
