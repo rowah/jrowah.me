@@ -61,6 +61,10 @@ a {
 .el {
   color: rgb(156 163 175);
 }
+.blogImg {
+  width: 80%;
+  margin: 2em;
+}
 @media (max-width: 768px) {
   .aeso {
     width: 100%;
