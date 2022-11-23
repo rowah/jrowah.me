@@ -28,6 +28,16 @@ const BlogPost = ({ data, children }) => {
             </a>
           </span>
           <span class="px-4">
+            <a href="https://instagram.com/jrowah" target="blank">
+              <img
+                src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg"
+                alt="jrowah"
+                height="20"
+                width="30"
+              />
+            </a>
+          </span>
+          <span class="px-4">
             <a href="https://linkedin.com/in/james-rowa" target="blank">
               <img
                 src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg"
