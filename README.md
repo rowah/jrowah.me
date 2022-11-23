@@ -1,3 +1,10 @@
 # This is my personal website
 
-~ Built with ReactJS, HTML, CSS and Tailwind
+[jrowah.com](https://jrowah.com/)
+~ Built with:
+
+> ReactJS,
+> HTML,
+> CSS
+> Tailwind
+> Gatsby JS
