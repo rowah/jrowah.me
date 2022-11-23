@@ -2,7 +2,6 @@ import * as React from "react";
 import { Link } from "gatsby";
 import {
   container,
-  heading,
   navLinks,
   navLinkItem,
   navLinkText,
@@ -51,9 +50,7 @@ const Layout = ({ pageTitle, children }) => {
         </ul>
       </nav>
       <main>
-        <h1 className={heading} class="text-black text-3xl">
-          {pageTitle}
-        </h1>
+        <h1 class="text-black text-3xl">{pageTitle}</h1>
         {children}
       </main>
     </div>
