@@ -12,8 +12,8 @@ const BlogPage = ({ data }) => {
           My Blog
         </h1>
       </Layout>
-      <section class="bg-white dark:bg-gray-900">
-        <div class="container px-6 py-10  mx-auto">
+      <section class="bg-white">
+        <div class="px-6 py-10  mx-auto">
           <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
             {data.allMdx.nodes.map((node) => (
               <div class="lg:flex" key={node.id}>
