@@ -11,6 +11,9 @@ const BlogPost = ({ data, children }) => {
     <Layout pageTitle={data.mdx.frontmatter.title}>
       <p>Posted: {data.mdx.frontmatter.date}</p>
       <GatsbyImage image={image} className={blogImg} />
+      <p class="text-right mr-20">
+        Photo Credit: {data.mdx.frontmatter.hero_image_credit_text}
+      </p>
       <section class="bg-slate-100 shadow-2xl p-8 font-serif leading-relaxed text-lg w-6/6 md:w-5/6 lg:w-5/6">
         {children}
         <h3 align="right" class="mr-4">
