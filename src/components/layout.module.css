@@ -5,11 +5,12 @@
 }
 .nav-links {
   display: flex;
+  justify-content: center;
   list-style: none;
   padding-left: 0;
 }
 .nav-link-item {
-  padding-right: 2rem;
+  padding-right: 4rem;
 }
 .nav-link-text {
   color: blue;

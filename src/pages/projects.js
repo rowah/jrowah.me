@@ -19,14 +19,14 @@ const ProjectsPage = () => {
             <div class="flex flex-col justify-between py-6 lg:mx-6">
               <a
                 href="https://product-expiry-tracker.cyclic.app"
-                class="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                class="text-xl font-semibold text-gray-800 hover:underline dark:text-black "
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 PTracker App
               </a>
 
-              <span class="text-sm text-gray-500 dark:text-gray-300">
+              <span class="text-sm text-gray-500 dark:text-gray-500">
                 PTracker helps minimize westage that happen through disposal of
                 expired goods by making it easy to track the expiry dates of
                 products. I used NodeJS, Express, MongoDB, Cloudinary, EJS, and
@@ -45,12 +45,12 @@ const ProjectsPage = () => {
             <div class="flex flex-col justify-between py-6 lg:mx-6">
               <a
                 href="https://saloun-website.netlify.app/"
-                class="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                class="text-xl font-semibold text-gray-800 hover:underline dark:text-black "
               >
                 Ayesha Salon Landing Page
               </a>
 
-              <span class="text-sm text-gray-500 dark:text-gray-300">
+              <span class="text-sm text-gray-500 dark:text-gray-500">
                 This was a website that I built for a client who owned a berber
                 shop and salon. The technologies I used to build the website
                 include HTML, CSS and Tailwind.
@@ -68,12 +68,12 @@ const ProjectsPage = () => {
             <div class="flex flex-col justify-between py-6 lg:mx-6">
               <a
                 href="https://jrowah.com"
-                class="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+                class="text-xl font-semibold text-gray-800 hover:underline dark:text-black "
               >
                 Jrowah
               </a>
 
-              <span class="text-sm text-gray-500 dark:text-gray-300">
+              <span class="text-sm text-gray-500 dark:text-gray-500">
                 This is my portolio website which I have build from scratch to
                 showcase my abilities, boost my online availability, and
                 showcase my skills. The tech stack I have used here include

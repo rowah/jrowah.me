@@ -1,6 +1,5 @@
 // Step 1: Import React
 import * as React from "react";
-import Layout from "../components/layout";
 import { StaticImage } from "gatsby-plugin-image";
 import Seo from "../components/seo";
 import {
@@ -21,54 +20,61 @@ import {
 import Skills from "../components/skills";
 import Footer from "../components/footer";
 import SocialFollow from "../components/socialFollow";
+import { container } from "../components/layout.module.css";
 
 // Step 2: Define your component
 const AboutPage = () => {
   return (
-    <main class="pl-4 pt-4">
-      <Layout pageTitle="James Rowa - Software Developer">
-        <hr />
-        <section className={intro}>
-          <div className={aeso}>
-            <p class="text-gray-700 font-sans font-serif">
-              Self and community taught software developer from Nairobi, Kenya.{" "}
-              <br /> Interested in AI, Data Science, Functional and Object
-              Oriented Programming.
-              <br />
-              <br /> Professional biochemist, and educator. <br />
-              Also a technical writer on{" "}
-              <a
-                className={links}
-                href="https://medium.com/@jrowah"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Medium
-              </a>
-              . <br />
-              Check out my{" "}
-              <a className={links} href="/projects">
-                Projects
-              </a>
-              . <br />
-            </p>
+    <main className={container}>
+      <h1 class="text-black text-5xl mt-5 mb-4">James Rowa</h1>
+      <h2 class="text-3xl">Software Developer</h2>
+      {/* <Layout pageTitle="James Rowa - Software Developer"> */}
+      <hr />
+      <section className={intro}>
+        <div className={aeso}>
+          <p class="text-gray-700 font-sans font-serif">
+            Self and community taught software developer from Nairobi, Kenya.{" "}
+            <br /> Interested in AI, Data Science, Functional and Object
+            Oriented Programming.
             <br />
-            <p>
-              Read about{" "}
-              <a className={links} href="/journey">
-                My Journey
-              </a>{" "}
-              into Tech!
-            </p>
-          </div>
-          <StaticImage
-            alt="Jrowah's picture"
-            src="../images/devjay.png"
-            className={jrowah}
-          />
-        </section>
-        <hr />
-      </Layout>
+            <br /> Professional biochemist, and educator. <br />
+            Also a technical writer on{" "}
+            <a
+              className={links}
+              href="https://medium.com/@jrowah"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Medium
+            </a>{" "}
+            and on{" "}
+            <a className={links} href="/blog">
+              My Blog
+            </a>
+            . <br />
+            Check out my{" "}
+            <a className={links} href="/projects">
+              Projects
+            </a>
+            . <br />
+          </p>
+          <br />
+          <p>
+            Read about{" "}
+            <a className={links} href="/journey">
+              My Journey
+            </a>{" "}
+            into Tech!
+          </p>
+        </div>
+        <StaticImage
+          alt="Jrowah's picture"
+          src="../images/devjay.png"
+          className={jrowah}
+        />
+      </section>
+      <hr />
+      {/* </Layout> */}
       <Skills>
         <div className={skillset}>
           <h2 class="text-2xl mt-4">Skill Set ?</h2>

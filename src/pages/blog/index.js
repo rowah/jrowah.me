@@ -26,7 +26,7 @@ const BlogPage = ({ data }) => {
                   <Link to={`/blog/${node.frontmatter.slug}`}>
                     <a
                       href={`/blog/${node.frontmatter.slug}`}
-                      class="text-xl font-semibold text-black"
+                      class="text-xl font-semibold text-blue"
                     >
                       {node.frontmatter.title}
                     </a>

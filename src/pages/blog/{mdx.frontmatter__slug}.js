@@ -8,7 +8,7 @@ import { blogImg } from "../about.module.css";
 const BlogPost = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image);
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
+    <Layout pageTitle={data.mdx.frontmatter.title} class="p-6">
       <p>Posted: {data.mdx.frontmatter.date}</p>
       <GatsbyImage image={image} className={blogImg} />
       <p class="text-right mr-20">
