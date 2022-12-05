@@ -26,14 +26,14 @@ const BlogPage = ({ data }) => {
                   <Link to={`/blog/${node.frontmatter.slug}`}>
                     <a
                       href={`/blog/${node.frontmatter.slug}`}
-                      class="text-xl font-semibold text-black-800 hover:underline dark:text-white "
+                      class="text-xl font-semibold text-black"
                     >
                       {node.frontmatter.title}
                     </a>
                     <hr />
                   </Link>
 
-                  <span class="text-sm text-gray-500 dark:text-gray-300">
+                  <span class="text-sm text-gray-800 dark:text-gray-800">
                     Posted On: {node.frontmatter.date}
                   </span>
                   <p>{node.excerpt}</p>
