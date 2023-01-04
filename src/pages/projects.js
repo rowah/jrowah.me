@@ -13,7 +13,7 @@ const ProjectsPage = () => {
             <img
               class="object-cover w-full h-56 rounded-lg lg:w-64"
               src="https://media.istockphoto.com/id/458414021/photo/jar-of-chocolate-nutella-spread-isolated-on-white-background.jpg?s=612x612&w=is&k=20&c=DQm-c871o7DjKa2lbt5iSikm2txS9KgkERDchkkmUhA="
-              alt=""
+              alt="Expiry-tracker"
             />
 
             <div class="flex flex-col justify-between py-6 lg:mx-6">
@@ -39,12 +39,14 @@ const ProjectsPage = () => {
             <img
               class="object-cover w-full h-56 rounded-lg lg:w-64"
               src="https://cdn.pixabay.com/photo/2018/04/03/23/04/woman-3288365_960_720.jpg"
-              alt=""
+              alt="Landing-Page"
             />
 
             <div class="flex flex-col justify-between py-6 lg:mx-6">
               <a
                 href="https://saloun-website.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="text-xl font-semibold text-gray-800 hover:underline dark:text-black "
               >
                 Ayesha Salon Landing Page
@@ -62,13 +64,15 @@ const ProjectsPage = () => {
             <img
               class="object-cover w-full h-56 rounded-lg lg:w-64"
               src="https://images.unsplash.com/photo-1501959181532-7d2a3c064642?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1193&q=80"
-              alt=""
+              alt="portfolio"
             />
 
             <div class="flex flex-col justify-between py-6 lg:mx-6">
               <a
                 href="https://jrowah.com"
                 class="text-xl font-semibold text-gray-800 hover:underline dark:text-black "
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Jrowah
               </a>
@@ -82,26 +86,33 @@ const ProjectsPage = () => {
             </div>
           </div>
 
-          {/* <div class="lg:flex">
-                <img
-                  class="object-cover w-full h-56 rounded-lg lg:w-64"
-                  src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                  alt=""
-                />
+          <div class="lg:flex">
+            <img
+              class="object-cover w-full h-56 rounded-lg lg:w-64"
+              src="https://images.pexels.com/photos/220057/pexels-photo-220057.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="tic-tac-toe"
+            />
 
-                <div class="flex flex-col justify-between py-6 lg:mx-6">
-                  <a
-                    href="#"
-                    class="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
-                  >
-                    What do you want to know about Blockchane
-                  </a>
+            <div class="flex flex-col justify-between py-6 lg:mx-6">
+              <a
+                href="https://jr-tic-tac-toe.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+              >
+                Tic-Tac-Toe
+              </a>
 
-                  <span class="text-sm text-gray-500 dark:text-gray-300">
-                    On: 20 October 2019
-                  </span>
-                </div>
-              </div> */}
+              <span class="text-sm text-gray-500 dark:text-gray-300">
+                This is a paper-and-pencil game for two players who take turns
+                marking the spaces in a three-by-three grid with X or O. The
+                player who succeeds in placing three of their marks in a
+                horizontal, vertical, or diagonal row is the winner. It is a
+                solved game, with a forced draw assuming best play from both
+                players
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
