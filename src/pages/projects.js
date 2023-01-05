@@ -85,7 +85,6 @@ const ProjectsPage = () => {
               </span>
             </div>
           </div>
-
           <div class="lg:flex">
             <img
               class="object-cover w-full h-56 rounded-lg lg:w-64"
@@ -96,14 +95,14 @@ const ProjectsPage = () => {
             <div class="flex flex-col justify-between py-6 lg:mx-6">
               <a
                 href="https://jr-tic-tac-toe.netlify.app/"
+                class="text-xl font-semibold text-gray-800 hover:underline dark:text-black "
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
               >
                 Tic-Tac-Toe
               </a>
 
-              <span class="text-sm text-gray-500 dark:text-gray-300">
+              <span class="text-sm text-gray-500 dark:text-gray-500">
                 This is a paper-and-pencil game for two players who take turns
                 marking the spaces in a three-by-three grid with X or O. The
                 player who succeeds in placing three of their marks in a
