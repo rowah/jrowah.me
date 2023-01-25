@@ -115,22 +115,7 @@ const ProjectsPage = () => {
         </div>
       </div>
 
-      <Footer>
-        <ul>
-          <li>
-            Copyright &copy; Jrowah. All rights reserved. <span>2022</span>{" "}
-            <span>
-              <a
-                href="/privacy-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy Terms
-              </a>
-            </span>
-          </li>
-        </ul>
-      </Footer>
+      <Footer></Footer>
     </main>
   );
 };

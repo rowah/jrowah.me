@@ -269,7 +269,7 @@ const AboutPage = () => {
       <Footer>
         <ul id="copyright">
           <li>
-            Copyright &copy; Jrowah. All rights reserved. <span>2022</span>{" "}
+            Copyright &copy; Jrowah. All rights reserved. <span>2023</span>{" "}
             <span>
               <a
                 href="/privacy-policy"

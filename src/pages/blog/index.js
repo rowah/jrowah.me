@@ -43,22 +43,7 @@ const BlogPage = ({ data }) => {
           </div>
         </div>
       </section>
-      <Footer>
-        <ul id="copyright">
-          <li>
-            Copyright &copy; Jrowah. All rights reserved. <span>2023</span>{" "}
-            <span>
-              <a
-                href="/privacy-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy Terms
-              </a>
-            </span>
-          </li>
-        </ul>
-      </Footer>
+      <Footer></Footer>
     </main>
   );
 };
