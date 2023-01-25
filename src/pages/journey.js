@@ -46,7 +46,7 @@ const IndexPage = () => {
                 <p class="leading-tight text-slate-900 font-sans font-serif">
                   Understanding the codebase of the company's product written in
                   Elixir and Python. Learning Elixir and Python. Maintaining the
-                  company website.
+                  company's website and product landing page.
                 </p>
               </div>
             </div>
