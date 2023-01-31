@@ -18,7 +18,6 @@ module.exports = {
         path: `${__dirname}/blog`,
       },
     },
-    "gatsby-plugin-mdx",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -33,5 +32,18 @@ module.exports = {
     },
     "gatsby-plugin-offline",
     "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
+      },
+    },
   ],
 };
