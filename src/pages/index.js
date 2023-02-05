@@ -151,8 +151,11 @@ const AboutPage = () => {
             {" "}
             <strong class="text-purple-700" className={purple}>
               Elixir
+            </strong>{" "}
+            ~{" "}
+            <strong className={em} class="text-orange-600">
+              Phoenix
             </strong>
-            <span>(currently learning)</span>
           </span>
           <h2 class="text-2xl mt-6 mb-4">Fun Time ?</h2>
           <span>
