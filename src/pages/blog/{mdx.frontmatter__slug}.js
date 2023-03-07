@@ -1,4 +1,5 @@
 import * as React from "react";
+// import { MDXRenderer } from "gatsby-plugin-mdx";
 import { blogImg } from "../about.module.css";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
@@ -9,7 +10,7 @@ const BlogPost = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image);
   return (
     <Layout pageTitle={data.mdx.frontmatter.title} class="p-6">
-      <p>Posted: {data.mdx.frontmatter.date}</p>
+      <p>Posted On: {data.mdx.frontmatter.date}</p>
       <GatsbyImage image={image} className={blogImg} />
       <p class="text-right mr-20">
         Photo Credit: {data.mdx.frontmatter.hero_image_credit_text}
