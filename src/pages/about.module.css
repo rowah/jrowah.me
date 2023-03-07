@@ -1,6 +1,8 @@
 .jrowah {
   border-radius: 50%;
   width: 50%;
+  height: 70%;
+  margin-top: 1.5em;
 }
 .aeso {
   width: 55%;
@@ -75,5 +77,7 @@ a {
   }
   .jrowah {
     margin-left: 25%;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
   }
 }

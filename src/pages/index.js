@@ -33,11 +33,12 @@ const AboutPage = () => {
       <section className={intro}>
         <div className={aeso}>
           <p class="text-gray-700 font-sans font-serif">
-            Self taught software developer from Nairobi, Kenya. <br />{" "}
+            Self-taught software developer from Nairobi, Kenya. <br />{" "}
             Interested in AI, Data Science, Functional and Object Oriented
             Programming.
             <br />
-            <br /> Professional biochemist, and educator. <br />
+            <br /> Professional biochemist, and educator(certified and
+            registered chemistry and biology teacher). <br />
             Also a technical writer on{" "}
             <a
               className={links}
