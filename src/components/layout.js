@@ -18,7 +18,7 @@ const Layout = ({ pageTitle, children }) => {
   //   }
   // `);
   return (
-    <div class="pr-16 max-w-5xl font-sans">
+    <div>
       <Favicon url="https://www.linkpicture.com/q/jr_1.png" />
       {/* <Favicon url="https://ibb.co/n7pTQqc" /> */}
       <nav>
