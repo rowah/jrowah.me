@@ -9,8 +9,8 @@ import Seo from "../../components/seo";
 const BlogPost = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image);
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title} class="p-6">
-      <section class="bg-slate-100 shadow-2xl p-8 font-serif leading-relaxed text-lg w-6/6 md:w-5/6 lg:w-5/6 max-w-screen-lg m-auto">
+    <Layout pageTitle={data.mdx.frontmatter.title}>
+      <section class="bg-slate-100 shadow-2xl p-8 font-serif leading-relaxed text-lg w-6/6 md:w-5/6 lg:w-5/6 max-w-4xl m-auto ml-20">
         <p>Posted On: {data.mdx.frontmatter.date}</p>
         <GatsbyImage image={image} className={blogImg} />
         <p class="text-right mr-20">
