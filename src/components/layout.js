@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import // container,
-// navLinks,
-// navLinkItem,
-// navLinkText,
-"./layout.module.css";
+// import container from // navLinks,
+// // navLinkItem,
+// // navLinkText,
+// "./layout.module.css";
 import Favicon from "react-favicon";
 
 const Layout = ({ pageTitle, children }) => {
@@ -18,7 +17,7 @@ const Layout = ({ pageTitle, children }) => {
   //   }
   // `);
   return (
-    <div>
+    <div class="m-auto border-solid max-w-screen-xl">
       <Favicon url="https://www.linkpicture.com/q/jr_1.png" />
       {/* <Favicon url="https://ibb.co/n7pTQqc" /> */}
       <nav>

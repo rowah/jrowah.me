@@ -7,8 +7,7 @@ import { Link, graphql } from "gatsby";
 const BlogPage = ({ data }) => {
   return (
     <main class="pt-4 pl-4">
-      <Layout />
-      <section class="bg-white">
+      <Layout>
         <div class="px-6 py-10  mx-auto">
           <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
             {data.allMdx.nodes.map((node) => (
@@ -38,7 +37,8 @@ const BlogPage = ({ data }) => {
             ))}
           </div>
         </div>
-      </section>
+      </Layout>
+
       <Footer></Footer>
     </main>
   );
