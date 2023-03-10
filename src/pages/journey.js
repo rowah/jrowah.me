@@ -8,7 +8,7 @@ const IndexPage = () => {
     <main class="pt-4 pl-4">
       <Layout>
         {/* <!-- component --> */}
-        <div class="container">
+        <div class="container max-w-screen-lg m-auto">
           <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
             {/* <!-- right --> */}
             <div class="flex md:contents">

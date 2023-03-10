@@ -10,12 +10,13 @@ const BlogPost = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image);
   return (
     <Layout pageTitle={data.mdx.frontmatter.title} class="p-6">
-      <p>Posted On: {data.mdx.frontmatter.date}</p>
-      <GatsbyImage image={image} className={blogImg} />
-      <p class="text-right mr-20">
-        Photo Credit: {data.mdx.frontmatter.hero_image_credit_text}
-      </p>
-      <section class="bg-slate-100 shadow-2xl p-8 font-serif leading-relaxed text-lg w-6/6 md:w-5/6 lg:w-5/6">
+      <section class="bg-slate-100 shadow-2xl p-8 font-serif leading-relaxed text-lg w-6/6 md:w-5/6 lg:w-5/6 max-w-screen-lg m-auto">
+        <p>Posted On: {data.mdx.frontmatter.date}</p>
+        <GatsbyImage image={image} className={blogImg} />
+        <p class="text-right mr-20">
+          Photo Credit: {data.mdx.frontmatter.hero_image_credit_text}
+        </p>
+        <br />
         {children}
         <h3 align="right" class="mr-4">
           Connect With Me

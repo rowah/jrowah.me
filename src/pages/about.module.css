@@ -64,8 +64,9 @@ a {
   color: rgb(156 163 175);
 }
 .blogImg {
-  width: 80%;
-  margin: 2em;
+  width: 60%;
+  margin-top: 2em;
+  margin-left: 20%;
 }
 @media (max-width: 768px) {
   .aeso {
