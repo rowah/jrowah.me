@@ -1,11 +1,10 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import {
-  container,
-  navLinks,
-  navLinkItem,
-  navLinkText,
-} from "./layout.module.css";
+import // container,
+// navLinks,
+// navLinkItem,
+// navLinkText,
+"./layout.module.css";
 import Favicon from "react-favicon";
 
 const Layout = ({ pageTitle, children }) => {
@@ -19,34 +18,38 @@ const Layout = ({ pageTitle, children }) => {
   //   }
   // `);
   return (
-    <div className={container}>
+    <div>
       <Favicon url="https://www.linkpicture.com/q/jr_1.png" />
       {/* <Favicon url="https://ibb.co/n7pTQqc" /> */}
       <nav>
-        <ul className={navLinks}>
-          <li className={navLinkItem}>
+        <ul class="flex justify-center list-none pl-0">
+          <li class="pr-16">
             <Link
               to="/"
-              className={navLinkText}
-              class="text-3xl text-blue-500 border-b-2 border-blue-500"
+              // className={navLinkText}
+              class="text-blue text-3xl"
+              activeClassName="underline text-blue text-3xl"
+              // partiallyActive={true}
             >
               About
             </Link>
           </li>
-          <li className={navLinkItem}>
+          <li class="pr-16">
             <Link
               to="/journey"
-              className={navLinkText}
-              class="text-3xl text-blue-500 border-b-2 border-blue-500"
+              class="text-blue text-3xl"
+              activeClassName="underline text-blue text-3xl"
+              // partiallyActive={true}
             >
               Journey
             </Link>
           </li>
-          <li className={navLinkItem}>
+          <li class="pr-16">
             <Link
               to="/blog"
-              className={navLinkText}
-              class="text-3xl text-blue-500 border-b-2 border-blue-500"
+              class="text-blue text-3xl"
+              activeClassName="underline text-blue text-3xl"
+              // partiallyActive={true}
             >
               Blog
             </Link>

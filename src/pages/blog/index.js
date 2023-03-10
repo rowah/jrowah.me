@@ -7,11 +7,7 @@ import { Link, graphql } from "gatsby";
 const BlogPage = ({ data }) => {
   return (
     <main class="pt-4 pl-4">
-      <Layout>
-        <h1 class="text-3xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white pt-8">
-          My Blog
-        </h1>
-      </Layout>
+      <Layout />
       <section class="bg-white">
         <div class="px-6 py-10  mx-auto">
           <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
