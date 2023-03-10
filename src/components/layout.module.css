@@ -3,18 +3,18 @@
   max-width: 1000px;
   font-family: sans-serif;
 }
-.nav-links {
+/* .nav-links {
   display: flex;
   justify-content: center;
   list-style: none;
   padding-left: 0;
-}
-.nav-link-item {
+} */
+/* .nav-link-item {
   padding-right: 4rem;
-}
-.nav-link-text {
+} */
+/* .nav-link-text {
   color: blue;
-}
+} */
 
 h2 {
   color: rebeccapurple;
