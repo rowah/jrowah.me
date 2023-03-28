@@ -37,8 +37,7 @@ const AboutPage = () => {
             Interested in AI, Science, Functional and Object Oriented
             Programming.
             <br />
-            <br /> Professional biochemist, and educator(certified and
-            registered chemistry and biology teacher). <br />
+            <br /> Professional biochemist, and educator(Post Graduate). <br />
             Also a technical writer on{" "}
             <a
               className={links}
