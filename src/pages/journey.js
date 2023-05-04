@@ -33,7 +33,7 @@ const IndexPage = () => {
                     Optimum BH
                   </a>
                 </h3>
-                <h4>Tech Stack</h4>
+                <h4>Tech Stack:</h4>
                 <span>Phoenix, </span> <span>Elixir, </span>{" "}
                 <span>Tailwind, </span>
                 <span>Alpine, </span> <span>LiveView </span>{" "}
@@ -76,7 +76,7 @@ const IndexPage = () => {
                     ExPivot Labs
                   </a>
                 </h3>
-                <h4>Tech Stack</h4>
+                <h4>Tech Stack:</h4>
                 <span>JavaScript, </span> <span> HTML/CSS/Tailwind, </span>{" "}
                 <span>Elixir, </span> <span>PostgreSQL, </span>{" "}
                 <span>Python.</span>
@@ -109,7 +109,7 @@ const IndexPage = () => {
                     100 Devs
                   </a>
                 </h3>
-                <h4>Tech Stack</h4>
+                <h4>Tech Stack:</h4>
                 <span>NodeJS, </span> <span>MongoDB, </span>{" "}
                 <span>Express, </span>
                 <span>JavaScript, </span> <span>Gatsby, </span>{" "}
