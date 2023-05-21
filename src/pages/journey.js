@@ -37,7 +37,7 @@ const IndexPage = () => {
                 <span>Phoenix, </span> <span>Elixir, </span>{" "}
                 <span>Tailwind, </span>
                 <span>Alpine, </span> <span>LiveView </span>{" "}
-                <p class="leading-tight text-slate-900 font-sans font-serif">
+                <p class="leading-tight text-slate-900 font-serif">
                   As an intern, I am currently getting introduced to and
                   learning the company's stack (PETAL)
                 </p>
@@ -80,7 +80,7 @@ const IndexPage = () => {
                 <span>JavaScript, </span> <span> HTML/CSS/Tailwind, </span>{" "}
                 <span>Elixir, </span> <span>PostgreSQL, </span>{" "}
                 <span>Python.</span>
-                <p class="leading-tight text-slate-900 font-sans font-serif">
+                <p class="leading-tight text-slate-900   font-serif">
                   Understanding the codebase of the company's product written in
                   Elixir and Python. Learning Elixir and Python. Maintaining the
                   company's website and product landing page.
@@ -115,7 +115,7 @@ const IndexPage = () => {
                 <span>JavaScript, </span> <span>Gatsby, </span>{" "}
                 <span>ReactJS, </span> <span>HTML, </span>{" "}
                 <span>TailwindCSS.</span>
-                <p class="leading-tight text-slate-900 font-sans font-serif">
+                <p class="leading-tight text-slate-900   font-serif">
                   I worked on several collaborative projects with other folks
                   developing fullstack apps from start to finish. Building
                   websites for clients. Working with maultiple teams to deliver
@@ -159,7 +159,7 @@ const IndexPage = () => {
                 <h4>Tech Stack:</h4>
                 <span>JavaScript, </span> <span>PostgreSQL, </span>{" "}
                 <span>HTML, </span> <span>TailwindCSS.</span>
-                <p class="leading-tight text-slate-900 font-sans font-serif">
+                <p class="leading-tight text-slate-900   font-serif">
                   At my first interniship, I managed and updated the Company's
                   product landing page. I also contributed JavaScript code to
                   the Comapany's app, Yweri which is on Google and App stores.

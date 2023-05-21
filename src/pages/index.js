@@ -32,7 +32,7 @@ const AboutPage = () => {
       <hr />
       <section className={intro}>
         <div className={aeso}>
-          <p class="text-gray-700 font-sans font-serif">
+          <p class="text-gray-700 font-serif">
             Self-taught software developer from Nairobi, Kenya.{" "}
             <a
               className={links}
@@ -86,7 +86,7 @@ const AboutPage = () => {
       <Skills>
         <div className={skillset}>
           <h2 class="text-2xl mt-4">Skill Set ?</h2>
-          <p class="text-xl mt-4 mb-3 font-sans font-serif">
+          <p class="text-xl mt-4 mb-3   font-serif">
             MERN stack developer with proficiency in:
           </p>
           <span>
