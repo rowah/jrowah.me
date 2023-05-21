@@ -33,9 +33,17 @@ const AboutPage = () => {
       <section className={intro}>
         <div className={aeso}>
           <p class="text-gray-700 font-sans font-serif">
-            Self-taught software developer from Nairobi, Kenya. <br />{" "}
-            Interested in AI, Science, Functional and Object Oriented
-            Programming.
+            Self-taught software developer from Nairobi, Kenya.{" "}
+            <a
+              className={links}
+              href="https://leonnoel.com/blog/100devs/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              100 Devs{" "}
+            </a>
+            alumni. <br /> Interested in AI, Science, Functional and Object
+            Oriented Programming.
             <br />
             <br /> Professional biochemist, and educator(Post Graduate). <br />
             Also a technical writer on{" "}
