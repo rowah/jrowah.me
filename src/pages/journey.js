@@ -38,8 +38,9 @@ const IndexPage = () => {
                 <span>Tailwind, </span>
                 <span>Alpine, </span> <span>LiveView </span>{" "}
                 <p class="leading-tight text-slate-900 font-serif">
-                  As an intern, I am currently getting introduced to and
-                  learning the company's stack (PETAL)
+                  Coding web product designs into code as part of learning the
+                  company's tech stack using TailwindCSS and Alpinejs. Getting
+                  familiar with LiveView.
                 </p>
               </div>
               <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
