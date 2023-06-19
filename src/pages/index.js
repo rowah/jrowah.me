@@ -26,13 +26,13 @@ import { container } from "../components/layout.module.css";
 const AboutPage = () => {
   return (
     <main className={container}>
-      <h1 class="text-black text-5xl mt-5 mb-4">James Rowa</h1>
-      <h2 class="text-3xl">Software Developer</h2>
+      <h1 class="text-black text-2xl md:text-5xl mt-5 mb-4 ml-3">James Rowa</h1>
+      <h2 class="text-xl md:text-3xl ml-3">Software Developer</h2>
       {/* <Layout pageTitle="James Rowa - Software Developer"> */}
       <hr />
       <section className={intro}>
         <div className={aeso}>
-          <p class="text-gray-700 font-serif">
+          <p class="text-gray-700 text-lg md:text-xl font-serif sm:mx-5">
             Self-taught software developer from Nairobi, Kenya.{" "}
             <a
               className={links}
