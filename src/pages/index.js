@@ -33,7 +33,7 @@ const AboutPage = () => {
       <section className={intro}>
         <div className={aeso}>
           <p class="text-gray-700 font-serif">
-            Self-taught software developer from Nairobi, Kenya.{" "}
+            Community-taught software developer from Nairobi, Kenya.{" "}
             <a
               className={links}
               href="https://leonnoel.com/blog/100devs/"
