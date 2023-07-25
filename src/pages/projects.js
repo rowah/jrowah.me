@@ -38,24 +38,24 @@ const ProjectsPage = () => {
             <div class="lg:flex">
               <img
                 class="object-cover w-full h-56 rounded-lg lg:w-64"
-                src="https://cdn.pixabay.com/photo/2018/04/03/23/04/woman-3288365_960_720.jpg"
-                alt="Landing-Page"
+                src="https://cdn.pixabay.com/photo/2016/05/30/14/23/detective-1424831_1280.png"
+                alt="Dev Finder"
               />
 
               <div class="flex flex-col justify-between py-6 lg:mx-6">
                 <a
-                  href="https://saloun-website.netlify.app/"
+                  href="https://devfinder.fly.dev/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="text-xl font-semibold text-gray-800 hover:underline dark:text-black "
                 >
-                  Ayesha Salon Landing Page
+                  DevFinder App
                 </a>
 
                 <span class="text-sm text-gray-500 dark:text-gray-500">
-                  This was a website that I built for a client who owned a
-                  berber shop and salon. The technologies I used to build the
-                  website include HTML, CSS and Tailwind.
+                  The app enables visitors to type in the GitHub username and
+                  show the user's profile. Technology used include Elixir,
+                  Phoenix, LiveView, ElephantSQL, TailwindCSS and AlpineJS.
                 </span>
               </div>
             </div>
