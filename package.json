@@ -20,6 +20,7 @@
     "gatsby-plugin-image": "^3.0.0",
     "gatsby-plugin-manifest": "^5.0.0",
     "gatsby-plugin-mdx": "^5.5.0",
+    "gatsby-plugin-netlify": "^5.1.1",
     "gatsby-plugin-offline": "^6.0.0",
     "gatsby-plugin-sharp": "^5.0.0",
     "gatsby-remark-images": "^7.5.0",

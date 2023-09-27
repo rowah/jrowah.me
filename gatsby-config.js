@@ -10,6 +10,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
+    "gatsby-plugin-netlify",
     "gatsby-plugin-sharp",
     {
       resolve: "gatsby-source-filesystem",
