@@ -16,7 +16,7 @@ const IndexPage = () => {
                 <h1>May 2023 &#8594; Present</h1>
                 <hr />
                 <h2 class="font-semibold text-lg mb-1">
-                  Software Developer Intern
+                  Full Stack Software Developer Intern
                 </h2>
                 <h3 class="font-semibold text-lg mb-1">
                   {" "}
@@ -38,9 +38,14 @@ const IndexPage = () => {
                 <span>Tailwind, </span>
                 <span>Alpine, </span> <span>LiveView </span>{" "}
                 <p class="leading-tight text-slate-900 font-serif">
-                  Coding web product designs into code as part of learning the
-                  company's tech stack using TailwindCSS and Alpinejs. Getting
-                  familiar with LiveView.
+                  On the back-end I use Ecto for querrying data from Postgres,
+                  Elixir and its Phoenix with LiveView to maintain full-stack
+                  web applications. On the front-end I use TailwindCSS for
+                  styling and AlpineJS framework to write markup-driven
+                  client-side JavaScript. I use Fly.IO for application
+                  deployment. Major projects include maintenace of company
+                  website and implementation of a chat feature in StoryDeck, a
+                  product for the company's client.
                 </p>
               </div>
               <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
