@@ -1,6 +1,6 @@
 import * as React from "react";
 // import { MDXRenderer } from "gatsby-plugin-mdx";
-import { blogImg } from "../about.module.css";
+import { blogImg } from "../../styles/about.module.css";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql } from "gatsby";
 import Layout from "../../components/layout";

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { container } from "./layout.module.css";
+import { container } from "../styles/layout.module.css";
 
 const PolicyPage = () => {
   return (

@@ -16,24 +16,26 @@ import {
   tee,
   em,
   el,
-} from "./about.module.css";
+} from "../styles/about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
 import SocialFollow from "../components/socialFollow";
-import { container } from "../components/layout.module.css";
+import { container } from "../styles/layout.module.css";
 
 // Step 2: Define your component
 const AboutPage = () => {
   return (
     <main className={container}>
-      <h1 class="text-black text-2xl md:text-3xl lg:text-5xl mt-5 mb-4">
+      <h1 class="text-black text-2xl md:text-3xl lg:text-5xl mt-5 mb-2 md:mb-4">
         James Rowa
       </h1>
-      <h2 class="text-lg md:text-xl lg:text-3xl">Software Developer</h2>
+      <h2 class="text-lg md:text-xl lg:text-3xl mb-1 lg:mb-2">
+        Software Developer
+      </h2>
       <hr />
       <section className={intro}>
         <div className={aeso}>
-          <p class="text-gray-700 font-serif">
+          <p class="text-gray-700 font-serif text-lg md:text-xl lg:text-2xl">
             Self-taught software developer proficient in OOP and functional
             programming with Elixir background, currently mastering Python.
             <br />
