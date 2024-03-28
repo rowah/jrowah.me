@@ -26,26 +26,20 @@ import { container } from "../components/layout.module.css";
 const AboutPage = () => {
   return (
     <main className={container}>
-      <h1 class="text-black text-5xl mt-5 mb-4">James Rowa</h1>
-      <h2 class="text-3xl">Software Developer</h2>
-      {/* <Layout pageTitle="James Rowa - Software Developer"> */}
+      <h1 class="text-black text-2xl md:text-3xl lg:text-5xl mt-5 mb-4">
+        James Rowa
+      </h1>
+      <h2 class="text-lg md:text-xl lg:text-3xl">Software Developer</h2>
       <hr />
       <section className={intro}>
         <div className={aeso}>
           <p class="text-gray-700 font-serif">
-            Community-taught software developer from Nairobi, Kenya.{" "}
-            <a
-              className={links}
-              href="https://leonnoel.com/blog/100devs/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              100 Devs{" "}
-            </a>
-            alumni. <br /> Interested in AI, Science, Functional and Object
-            Oriented Programming.
+            Self-taught software developer proficient in OOP and functional
+            programming with Elixir background, currently mastering Python.
             <br />
-            <br /> Professional biochemist, and educator(Post Graduate). <br />
+            Holds a degree in Biochemistry and a Post Graduate Diploma in
+            Education focusing on Biology and Chemistry.
+            <br />
             Also a technical writer on{" "}
             <a
               className={links}
@@ -68,11 +62,10 @@ const AboutPage = () => {
           </p>
           <br />
           <p>
-            Read about{" "}
+            See my{" "}
             <a className={links} href="/journey">
-              My Journey
-            </a>{" "}
-            into Tech!
+              Journey
+            </a>
           </p>
         </div>
         <StaticImage
@@ -86,9 +79,6 @@ const AboutPage = () => {
       <Skills>
         <div className={skillset}>
           <h2 class="text-2xl mt-4">Skill Set ?</h2>
-          <p class="text-xl mt-4 mb-3   font-serif">
-            MERN stack developer with proficiency in:
-          </p>
           <span>
             <strong>
               <span class="text-yellow-500" className={yellow}>

@@ -3,6 +3,26 @@
   max-width: 1000px;
   font-family: sans-serif;
 }
+
+/* Mobile */
+.container {
+  padding: 14px;
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .container {
+    padding: 24px;
+  }
+}
+
 /* .nav-links {
   display: flex;
   justify-content: center;
