@@ -2,13 +2,7 @@
 import * as React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import Seo from "../components/seo";
-import {
-  jrowah,
-  aeso,
-  intro,
-  skillset,
-  links,
-} from "../styles/about.module.css";
+import { jrowah, aeso, intro, links } from "../styles/about.module.css";
 import Skills from "../components/skills";
 import Footer from "../components/footer";
 import SocialFollow from "../components/socialFollow";
@@ -69,7 +63,7 @@ const AboutPage = () => {
         />
       </section>
       <hr />
-      <div className={skillset}>
+      <div>
         <Skills />
         <SocialFollow />
       </div>

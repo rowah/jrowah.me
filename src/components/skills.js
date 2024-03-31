@@ -1,6 +1,6 @@
 import * as React from "react";
 import Experience from "./experience";
-import Skills_header from "./skills_header";
+import Skills_header from "./skillsHeader";
 import {
   purple,
   green,
@@ -13,13 +13,12 @@ import {
 } from "../styles/about.module.css";
 
 const Skills = () => {
-  const heading = Date.now();
   return (
-    <section>
-      <div class="text-lg md:text-xl lg:text-2xl">
+    <section class="mt-4">
+      <div class="text-md md:text-lg lg:text-xl">
         <div class="flex">
           <Skills_header />
-          <h2 class="text-blue"> Skillset?:</h2>
+          <h2 class="text-blue text-lg md:text-xl lg:text-2xl"> Skillset?:</h2>
         </div>
         <span>
           <span>
@@ -40,7 +39,7 @@ const Skills = () => {
         &nbsp;
         <span>
           <span class="text-green-700" className={green}>
-            MongoDB
+            PSQL
           </span>
           ,{" "}
         </span>
@@ -57,24 +56,13 @@ const Skills = () => {
         </span>
         &nbsp;
         <span>
-          <span>
-            <span>H</span>
-            <span class="text-orange-600" className={tee}>
-              T
-            </span>
-            <span class="text-red-600" className={em}>
-              M
-            </span>
-            <span class="text-gray-400" className={el}>
-              L
-            </span>
-          </span>
-          ,{" "}
+          <span class="text-[#295B8D]">Py</span>
+          <span class="text-[#F0C83A]">thon</span>,{" "}
         </span>
         &nbsp;
         <span>
           <span class="text-blue-800" className={css}>
-            CSS
+            AlpineJS
           </span>
           ,{" "}
         </span>
@@ -95,14 +83,10 @@ const Skills = () => {
             Phoenix
           </span>
         </span>
-        <div class="flex">
-          <Experience />
-          <h2 class="text-blue">Experience?:</h2>
-        </div>
-        <div class="text-green-700">{heading}</div>
+        <Experience />
         <div class="flex">
           <Skills_header />
-          <h2 class="text-blue"> Funtime?:</h2>
+          <h2 class="text-blue text-lg md:text-xl lg:text-2xl">Funtime?:</h2>
         </div>
         <span>
           <span class="text-green-700">Cooking</span>,
