@@ -20,9 +20,6 @@ li {
 a {
   text-decoration: none;
 }
-.skillset {
-  text-align: center;
-}
 .blogs {
   display: flex;
   flex-direction: row-reverse;

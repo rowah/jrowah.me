@@ -1,4 +1,6 @@
 import * as React from "react";
+import Experience from "./experience";
+import Skills_header from "./skills_header";
 import {
   purple,
   green,
@@ -11,47 +13,51 @@ import {
 } from "../styles/about.module.css";
 
 const Skills = () => {
+  const heading = Date.now();
   return (
     <section>
-      <div>
-        <h2 class="text-2xl mt-4">Skill Set ?</h2>
+      <div class="text-lg md:text-xl lg:text-2xl">
+        <div class="flex">
+          <Skills_header />
+          <h2 class="text-blue"> Skillset?:</h2>
+        </div>
         <span>
-          <strong>
+          <span>
             <span class="text-yellow-500" className={yellow}>
               Java
             </span>
             <span>Script</span>
-          </strong>{" "}
-          ~{" "}
+          </span>
+          ,{" "}
         </span>
         &nbsp;
         <span>
-          <strong class="text-blue-600/100" className={blue}>
+          <span class="text-blue-600/100" className={blue}>
             ReactJS
-          </strong>{" "}
-          ~{" "}
+          </span>
+          ,{" "}
         </span>
         &nbsp;
         <span>
-          <strong class="text-green-700" className={green}>
+          <span class="text-green-700" className={green}>
             MongoDB
-          </strong>{" "}
-          ~
+          </span>
+          ,{" "}
         </span>
         &nbsp;
         <span>
-          <strong>
+          <span>
             N
             <span class="text-green-700" className={green}>
               o
             </span>
             deJS
-          </strong>{" "}
-          ~
+          </span>
+          ,{" "}
         </span>
         &nbsp;
         <span>
-          <strong>
+          <span>
             <span>H</span>
             <span class="text-orange-600" className={tee}>
               T
@@ -62,52 +68,58 @@ const Skills = () => {
             <span class="text-gray-400" className={el}>
               L
             </span>
-          </strong>{" "}
-          ~
+          </span>
+          ,{" "}
         </span>
         &nbsp;
         <span>
-          <strong class="text-blue-800" className={css}>
+          <span class="text-blue-800" className={css}>
             CSS
-          </strong>{" "}
-          ~
+          </span>
+          ,{" "}
         </span>
         &nbsp;
         <span>
-          {" "}
-          <strong className={blue} class="text-blue-600">
+          <span className={blue} class="text-blue-600">
             Tailwind
-          </strong>{" "}
-          ~
+          </span>
+          ,{" "}
         </span>
         &nbsp;
         <span>
-          {" "}
-          <strong class="text-purple-700" className={purple}>
+          <span class="text-purple-700" className={purple}>
             Elixir
-          </strong>{" "}
-          ~{" "}
-          <strong className={em} class="text-orange-600">
+          </span>
+          ,{" "}
+          <span className={em} class="text-orange-600">
             Phoenix
-          </strong>
+          </span>
         </span>
-        <h2 class="text-2xl mt-6 mb-4">Fun Time ?</h2>
+        <div class="flex">
+          <Experience />
+          <h2 class="text-blue">Experience?:</h2>
+        </div>
+        <div class="text-green-700">{heading}</div>
+        <div class="flex">
+          <Skills_header />
+          <h2 class="text-blue"> Funtime?:</h2>
+        </div>
         <span>
-          <strong>Cooking</strong> ~
+          <span class="text-green-700">Cooking</span>,
         </span>
         &nbsp;
         <span>
-          <strong>Hockey</strong> ~
+          <span class="text-green-700">Hockey</span>,
         </span>
         &nbsp;
         <span>
-          <strong>Chess</strong> ~
+          <span class="text-green-700">Chess</span>,
         </span>
         &nbsp;
         <span>
-          <strong>Gyming</strong>
+          <span class="text-green-700">Gyming</span>
         </span>
-        <p class="text-2xl mt-2 text-blue-700">
+        <p class="text-center text-2xl mt-2 text-blue-700">
           <a
             href="https://drive.google.com/file/d/1ofgxq3MV0ODsi8qMP7lLieHfpfoTzEdm/view?usp=share_link"
             target="_blank"
