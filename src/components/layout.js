@@ -41,7 +41,7 @@ const Layout = ({ pageTitle, children }) => {
                   <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                 </svg>
               </span>
-              <span>About Me</span>
+              <span class="hidden md:block">About Me</span>
             </Link>
           </li>
           <li class="pr-16">
@@ -67,7 +67,7 @@ const Layout = ({ pageTitle, children }) => {
                   />
                 </svg>
               </span>
-              My Journey
+              <span class="hidden md:block">My Journey</span>
             </Link>
           </li>
           <li class="pr-16">
@@ -88,7 +88,7 @@ const Layout = ({ pageTitle, children }) => {
                   <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
                 </svg>
               </span>
-              My Blog
+              <span class="hidden md:block">My Blog</span>
             </Link>
           </li>
         </ul>
