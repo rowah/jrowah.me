@@ -6,7 +6,7 @@ const Experience = () => {
   const currentDate = new Date();
   let yearDiff = currentDate.getFullYear() - startOfExperience.getFullYear();
   let monthDiff = currentDate.getMonth() - startOfExperience.getMonth();
-  const experiencePeriod = `${yearDiff} years ${monthDiff} months`;
+  const experiencePeriod = `${yearDiff} year ${monthDiff} months`;
 
   return (
     <>
