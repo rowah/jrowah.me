@@ -38,8 +38,7 @@ const BlogPage = ({ data }) => {
           </div>
         </div>
       </Layout>
-
-      <Footer></Footer>
+      <Footer />
     </main>
   );
 };

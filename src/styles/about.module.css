@@ -2,7 +2,25 @@
   border-radius: 50%;
   width: 50%;
   height: 70%;
-  margin-top: 1em;
+}
+
+/* Mobile */
+.jrowah {
+  margin-top: 0.5em;
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .jrowah {
+    margin-top: 1.5em;
+  }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .jrowah {
+    margin-top: 1.5em;
+  }
 }
 .aeso {
   width: 55%;
@@ -50,9 +68,6 @@ a {
 }
 .yellow {
   color: rgb(234 179 8);
-}
-.tee {
-  color: rgb(234 88 12);
 }
 .em {
   color: rgb(220 38 38);

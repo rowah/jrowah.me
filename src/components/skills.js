@@ -7,9 +7,7 @@ import {
   blue,
   css,
   yellow,
-  tee,
   em,
-  el,
 } from "../styles/about.module.css";
 
 const Skills = () => {
@@ -103,7 +101,7 @@ const Skills = () => {
         <span>
           <span class="text-green-700">Gyming</span>
         </span>
-        <p class="text-center text-2xl mt-2 text-blue-700">
+        <p class="text-center text-2xl mt-2 text-blue-700 hover:underline hover:text-blue">
           <a
             href="https://drive.google.com/file/d/1ofgxq3MV0ODsi8qMP7lLieHfpfoTzEdm/view?usp=share_link"
             target="_blank"

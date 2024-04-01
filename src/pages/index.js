@@ -30,7 +30,7 @@ const AboutPage = () => {
             <br />
             Also a technical writer on{" "}
             <a
-              className={links}
+              class="text-blue hover:underline"
               href="https://medium.com/@jrowah"
               target="_blank"
               rel="noopener noreferrer"
@@ -38,7 +38,7 @@ const AboutPage = () => {
               Medium
             </a>{" "}
             and on{" "}
-            <a className={links} href="/blog">
+            <a class="text-blue hover:underline" href="/blog">
               My Blog
             </a>
             . <br />
@@ -51,7 +51,7 @@ const AboutPage = () => {
           <br />
           <p class="text-lg md:text-xl lg:text-2xl">
             See my{" "}
-            <a className={links} href="/journey">
+            <a class="text-blue hover:underline" href="/journey">
               Journey
             </a>
           </p>
@@ -67,22 +67,7 @@ const AboutPage = () => {
         <Skills />
         <SocialFollow />
       </div>
-      <Footer>
-        <ul id="copyright">
-          <li>
-            Copyright &copy; Jrowah. All rights reserved. <span>2023</span>{" "}
-            <span>
-              <a
-                href="/privacy-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy Terms
-              </a>
-            </span>
-          </li>
-        </ul>
-      </Footer>
+      <Footer />
     </main>
   );
 };
