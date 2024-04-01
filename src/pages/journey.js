@@ -12,7 +12,7 @@ const IndexPage = () => {
           <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
             {/* <!-- Optimum --> */}
             <div class="flex flex-row-reverse md:contents">
-              <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+              <div class="bg-gray-300 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
                 <h1>May 2023 &#8594; Present</h1>
                 <hr />
                 <h2 class="font-semibold text-lg mb-1">
@@ -61,7 +61,7 @@ const IndexPage = () => {
                   <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
                 </div>
               </div>
-              <div class="bg-blue-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
+              <div class="bg-gray-300 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md md:mt-[-70%]">
                 <h1>From September 2022 &#8594; Present</h1>
                 <hr />
                 <h2 class="font-semibold text-lg mb-1">
@@ -96,7 +96,7 @@ const IndexPage = () => {
 
             {/* <!-- 100 Devs --> */}
             <div class="flex flex-row-reverse md:contents">
-              <div class="bg-blue-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+              <div class="bg-gray-300 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
                 <h1>From January 2022 &#8594; November 2022</h1>
                 <hr />
                 <h2 class="font-semibold text-lg mb-1">Software Developer</h2>
@@ -141,7 +141,7 @@ const IndexPage = () => {
                   <div class="h-full w-1 bg-blue-800 pointer-events-none"></div>
                 </div>
               </div>
-              <div class="bg-blue-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
+              <div class="bg-gray-300 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md md:mt-[-70%]">
                 <h1>From February 2022 &#8594; September 2022</h1>
                 <hr />
                 <h2 class="font-semibold text-lg mb-1">
