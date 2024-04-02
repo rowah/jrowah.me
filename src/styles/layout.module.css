@@ -4,6 +4,13 @@
   font-family: sans-serif;
 }
 
+.active {
+  display: flex;
+  align-items: center;
+  padding-bottom: 3px;
+  border-bottom: 2px solid black;
+}
+
 /* Mobile */
 .container {
   padding: 14px;
