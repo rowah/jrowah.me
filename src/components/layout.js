@@ -1,10 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
-// import container from // navLinks,
-// // navLinkItem,
-// // navLinkText,
-// "./layout.module.css";
-import Favicon from "react-favicon";
+import { active } from "../styles/layout.module.css";
 
 const Layout = ({ pageTitle, children }) => {
   // const data = useStaticQuery(graphql`
@@ -17,19 +13,11 @@ const Layout = ({ pageTitle, children }) => {
   //   }
   // `);
   return (
-    <div class="m-auto border-solid max-w-screen-xl">
-      <Favicon url="https://www.linkpicture.com/q/jr_1.png" />
-      {/* <Favicon url="https://ibb.co/n7pTQqc" /> */}
-      <nav>
-        <ul class="flex justify-center list-none pl-0">
-          <li class="pr-16">
-            <Link
-              to="/"
-              // className={navLinkText}
-              class="text-blue text-3xl flex items-center"
-              activeClassName="pb-4 underline text-blue text-3xl flex items-center"
-              // partiallyActive={true}
-            >
+    <div class="m-auto max-w-screen-xl px-[10%]">
+      <nav class="text-blue items-center text-3xl">
+        <ul class="flex justify-between list-none">
+          <li>
+            <Link to="/" class="flex items-center">
               <span class="bg-blue-500 rounded-full w-9 h-9 mr-2 flex items-center justify-around">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -44,25 +32,24 @@ const Layout = ({ pageTitle, children }) => {
               <span class="hidden md:block">About Me</span>
             </Link>
           </li>
-          <li class="pr-16">
+          <li>
             <Link
               to="/journey"
-              class="text-blue text-3xl flex items-center"
-              activeClassName="pb-1 border-b-2 border-black text-blue text-3xl flex items-center"
-              // partiallyActive={true}
+              class="flex items-center"
+              activeClassName={active}
             >
               <span class="bg-blue-500 rounded-full w-9 h-9 mr-2 flex items-center justify-around">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="white"
                   class="w-5 h-5"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"
                   />
                 </svg>
@@ -70,12 +57,11 @@ const Layout = ({ pageTitle, children }) => {
               <span class="hidden md:block">My Journey</span>
             </Link>
           </li>
-          <li class="pr-16">
+          <li>
             <Link
               to="/blog"
               class="text-blue text-3xl flex items-center"
-              activeClassName="pb-1 border-b-2 border-black text-blue text-3xl flex items-center"
-              // partiallyActive={true}
+              activeClassName={active}
             >
               <span class="bg-blue-500 rounded-full w-9 h-9 mr-2 flex items-center justify-around">
                 <svg
@@ -102,9 +88,9 @@ const Layout = ({ pageTitle, children }) => {
           class="w-8 h-8 mt-[-4px]"
         >
           <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
           />
         </svg>
 
