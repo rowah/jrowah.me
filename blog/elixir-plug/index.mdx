@@ -1,0 +1,301 @@
+---
+title: "Get to know Plug in Elixir"
+date: "2024-04-20"
+slug: "elixir-plug-basics"
+imagesDir: ./my-first-post/
+hero_image: "./plug.jpeg"
+hero_image_alt: "Elixir logo"
+hero_image_credit_text: "elixir-lang.org"
+hero_image_credit_link: "https://raw.githubusercontent.com/rowah/APIs/main/imgs/plug.jpeg"
+---
+
+_I dived into Elixir and found out how fun and easy to understand the language is. I want to learn its framework Phoenix by building a full stack travel blog application. I use this project to learn Phoenix contexts and authentication. Lets go!_
+
+<br />
+<p align="center">\* * * *</p>
+<br />
+Here is what we are going to do in the first part of this project:
+
+<ol>
+  <li>1. Set up a new Phoenix project</li>
+  <li>2. Generate an Accounts context</li>
+  <li>3. Generate an Blog context with a Post model</li>
+  <li>4. Generate a Comment model inside the Blog context</li>
+  <li>5. Create a comments controller</li>
+  <li>6. Create a comments form, load and display comments</li>
+</ol>
+
+All the completed code for this project can be found on this <span style={{ color: "blue" }}> [repository](https://github.com/rowah/travel_blog)</span> . Clone and switch to the comment_feature branch for the code. The main branch has authentication implemented.
+
+<br />
+Plug is the specification that allow different frameworks to talk to different web
+servers in the Erlang VM. In the simplest form, it is a piece of code that receives
+a data structure (conn), transforms it in some kind of way and then return the same
+data structure but slightly modified. This data structure that a plug receives, modifies
+slightly and returns is called a connection, reps all there is to know about an incoming
+request like the path…. Because plugs receive and return a connection, they are easily
+composable to form a plug pipeline and so when a request is received, each plug in
+the pipeline transforms the request a bit, and then passes it over to the next plug,
+and then to the next until a response is received. The connection that plugs deal
+with is an Elixir struct,{" "}
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+%Plug.Conn{}
+
+````
+</div>
+
+Types of Plugs
+We have two types of plugs; function and module plugs. A function plug is just a function that receives a connection (%Plug.Conn{}) and a set of options, and returns a connection.
+
+<br />
+
+<div
+style={{
+  backgroundColor: "grey",
+  paddingTop: "30px",
+  paddingLeft: "10px",
+  margin: "20px",
+}}
+>
+```elixir
+def my_plug(conn, opts) do
+  conn
+end
+
+
+````
+
+</div>
+A module plug on the other hand is any module that implements two functions; init/1 and call/2;
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+module MyPlug do
+  def init(opts) do
+    opts
+  end
+
+    def call(conn, opts) do
+    conn
+    end
+
+end
+
+````
+</div>
+
+The init/1 action is executed in compile time, while the call/2 happens at run time.
+
+An Example
+A simple app that uses plug to handle an http request
+
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+$ mix new learning_plug
+````
+
+</div>
+Add to mix.exs
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+defp deps do
+  [{:plug, "~> 1.0"},
+   {:cowboy, "~> 1.0"}]
+end
+
+````
+
+</div>
+Run mix deps.get to install the dependencies
+We just want to return a simple “Hello, World!” text.
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+defmodule LearningPlug do
+  # The Plug.Conn module gives us the main functions
+  # we will use to work with our connection,
+  # which is a %Plug.Conn{} struct,
+  # also defined in this module.
+  import Plug.Conn
+  def init(opts) do
+    # Here we just add a new entry in the opts map,
+    that we can use in the call/2 function
+    Map.put(opts, :my_option, "Hello")
+  end
+
+  def call(conn, opts) do
+    # And we send a response back,
+    # with a status code and a body
+    send_resp(conn, 200, "#{opts[:my_option]}, World!")
+  end
+end
+
+````
+
+</div>
+Open and run iex 
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+iex -S mix Plug.Adapters.Cowboy.http(LearningPlug, %{});
+
+````
+
+</div>
+we are simply running the Cowboy adapter and telling it to use our plug.
+We also pass an opts value that will be used in init/1. Check localhost:4000/name.
+Pattern match on the request path to create a desired response
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+def call(%Plug.Conn{
+    request_path: "/" <> name} = conn, opts) do
+  send_resp(conn, 200, "Hello, #{name}")
+end
+
+````
+
+</div>
+
+Plug gets more interesting when you start composing multiple plugs together, each one doing a small task and handing a modified connection to the next.
+Phoenix, the web framework, uses these pipelines in a clever way.
+
+A pipeline that handles a normal browser request would look something like this;
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+pipeline :browser do
+  plug :accepts, ["html"]
+  plug :fetch_session
+  plug :fetch_flash
+  plug :protect_from_forgery
+  plug :put_secure_browser_headers
+end
+
+````
+
+</div>
+If we were handling an api request, we would have this simple pipeline;
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+pipeline :api do
+  plug :accepts, ["json"]
+end
+
+````
+
+</div>
+The pipeline is a Phoenix abstraction, but we can build our own pipelines using Plug.Builder
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+defmodule MyPipeline do
+  # We use Plug.Builder to have access to the plug/2 macro. 
+  # This macro can receive a function or a module plug 
+  # and an optional parameter that will be passed unchanged
+  # to the given plug.
+  use Plug.Builder
+
+plug Plug.Logger
+plug :extract_name
+plug :greet, %{my_option: "Hello"}
+
+def extract_name(
+%Plug.Conn{
+request_path: "/" <> name} = conn, opts) do
+assign(conn, :name, name)
+end
+
+def greet(conn, opts) do
+conn
+|> send_resp(200, "#{opts[:my_option]}, #{conn.assigns.name}")
+end
+end
+
+```
+
+</div>
+
+
+
+**Paraphrase**
+
+Here we combined three plugs, Plug.Logger, extract_name and greet.
+The extract_name uses assign/3 to assign a value to a key in this connection. assign/3 returns a modified connection, that is then handed to the greet plug, that basically reads this assigned value to create the response we want.
+Plug.Logger is shipped with Plug and, as you probably guessed, is used to log our http requests. A bunch of useful plugs like this are available out of the box.
+
+The main idea is that we have our request represented as a %Plug.Conn{}, and this struct is passed from function to function, being slightly modified in each step, until we have a response that can be sent back. Plug is a specification that defines how this should work and creates an abstractions so multiple frameworks can talk to multiple web server, as long as they are respecting the specification.
+It also ships with these convenience modules that make it easier to do a lot of things that are common to most applications, like creating pipelines, simple routers, dealing with cookies, headers, etc.
+In the end of the day, it’s just that simple functional programming idea of passing data through functions until we get the result we want, and in this case the data happens to be an http request.
+```
