@@ -82,7 +82,7 @@ const ProjectsPage = () => {
               <div class="lg:flex">
                 <img
                   class="object-cover w-full h-56 rounded-lg lg:w-64"
-                  src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80"
+                  src="https://raw.githubusercontent.com/rowah/APIs/main/imgs/dev_finder.png"
                   alt=""
                 />
 
@@ -97,7 +97,30 @@ const ProjectsPage = () => {
                   </a>
 
                   <span class="text-sm text-gray-500 dark:text-gray-300">
-                    Tech, Human Resource.
+                    Tech, HRM .
+                  </span>
+                </div>
+              </div>
+
+              <div class="lg:flex">
+                <img
+                  class="object-cover w-full h-56 rounded-lg lg:w-64"
+                  src="https://raw.githubusercontent.com/rowah/APIs/main/imgs/battleship.png"
+                  alt="Battleship"
+                />
+
+                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                  <a
+                    href="https://github.com/rowah/BattleShip"
+                    class="text-xl font-semibold text-gray-800 hover:underline hover:text-blue dark:text-white "
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Play the BattleShip Game.
+                  </a>
+
+                  <span class="text-sm text-gray-500 dark:text-gray-300">
+                    Gaming, Entertainment.
                   </span>
                 </div>
               </div>

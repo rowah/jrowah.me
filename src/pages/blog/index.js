@@ -21,7 +21,7 @@ const BlogPage = ({ data }) => {
                   <Link to={`/blog/${node.frontmatter.slug}`}>
                     <a
                       href={`/blog/${node.frontmatter.slug}`}
-                      class="text-xl font-semibold text-blue"
+                      class="text-xl font-semibold text-blue hover:underline"
                     >
                       {node.frontmatter.title}
                     </a>
@@ -35,9 +35,9 @@ const BlogPage = ({ data }) => {
                   <div class="px-1 py-4">
                     <a
                       href={`/blog/${node.frontmatter.slug}`}
-                      class="text-blue-500 hover:underline"
+                      class="text-blue hover:underline"
                     >
-                      Read More
+                      Read More...
                     </a>
                   </div>
                 </div>
