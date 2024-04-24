@@ -1,0 +1,133 @@
+---
+title: "Phoneix LiveViews, live components, and components, what are they? When is which a better choice?"
+date: "2024-04-20"
+slug: "phoenix-liveview-basics"
+imagesDir: ./my-first-post/
+hero_image: "./liveview.png"
+hero_image_alt: "Elixir logo"
+hero_image_credit_text: "elixir-lang.org"
+hero_image_credit_link: "https://github.com/rowah/APIs/blob/main/imgs/ecto.png?raw=true"
+---
+
+_I dived into Elixir and found out how fun and easy to understand the language is. I want to learn its framework Phoenix by building a full stack travel blog application. I use this project to learn Phoenix contexts and authentication. Lets go!_
+
+<br />
+<p align="center">\* * * *</p>
+<br />
+Here is what we are going to do in the first part of this project:
+
+<ol>
+  <li>1. Set up a new Phoenix project</li>
+  <li>2. Generate an Accounts context</li>
+  <li>3. Generate an Blog context with a Post model</li>
+  <li>4. Generate a Comment model inside the Blog context</li>
+  <li>5. Create a comments controller</li>
+  <li>6. Create a comments form, load and display comments</li>
+</ol>
+
+All the completed code for this project can be found on this <span style={{ color: "blue" }}> [repository](https://github.com/rowah/travel_blog)</span> . Clone and switch to the comment_feature branch for the code. The main branch has authentication implemented.
+
+<br />
+Phoenix components render html. Also called function components, they receive an
+assigns map as an argument and renders a html in the form of a struct with the ~H
+sigil:
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+defmodule MyComponent do
+# In Phoenix apps, use: use MyAppWeb, :html
+use Phoenix.Component
+
+def greet(assigns) do
+~H"""
+
+  <p>Hello, <%= @name %>!</p>
+  """
+  end
+end
+
+````
+</div>
+
+When such a function component gets invoked like this:
+<br />
+
+<div
+style={{
+  backgroundColor: "grey",
+  paddingTop: "30px",
+  paddingLeft: "10px",
+  margin: "20px",
+}}
+>
+```elixir
+<MyComponent.greet name="Jane" />
+
+````
+
+</div>
+It renders a html that looks like:
+
+Hello, Jane!
+
+Phoenix components lack state which is why they are called “function components” since all they can do is compartmentalize markup.
+
+LiveComponents on the other hand are a mechanism for compartmentalizing state, markup, and events in LiveView. They are defined by using a Phoenix.LiveComponent behaviour (use Phoenix.LiveComponent (In Phoenix apps, the line gets written as: use MyAppWeb, :live_component)). LiveComponents get used inside a parent LiveView by calling the Phoenix.Component.live_component/1. LiveComponents are called “stateful components” because they have their own state and life cycle, and run inside the process of the parent LiveView in which they get called. The smallest LiveComonent defines just a render/1 function as:
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+defmodule HeroComponent do
+  # In Phoenix apps, use: use MyAppWeb, :live_component
+  use Phoenix.LiveComponent
+
+def render(assigns) do
+~H"""
+
+  <div class="hero"><%= @content %></div>
+  """
+  end
+end
+
+````
+</div>
+
+As mentioned above, such as LiveComponent gets rendered and used inside a parent LiveView by calling the Phoenix.Component.live_component/1as:
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```elixir
+  <.live_component
+    module={HeroComponent}
+    id="hero"
+    content={@content}
+    />
+
+````
+
+</div>
+
+It is important to note that the module that defines the LiveComponent and id attributes must always be passed when calling it using the Phoenix.Component.live_component/1. The id attribute will always be available as assign and must be used as a unique identification of the live component.
+
+Generally speaking, you should prefer functional components over live components, as they are a simpler abstraction, with a smaller surface area. The use case for live components only arises when there is a need for encapsulating both event handling and additional state.
+
+A LiveView is a process that receives events that cause changes in state, updates its state and renders updates to the page as diffs, doing so with server-rendered HTML. Upon change of state, LiveView re-renders the relevant parts of its HTML template and pushes it to the browser. LiveView states are basically functional and immutable Elixir data structures, while the events that changes these states are either internal application messages usually emitted by Phoenix.PubSub or those sent from the client-side.
