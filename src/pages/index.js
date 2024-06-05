@@ -41,7 +41,8 @@ const AboutPage = () => {
             <a class="text-blue hover:underline" href="/blog">
               My Blog
             </a>
-            . <br />
+            . I offer advice and mentorship on breaking into tech.
+            <br />
             Check out my{" "}
             <a className={links} href="/projects">
               Projects

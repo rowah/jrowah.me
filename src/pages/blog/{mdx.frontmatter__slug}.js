@@ -10,7 +10,7 @@ const BlogPost = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image);
   return (
     <Layout pageTitle={data.mdx.frontmatter.title}>
-      <div class="max-w-4xl bg-slate-200">
+      <div class="max-w-6xl bg-slate-200">
         <section class="bg-slate-100 shadow-2xl p-8 font-serif leading-relaxed text-lg w-6/6 md:w-5/6 lg:w-5/6 max-w-4xl m-auto ml-20">
           <p>Posted On: {data.mdx.frontmatter.date}</p>
           <GatsbyImage image={image} className={blogImg} />
