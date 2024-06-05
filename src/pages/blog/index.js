@@ -8,20 +8,20 @@ const BlogPage = ({ data }) => {
   return (
     <main class="pt-4 pl-4">
       <Layout>
-        <div class="px-6 py-10  mx-auto">
-          <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
+        <div class="px-6 py-8  mx-auto">
+          <div class="grid grid-cols-1 gap-2 mt-2 md:mt-4 md:grid-cols-2">
             {data.allMdx.nodes.map((node) => (
-              <div class="lg:flex" key={node.id}>
+              <div class="bg-gray-300 rounded-lg border p-4" key={node.id}>
                 <img
-                  class="object-cover w-full h-56 rounded-lg lg:w-64"
+                  class="object-cover w-full h-48 rounded-lg"
                   src={node.frontmatter.hero_image_credit_link}
                   alt="hero"
                 />
-                <div class="flex flex-col justify-between py-6 lg:mx-6">
+                <div class="flex flex-col justify-between py-4 px-1 lg:mx-4">
                   <Link to={`/blog/${node.frontmatter.slug}`}>
                     <a
                       href={`/blog/${node.frontmatter.slug}`}
-                      class="text-xl font-semibold text-blue"
+                      class="text-xl font-semibold text-blue hover:underline"
                     >
                       {node.frontmatter.title}
                     </a>
@@ -32,6 +32,14 @@ const BlogPage = ({ data }) => {
                     Posted On: {node.frontmatter.date}
                   </span>
                   <p>{node.excerpt}</p>
+                  <div class="px-1 py-4">
+                    <a
+                      href={`/blog/${node.frontmatter.slug}`}
+                      class="text-blue hover:underline"
+                    >
+                      Read More...
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}

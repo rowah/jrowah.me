@@ -1,0 +1,402 @@
+---
+title: "Important JavaScript Array Methods"
+date: "2022-09-13"
+slug: "javascript-array-methods"
+imagesDir: ./my-first-post/
+hero_image: "./arrays.png"
+hero_image_alt: "arrays image"
+hero_image_credit_text: "pixabay.com"
+hero_image_credit_link: "https://raw.githubusercontent.com/rowah/APIs/38680741e9ed5e2c0b695cf0a9dc80b96af44725/imgs/js-array.png    "
+---
+
+_Arrays methods are JavaScript built-in functions that perform calculations or a change to an array and saves us time from always writing common functions. Let us take a look at some of theses methods and how we can use them with arrays._
+
+<p align="center">\* * * *</p>
+
+One of the most common things that you are going to encounter and use as a JavaScript programmer are arrays. This article outlines some of the most essential array methods that will make life easier for you as a JavaScript developer.
+
+Below is an array on which we are going to call the various array methods on and be able to see how important they can be. **NOTE that each method is called on the original accounts array below and not the accounts array modified by the preceding method(s).**
+
+Let us dive right in.
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```avaScript
+const accounts = [
+  {accountName: "OptimisticPanda", noOfFollowers: 100 },
+  {accountName: "SunshineSoul", noOfFollowers: 400},
+  {accountName: "GratefulHeart", noOfFollowers: 150},
+  {accountName: "DynamicDiva", noOfFollowers: 300},
+  {accountName: "SassyStarlet", noOfFollowers: 1200},
+  {accountName: "BelieveInYou", noOfFollowers: 56000},
+  {accountName: "PeacefulPlace", noOfFollowers: 426},
+  {accountName: "Rodenta", noOfFollowers: 12301}
+]
+
+````
+</div>
+
+
+**Filter Method**
+
+The filter method returns a new array containing all elements of the calling/original array for which the provided filtering function returns true. If we wanted to get all accounts which have less than 500 followers, we would call the filter method on the accounts array which takes in a filtering function that filters out all the other accounts which have 500 followers and above. The filter method takes in a simple function that takes one parameter called account. All the accounts with less than 500 followers should be on the new lessThan500Followers array.
+<br />
+
+
+<div
+style={{
+  backgroundColor: "grey",
+  paddingTop: "30px",
+  paddingLeft: "10px",
+  margin: "20px",
+}}
+>
+```JavaScript
+const lessThan500Followers = accounts.filter(account => {
+  return account.noOfFollowers < 500;
+})
+console.log(lessThan500Followers);
+//On the console you should see the new array below
+//[
+//{accountName: 'OptimisticPanda', noOfFollowers: 100},
+//{accountName: 'SunshineSoul', noOfFollowers: 400},
+//{accountName: 'GratefulHeart', noOfFollowers: 150},
+//{accountName: 'DynamicDiva', noOfFollowers: 300},
+//{accountName: 'PeacefulPlace', noOfFollowers: 426}
+//]
+
+````
+
+</div>
+
+It is important to note that the filter methods does not change the original array that we filtered over and so logging accounts on the console gives the original array.
+
+<br />
+
+**Map Method**
+
+The map method takes an array and transforms it into a new array by invoking a function on every element in the original array which leads to a slight transformation of each element of the original array. In our accounts we might want to add 10 followers to each account and so we can achieve that by calling the map method on the accounts array. We get a new array of number of followers for each account increased by 10.
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+const moreFollowers = accounts.map((account) => {
+return account.noOfFollowers + 10;
+});
+console.log(moreFollowers);
+//[110, 410, 160, 310, 1210, 56010, 436, 12311]
+
+````
+</div>
+
+**Reduce Method**
+
+This is perhaps one of the most challenging array methods in JavaScript. The reduce method conducts some operation (reduction) supplied by the callback function on each array element in their order, and returns the result onto the next element. This reduction leads to a single value end result after the last element in the array is reached.
+
+When the callback function that supplies the reducer runs for the first time on the zero-indexed array element, no return value of the previous calculation is passed. However, an initial value can be supplied which can then be used in place of the non-existent return value of the previous calculation, but if not supplied, the zero-indexed array element becomes the initial value and the reduction starts at the one-indexed array element. In many cases, 0 is always provided as an initial value where the reduce method is applied.
+
+The reduce method is unique in that it takes in an item and a property for what we want to reduce everything into, and takes in a third parameter, the 0 initial value which acts as the starting point. In our array, we can apply the reduce method when we want to know the total number of followers that all the accounts have.
+
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```JavaScript
+const allFollowers = accounts.reduce(
+(previousTotal, currentAccount) =>
+previousTotal + currentAccount.noOfFollowers,
+0
+);
+console.log(allFollowers);// 70877
+
+````
+
+</div>
+The first item of the reduce method (previousTotal) is the return value of the previous calculation, while the second item is the actual array item, in our case, the currentAccount but then we are summing up the number of followers. On the very first iteration, the current total starts with the 0 that we passed as the second parameter. Thus on the first iteration, the method adds 0 as the previousTotal to 100, which is the number of followers of the current account (OptimisticPanda), and returns 100. On the next iteration, the previousTotal becomes 100, and the currentAccount becomes SunshineSoul with 400 followers. The final iteration returns a value that gives the total number of followers in all the accounts.
+<br />
+
+**Find Method**
+
+The find method allows you to find the first element in an array that satisfies the provided testing function. If no appropriate element id found, the method returns undefined. We might want to find an account with a specific name such as DynamicDiva.
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```JavaScript
+const foundAcc = accounts.find((account) => {
+return account.accountName === “DynamicDiva”;
+});
+console.log(foundAcc); 
+//{accountName: ‘DynamicDiva’, noOfFollowers: 300}
+
+````
+
+</div>
+
+**forEach Method**
+
+Unlike the above methods, the forEach method does not actually return anything. It works just like a for loop but takes a function instead which is called for each element in the array. Suppose we wanted to get the account names from the account objects, the forEach method would come in handy. It also takes in an item.
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```JavaScript
+accounts.forEach((account) => {
+console.log(account.accountName);
+});
+// 'OptimisticPanda'
+// 'SunshineSoul'
+// 'GratefulHeart'
+// 'DynamicDiva'
+// 'SassyStarlet'
+// 'BelieveInYou'
+// 'PeacefulPlace'
+// 'Rodenta'
+
+````
+
+</div>
+
+**Includes Method**
+
+The includes methods determines if an array includes a certain value and returns either true or false depending on the availability of that element. We may want to check if our array contains a particular account if we had vary many accounts in our array. The includes method is simple and takes just a simple value.
+
+<div
+style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+
+>
+
+```JavaScript
+const followers = [130, 300, 1200, 56000, 426, 12301];
+console.log(followers.includes(12301));//true
+
+```
+
+</div>
+
+**Some Method**
+
+This method tests whether at least one element in the array passes the test implemented in the testing function and return true or false. In our array, we can use the some method if we wanted to check if there are account(s) with no followers. It returns false since there is not a single account without a follower.
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```JavaScript
+const zeroFollowers = accounts.some((account) => {
+return account.noOfFollowers == 0;
+});
+console.log(zeroFollowers); //false
+
+````
+
+</div>
+
+**Every Method**
+
+This methods works the same as some method except that it checks if every element in the array passes the test implemented in the testing function and if they all do, it returns true. If even just one element fails to pass the test, it returns false. We might want to check if every account has100 or more followers and here the every method would come in handy. It return true since the account with the least number of followers has 100.
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+console.log(
+accounts.every((account) => {
+return account.noOfFollowers >= 100;
+})
+); //returns true
+
+```
+
+</div>
+
+**Splice Method**
+
+The splice method deletes, inserts, and/or replaces elements in an array. Its syntax is;
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+arr.splice(start[, deleteCount, element1, ..., elementN])
+
+```
+
+</div>
+
+Explaining the syntax; the method modifies the array starting from index represented by start; it then removes the number of elements represented by deleteCount; and then replaces them with element1, …, elementN.
+
+Starting with deletion, if we wanted to remove the account object at index 1 from the array named SunshineSoul, we would use the splice method and feed in the index from which to start the deletion and the number of items to delete. Thus the method removed one element starting from index 1.
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+accounts.splice(1, 1);
+console.log(accounts);
+#{accountName: "OptimisticPanda", noOfFollowers: 100 },
+#{accountName: "GratefulHeart", noOfFollowers: 150},
+#{accountName: "DynamicDiva", noOfFollowers: 300},
+#{accountName: "SassyStarlet", noOfFollowers: 1200},
+#{accountName: "BelieveInYou", noOfFollowers: 56000},
+#{accountName: "PeacefulPlace", noOfFollowers: 426},
+#{accountName: "Rodenta", noOfFollowers: 12301}
+
+```
+
+</div>
+
+We can also use the splice method to do element replacement in arrays. If we wanted to replace accounts at indices 1 and 2 with two new account objects, we would.
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+const deletedAccounts = accounts.splice(1,2,
+{ accountName: "Tumbulu", noOfFollowers: 450 },
+{ accountName: "Bondo", noOfFollowers: 340 }
+);
+console.log(accounts);
+// [{accountName: 'OptimisticPanda', noOfFollowers: 100},
+// {accountName: 'Tumbulu', noOfFollowers: 450},
+// {accountName: 'Bondo', noOfFollowers: 340},
+// {accountName: 'DynamicDiva', noOfFollowers: 300},
+// {accountName: 'SassyStarlet', noOfFollowers: 1200},
+// {accountName: 'BelieveInYou', noOfFollowers: 56000},
+// {accountName: 'PeacefulPlace', noOfFollowers: 426},
+// {accountName: 'Rodenta', noOfFollowers: 12301}]
+
+```
+
+</div>
+It is important to note that the splice method returns an array of the replaced accounts.
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+console.log(deletedAccounts);
+//[{accountName: 'SunshineSoul', noOfFollowers: 400},
+//{accountName: 'GratefulHeart', noOfFollowers: 150}]
+
+```
+
+</div>
+We can also use the splice method to add an account object to our accounts array without deleting any of the existing accounts.
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+accounts.splice(3, 0, { accountName: "Royman",
+noOfFollowers: 5000 });
+console.log(accounts);
+//Expected output
+// [{accountName: 'OptimisticPanda', noOfFollowers: 100},
+// {accountName: 'SunshineSoul', noOfFollowers: 400},
+// {accountName: 'GratefulHeart', noOfFollowers: 150},
+// {accountName: 'Royman', noOfFollowers: 5000},
+// {accountName: 'DynamicDiva', noOfFollowers: 300},
+// {accountName: 'SassyStarlet', noOfFollowers: 1200},
+// {accountName: 'BelieveInYou', noOfFollowers: 56000},
+// {accountName: 'PeacefulPlace', noOfFollowers: 426},
+// {accountName: 'Rodenta', noOfFollowers: 12301}]
+
+```
+
+</div>
+**Slice Method**
+
+Extracts a section of the calling array and returns a new array, with the original array remaining unmodified. Basically, the slice method takes an array, returns a shallow copy of the array into a new array from start to end where the start and end represent the index of items in the original array. Key point to not is that the array element in the end index doesn’t get included in the new array
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```JavaScript
+console.log(accounts.slice(3));
+//Expected Output
+// [
+//   { accountName: "DynamicDiva", noOfFollowers: 300 },
+//   { accountName: "SassyStarlet", noOfFollowers: 1200 },
+//   { accountName: "BelieveInYou", noOfFollowers: 56000 },
+//   { accountName: "PeacefulPlace", noOfFollowers: 426 },
+//   { accountName: "Rodenta", noOfFollowers: 12301 },
+// ];
+console.log(accounts.slice(2, 4));
+// [{accountName: 'GratefulHeart', noOfFollowers: 150},
+// {accountName: 'DynamicDiva', noOfFollowers: 300}]
+
+```
+
+</div>
+**Conclusion**
+
+This article covers some of JavaScript array methods which I believe are important to master. Although the other methods not discussed here are essential to you as a JavaScript developer as well, you are less likely to need them. Be sure to check out the [MDN Array documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) for an extensive list of array methods.
+
+Thank you for reading through. You can add more methods on the article’s [Github repository](https://github.com/rowah/javascript-array-methods).
+```
+````

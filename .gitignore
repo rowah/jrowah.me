@@ -2,5 +2,6 @@ node_modules/
 .cache/
 public
 .vscode/
+.DS_Store/
 .DS_Store
 .vscode

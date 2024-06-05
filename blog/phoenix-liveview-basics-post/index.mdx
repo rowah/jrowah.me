@@ -1,0 +1,243 @@
+---
+title: "Phoneix LiveViews, live components, and components, what are they?"
+date: "2024-04-20"
+slug: "phoenix-liveview-basics"
+imagesDir: ./my-first-post/
+hero_image: "./phoenix.png"
+hero_image_alt: "Elixir logo"
+hero_image_credit_text: "phoenixframework.org"
+hero_image_credit_link: "https://www.phoenixframework.org/images/blog/1.7-released-e6dc45801b961cb0bb04e6e2a907fbc4.png?vsn=d"
+---
+
+_In this blog post, I distinguish phoenix function components, live components and live views._
+
+<br />
+<p align="center">\* * * *</p>
+<br />
+According to official documentation (Hex Docs):
+
+<ol>
+  <li style={{ color: "blue" }}>
+    ✔️ [A function component is best for reusing or compartmentalizing
+    markup](https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html).
+  </li>
+  <li style={{ color: "blue" }}>
+    ✔️ [Phoneix live components are best for compartmentalizing state, markup,
+    ande events in
+    LiveView](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveComponent.html).
+  </li>
+  <li style={{ color: "blue" }}>
+    ✔️ [You can nest LiveViews when you want to compartmentalize state, markup,
+    events, and isolate
+    errors](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html).
+  </li>
+</ol>
+
+<br />
+
+<h1 align="center">**Phoenix Components**</h1>
+Phoenix components only render html. Also called function components because their
+implementation resembles that of Elixir functions, they receive an assigns map as
+an argument and return or render data structures (structs built with the ~H sigil)
+that represents the UI:
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+defmodule MyComponent do
+# In Phoenix apps, use: use MyAppWeb, :html
+use Phoenix.Component
+
+def say_name(assigns) do
+~H"""
+
+  <p>I am <%= @name %>!</p>
+  """
+  end
+end
+
+````
+</div>
+
+When such a function component gets invoked like this:
+<br />
+
+<div
+style={{
+  backgroundColor: "grey",
+  paddingTop: "30px",
+  paddingLeft: "10px",
+  margin: "20px",
+}}
+>
+```elixir
+<MyComponent.say_name name="Rowa" />
+
+#Or like this when defined locally or its module imported
+<.say_name name="Rowa" />
+
+# We can dynamically get the name value
+# from the assigns we passed to the function
+<.say_name name={@user.name} />
+
+````
+
+</div>
+It renders a html that looks like:
+
+I am Rowa!
+
+Phoenix components lack state which is why they are called “function components” since all they can do is compartmentalize markup.
+
+<br />
+
+<h1 align="center">**Phoenix Live Components**</h1>
+
+LiveComponents on the other hand are a mechanism for compartmentalizing state, markup, and events in LiveView. They are defined by using a Phoenix.LiveComponent behaviour (use Phoenix.LiveComponent (In Phoenix apps, the line gets written as: use MyAppWeb, :live_component)). LiveComponents get used inside a parent LiveView by calling the Phoenix.Component.live_component/1. They are called stateful components as they have their own state and life cycle, and run inside the process of the parent LiveView. They are identified by module names and id.
+The example below is a simple live component that calls the function component that we declared above
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+```elixir
+defmodule HeroComponent do
+  # In Phoenix apps, use: use MyAppWeb, :live_component
+  use Phoenix.LiveComponent
+
+alias MyComponent
+
+def render(assigns) do
+~H"""
+
+<div>
+  <div><%= @content %></div>
+  <.say_name name={@name} />
+</div>
+""" end end
+
+````
+</div>
+
+As mentioned above, such as LiveComponent gets rendered and used inside a parent LiveView or another component by calling the Phoenix.Component.live_component/1as:
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```elixir
+  <.live_component
+    module={HeroComponent}
+    content={@content}
+    id="hero"
+    name={@name}
+    />
+
+````
+
+</div>
+
+It is important to note that the module that defines the LiveComponent and id attributes must always be passed when calling it using the Phoenix.Component.live_component/1. The id attribute will always be available as assign and must be used as a unique identification of the live component.
+
+<span style={{ color: "blue" }}>
+  [In the official
+  documentations](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveComponent.html)
+</span>
+they say you should always prefer functional components over live components, as
+they are a simpler abstraction that have a smaller surface area. The only time you
+would use live components should be when you need to envelope both event handling
+and additional state.
+
+<br />
+
+<h1 align="center">**Phoenix LiveViews**</h1>
+
+A LiveView is a process that receives events that cause changes in state, updates its state and renders updates to the page as diffs, doing so with server-rendered HTML. Upon change of state, LiveView re-renders the relevant parts of its HTML template and pushes it to the browser. LiveView states are basically functional and immutable Elixir data structures, while the events that changes these states are either internal application messages usually emitted by Phoenix.PubSub or those sent from the client-side. You can nest a liveview inside a parent LiveView by calling the live_render/3 function and an id option must be passed. Here is an example of how you can nest LiveViews.
+Note that a nested liveview will start its own process, and that the example below does not compartmentalize either state nor does it show error isolation.
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```elixir
+  defmodule MyWeb.SomeLive do
+  use MyWeb, :live_view
+
+def mount(socket, params, session) do
+{:ok, socket}
+end
+
+def render(assigns) do
+~H"""
+
+<h1>Hello, I am a LiveView inside another LiveView!</h1>
+"""
+
+end
+
+end
+
+````
+
+</div>
+
+
+<div
+  style={{
+    backgroundColor: "grey",
+    paddingTop: "30px",
+    paddingLeft: "10px",
+    margin: "20px",
+  }}
+>
+  ```elixir
+  defmodule PaginationWeb.ParentLive do
+  use MyWeb, :live_view
+
+  alias MyWeb.SomeLive
+
+  def mount(_params, _session, socket) do
+    {:ok, socket}
+  end
+
+  def render(assigns) do
+    ~H"""
+    <div>
+      <h1>Hello, I am the parent LiveView!</h1>
+      <%= live_render(@socket, SomeLive, id: :some_live) %>
+    </div>
+    """
+  end
+end
+
+````
+
+</div>
+The output here would be
+
+Hello, I am the parent LiveView! <br/>
+Hello, I am a LiveView inside another LiveView!
+
+When building, this example would be achieved by a live component, or better yet, a stateless component as opposed to the LiveView that I have used just to illustrate how you would nest one. [Read more about LiveViews here](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html).
+
+```
+
+```
