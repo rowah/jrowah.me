@@ -9,12 +9,6 @@ defmodule MyWebsiteWeb.HomeLiveTest do
 
       assert html =~ "James Rowa"
       assert html =~ "Software Developer"
-      assert html =~ "Home"
-
-      assert
-    end
-
-    test "navigates to about page", %{conn: conn} do
     end
   end
 end
