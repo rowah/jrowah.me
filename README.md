@@ -1,17 +1,18 @@
-# This is my personal website
+# MyWebsite
 
-Here is the link to the website [jrowah.com](https://jrowah.com/)
+To start your Phoenix server:
 
-# Built with:
+  * Run `mix setup` to install and setup dependencies
+  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
-1. ReactJS,
-1. HTML,
-1. CSS
-1. Tailwind
-1. Gatsby JS
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-# New skills I learned;
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-1. GraphQL
-1. MDX/Frontmatter
-1. GatsbyJS
+## Learn more
+
+  * Official website: https://www.phoenixframework.org/
+  * Guides: https://hexdocs.pm/phoenix/overview.html
+  * Docs: https://hexdocs.pm/phoenix
+  * Forum: https://elixirforum.com/c/phoenix-forum
+  * Source: https://github.com/phoenixframework/phoenix
