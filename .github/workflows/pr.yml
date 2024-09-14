@@ -1,5 +1,4 @@
 name: PR
-
 on:
   pull_request:
     branches:
@@ -8,17 +7,16 @@ on:
       - opened
       - reopened
       - synchronize
-
 jobs:
   compile:
     name: Install deps and compile
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -26,15 +24,9 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
-      - name: Unlock dependencies
-        env:
-          MIX_ENV: test
-        run: mix deps.unlock --all
       - name: Install Elixir dependencies
         env:
           MIX_ENV: test
@@ -48,11 +40,11 @@ jobs:
     name: Credo
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -60,9 +52,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check code style
@@ -74,11 +64,11 @@ jobs:
     name: Deps audit
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -86,9 +76,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for vulnerable Mix dependencies
@@ -100,11 +88,11 @@ jobs:
     name: Dialyzer
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -112,9 +100,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Restore PLT cache
@@ -138,11 +124,11 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -150,9 +136,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check Elixir formatting
@@ -164,11 +148,11 @@ jobs:
     name: Hex audit
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -176,30 +160,61 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for retired Hex packages
         env:
           MIX_ENV: test
         run: mix hex.audit
+  migrations:
+    services:
+      db:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    needs: compile
+    name: Migrations
+    runs-on: ubuntu-latest
+    env:
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ env.elixir-version }}
+          otp-version: ${{ env.otp-version }}
+      - uses: actions/cache@v3
+        with:
+          path: "_build\ndeps"
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix
+      - name: Check if migrations are reversible
+        env:
+          MIX_ENV: test
+        run: mix ci.migrations
   prettier:
     name: Check formatting using Prettier
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Restore npm cache
         uses: actions/cache@v3
         id: npm-cache
         with:
-          path: node_modules
-          key: ${{ runner.os }}-prettier
+          path: ~/.npm
+          key: ${{ runner.os }}-node
+          restore-keys: ${{ runner.os }}-node
       - name: Install Prettier
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm i -D prettier prettier-plugin-toml
+        run: npm i -g prettier
       - name: Run Prettier
         run: npx prettier -c .
   sobelow:
@@ -207,11 +222,11 @@ jobs:
     name: Security check
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -219,9 +234,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for security issues using sobelow
@@ -229,15 +242,23 @@ jobs:
           MIX_ENV: test
         run: mix sobelow --config .sobelow-conf
   test:
+    services:
+      db:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     needs: compile
     name: Test
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -245,9 +266,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Run tests
@@ -259,11 +278,11 @@ jobs:
     name: Check unused deps
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.17.2
-      otp-version: 26.2.5.3
+      elixir-version: 1.16.1
+      otp-version: 25.3.2.9
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
@@ -271,9 +290,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for unused Mix dependencies
