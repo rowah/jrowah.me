@@ -9,7 +9,23 @@ defmodule MyWebsite.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        ci: :test,
+        "ci.deps_and_security": :test,
+        "ci.deps": :test,
+        "ci.formatting": :test,
+        "ci.security": :test,
+        "ci.test": :test,
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.html": :test,
+        credo: :test,
+        dialyzer: :test,
+        sobelow: :test
+      ],
+      test_coverage: [tool: ExCoveralls],
+      dialyzer: [plt_add_apps: [:ex_unit, :mix], ignore_warnings: "config/dialyzer.ignore"]
     ]
   end
 
@@ -54,7 +70,12 @@ defmodule MyWebsite.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.2"}
+      {:bandit, "~> 1.2"},
+      {:github_workflows_generator, "~> 0.1", only: :dev, runtime: false},
+      {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.18", only: :test}
     ]
   end
 
@@ -73,7 +94,24 @@ defmodule MyWebsite.MixProject do
         "tailwind my_website --minify",
         "esbuild my_website --minify",
         "phx.digest"
-      ]
+      ],
+      ci: [
+        "ci.deps_and_security",
+        "ci.formatting",
+        "ci.code_quality",
+        "ci.test"
+      ],
+      "ci.deps_and_security": ["sobelow --config .sobelow-config"],
+      "ci.code_quality": [
+        "compile --force --warnings-as-errors",
+        "credo --strict",
+        "dialyzer"
+      ],
+      "ci.formatting": ["format --check-formatted", "cmd --cd assets npx prettier -c .."],
+      "ci.test": [
+        "test --cover --warnings-as-errors"
+      ],
+      prettier: ["cmd --cd assets npx prettier -w .."]
     ]
   end
 end

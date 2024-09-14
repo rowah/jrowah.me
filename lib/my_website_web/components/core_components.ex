@@ -15,9 +15,10 @@ defmodule MyWebsiteWeb.CoreComponents do
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
   use Phoenix.Component
+  use Gettext, backend: MyWebsiteWeb.Gettext
 
+  alias Phoenix.HTML.Form
   alias Phoenix.LiveView.JS
-  import MyWebsiteWeb.Gettext
 
   @doc """
   Renders a button.
@@ -28,6 +29,8 @@ defmodule MyWebsiteWeb.CoreComponents do
       <.button phx-click="go" class="ml-2">Send!</.button>
 
   """
+
+  @spec theme_button(map()) :: Phoenix.LiveView.Rendered.t()
   def theme_button(assigns) do
     ~H"""
     <button
@@ -87,6 +90,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   attr :on_cancel, JS, default: %JS{}
   slot :inner_block, required: true
 
+  @spec modal(map()) :: Phoenix.LiveView.Rendered.t()
   def modal(assigns) do
     ~H"""
     <div
@@ -135,6 +139,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec flash(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders flash notices.
 
@@ -180,6 +185,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec flash_group(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Shows the flash group with standard titles and content.
 
@@ -222,6 +228,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec simple_form(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a simple form.
 
@@ -258,6 +265,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec button(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a button.
 
@@ -288,6 +296,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec input(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders an input with label and error messages.
 
@@ -350,7 +359,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   def input(%{type: "checkbox"} = assigns) do
     assigns =
       assign_new(assigns, :checked, fn ->
-        Phoenix.HTML.Form.normalize_value("checkbox", assigns[:value])
+        Form.normalize_value("checkbox", assigns[:value])
       end)
 
     ~H"""
@@ -385,7 +394,7 @@ defmodule MyWebsiteWeb.CoreComponents do
         {@rest}
       >
         <option :if={@prompt} value=""><%= @prompt %></option>
-        <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
+        <%= Form.options_for_select(@options, @value) %>
       </select>
       <.error :for={msg <- @errors}><%= msg %></.error>
     </div>
@@ -406,7 +415,7 @@ defmodule MyWebsiteWeb.CoreComponents do
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}
         {@rest}
-      ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
+      ><%= Form.normalize_value("textarea", @value) %></textarea>
       <.error :for={msg <- @errors}><%= msg %></.error>
     </div>
     """
@@ -421,7 +430,7 @@ defmodule MyWebsiteWeb.CoreComponents do
         type={@type}
         name={@name}
         id={@id}
-        value={Phoenix.HTML.Form.normalize_value(@type, @value)}
+        value={Form.normalize_value(@type, @value)}
         class={[
           "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
           "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
@@ -435,6 +444,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec label(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a label.
   """
@@ -449,6 +459,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec error(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Generates a generic error message.
   """
@@ -463,6 +474,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec header(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a header with title.
   """
@@ -488,6 +500,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec table(map()) :: Phoenix.LiveView.Rendered.t()
   @doc ~S"""
   Renders a table with generic styling.
 
@@ -566,6 +579,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec list(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a data list.
 
@@ -593,6 +607,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec back(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a back navigation link.
 
@@ -617,6 +632,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec icon(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a [Heroicon](https://heroicons.com).
 
@@ -646,6 +662,7 @@ defmodule MyWebsiteWeb.CoreComponents do
 
   ## JS Commands
 
+  @spec show(Phoenix.LiveView.JS.t(), String.t()) :: Phoenix.LiveView.JS.t()
   def show(js \\ %JS{}, selector) do
     JS.show(js,
       to: selector,
@@ -656,6 +673,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     )
   end
 
+  @spec hide(Phoenix.LiveView.JS.t(), String.t()) :: Phoenix.LiveView.JS.t()
   def hide(js \\ %JS{}, selector) do
     JS.hide(js,
       to: selector,
@@ -667,6 +685,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     )
   end
 
+  @spec show_modal(Phoenix.LiveView.JS.t(), binary()) :: Phoenix.LiveView.JS.t()
   def show_modal(js \\ %JS{}, id) when is_binary(id) do
     js
     |> JS.show(to: "##{id}")
@@ -679,6 +698,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     |> JS.focus_first(to: "##{id}-content")
   end
 
+  @spec hide_modal(JS.t(), String.t()) :: JS.t()
   def hide_modal(js \\ %JS{}, id) do
     js
     |> JS.hide(
@@ -694,6 +714,8 @@ defmodule MyWebsiteWeb.CoreComponents do
   @doc """
   Translates an error message using gettext.
   """
+
+  @spec translate_error({String.t(), Keyword.t()}) :: String.t()
   def translate_error({msg, opts}) do
     # When using gettext, we typically pass the strings we want
     # to translate as a static argument:
@@ -712,6 +734,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     end
   end
 
+  @spec translate_errors([{atom(), {String.t(), Keyword.t()}}], atom()) :: [String.t()]
   @doc """
   Translates the errors for a field from a keyword list of errors.
   """

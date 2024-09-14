@@ -17,8 +17,10 @@ defmodule MyWebsiteWeb do
   those modules here.
   """
 
+  @spec static_paths() :: [<<_::40, _::_*8>>, ...]
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
+  @spec router() :: {:__block__, [], [{:import, [...], [...]} | {:use, [...], [...]}, ...]}
   def router do
     quote do
       use Phoenix.Router, helpers: false
@@ -30,12 +32,14 @@ defmodule MyWebsiteWeb do
     end
   end
 
+  @spec channel() :: any()
   def channel do
     quote do
       use Phoenix.Channel
     end
   end
 
+  @spec controller() :: any()
   def controller do
     quote do
       use Phoenix.Controller,
@@ -49,6 +53,7 @@ defmodule MyWebsiteWeb do
     end
   end
 
+  @spec live_view() :: {:__block__, [], [{:__block__, [], [...]} | {:use, [...], [...]}, ...]}
   def live_view do
     quote do
       use Phoenix.LiveView,
@@ -58,6 +63,8 @@ defmodule MyWebsiteWeb do
     end
   end
 
+  @spec live_component() ::
+          {:__block__, [], [{:__block__, [], [...]} | {:use, [...], [...]}, ...]}
   def live_component do
     quote do
       use Phoenix.LiveComponent
@@ -66,6 +73,9 @@ defmodule MyWebsiteWeb do
     end
   end
 
+  @spec html() ::
+          {:__block__, [],
+           [{:__block__, [], [...]} | {:import, [...], [...]} | {:use, [...], [...]}, ...]}
   def html do
     quote do
       use Phoenix.Component
@@ -95,6 +105,7 @@ defmodule MyWebsiteWeb do
     end
   end
 
+  @spec verified_routes() :: any()
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,

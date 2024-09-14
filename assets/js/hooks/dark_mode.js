@@ -1,4 +1,4 @@
-const darkModeHooks = {};
+const darkModeHooks = {}
 
 darkModeHooks.DarkThemeToggle = {
   /**
@@ -9,15 +9,15 @@ darkModeHooks.DarkThemeToggle = {
    */
   mounted() {
     const themeToggleDarkIcon = document.getElementById(
-      "theme-toggle-dark-icon"
-    );
+      'theme-toggle-dark-icon'
+    )
     const themeToggleLightIcon = document.getElementById(
-      "theme-toggle-light-icon"
-    );
-    const themeToggleButton = document.getElementById("theme-toggle");
-    const localStorageKey = "theme";
+      'theme-toggle-light-icon'
+    )
+    const themeToggleButton = document.getElementById('theme-toggle')
+    const localStorageKey = 'theme'
 
-    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
     /**
      * Checks if the system is in dark mode.
      *
@@ -26,13 +26,13 @@ darkModeHooks.DarkThemeToggle = {
     const isDarkMode = () => {
       try {
         return (
-          localStorage.getItem(localStorageKey) === "dark" ||
+          localStorage.getItem(localStorageKey) === 'dark' ||
           (prefersDarkMode && prefersDarkMode.matches)
-        );
+        )
       } catch (_err) {
-        return prefersDarkMode.matches;
+        return prefersDarkMode.matches
       }
-    };
+    }
 
     /**
      * Toggles the dark mode of the application.
@@ -41,24 +41,24 @@ darkModeHooks.DarkThemeToggle = {
      * @return {void}
      */
     const toggleDarkMode = (dark) => {
-      themeToggleDarkIcon.classList.toggle("hidden", dark);
-      themeToggleDarkIcon.classList.toggle("text-transparent", dark);
-      themeToggleLightIcon.classList.toggle("hidden", !dark);
-      themeToggleLightIcon.classList.toggle("text-transparent", !dark);
-      document.documentElement.classList.toggle("dark", dark);
+      themeToggleDarkIcon.classList.toggle('hidden', dark)
+      themeToggleDarkIcon.classList.toggle('text-transparent', dark)
+      themeToggleLightIcon.classList.toggle('hidden', !dark)
+      themeToggleLightIcon.classList.toggle('text-transparent', !dark)
+      document.documentElement.classList.toggle('dark', dark)
       try {
-        localStorage.setItem(localStorageKey, dark ? "dark" : "light");
+        localStorage.setItem(localStorageKey, dark ? 'dark' : 'light')
       } catch (_err) {
         // ignore
       }
-    };
+    }
 
-    toggleDarkMode(isDarkMode());
-    themeToggleButton.addEventListener("click", () => {
-      toggleDarkMode(!isDarkMode());
-    });
+    toggleDarkMode(isDarkMode())
+    themeToggleButton.addEventListener('click', () => {
+      toggleDarkMode(!isDarkMode())
+    })
   },
   updated() {},
-};
+}
 
-export default darkModeHooks;
+export default darkModeHooks

@@ -1,5 +1,5 @@
 defmodule MyWebsiteWeb.HomeLiveTest do
-  use MyWebsiteWeb.ConnCase
+  use MyWebsiteWeb.ConnCase, async: true
 
   import Phoenix.LiveViewTest
 

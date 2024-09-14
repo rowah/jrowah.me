@@ -34,6 +34,7 @@ my_website-*.tar
 # In case you use Node.js/npm, you want to ignore these.
 npm-debug.log
 /assets/node_modules/
+node_modules
 
 #Ignore system files
 .DS_Store

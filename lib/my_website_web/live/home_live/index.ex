@@ -3,6 +3,7 @@ defmodule MyWebsiteWeb.HomeLive.Index do
 
   use MyWebsiteWeb, :live_view
 
+  @impl Phoenix.LiveView
   def mount(_params, _session, socket) do
     {:ok, socket}
   end
