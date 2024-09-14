@@ -62,11 +62,6 @@ defmodule GithubWorkflows do
     elixir_job("Install deps and compile",
       steps: [
         [
-          name: "Unlock dependencies",
-          env: [MIX_ENV: "test"],
-          run: "mix deps.unlock --all"
-        ],
-        [
           name: "Install Elixir dependencies",
           env: [MIX_ENV: "test"],
           run: "mix deps.get"
@@ -165,6 +160,22 @@ defmodule GithubWorkflows do
     )
   end
 
+  defp migrations_job do
+    elixir_job("Migrations",
+      needs: :compile,
+      services: [
+        db: db_service()
+      ],
+      steps: [
+        [
+          name: "Check if migrations are reversible",
+          env: [MIX_ENV: "test"],
+          run: "mix ci.migrations"
+        ]
+      ]
+    )
+  end
+
   defp prettier_job do
     [
       name: "Check formatting using Prettier",
@@ -176,14 +187,15 @@ defmodule GithubWorkflows do
           uses: "actions/cache@v3",
           id: "npm-cache",
           with: [
-            path: "node_modules",
-            key: "${{ runner.os }}-prettier"
+            path: "~/.npm",
+            key: "${{ runner.os }}-node",
+            "restore-keys": "${{ runner.os }}-node"
           ]
         ],
         [
           name: "Install Prettier",
           if: "steps.npm-cache.outputs.cache-hit != 'true'",
-          run: "npm i -D prettier prettier-plugin-toml"
+          run: "npm i -g prettier"
         ],
         [
           name: "Run Prettier",

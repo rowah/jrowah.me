@@ -22,15 +22,9 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
-      - name: Unlock dependencies
-        env:
-          MIX_ENV: test
-        run: mix deps.unlock --all
       - name: Install Elixir dependencies
         env:
           MIX_ENV: test
@@ -56,9 +50,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check code style
@@ -82,9 +74,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for vulnerable Mix dependencies
@@ -108,9 +98,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Restore PLT cache
@@ -146,9 +134,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check Elixir formatting
@@ -172,9 +158,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for retired Hex packages
@@ -191,11 +175,12 @@ jobs:
         uses: actions/cache@v3
         id: npm-cache
         with:
-          path: node_modules
-          key: ${{ runner.os }}-prettier
+          path: ~/.npm
+          key: ${{ runner.os }}-node
+          restore-keys: ${{ runner.os }}-node
       - name: Install Prettier
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm i -D prettier prettier-plugin-toml
+        run: npm i -g prettier
       - name: Run Prettier
         run: npx prettier -c .
   sobelow:
@@ -215,9 +200,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for security issues using sobelow
@@ -241,9 +224,7 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Run tests
@@ -267,16 +248,14 @@ jobs:
           otp-version: ${{ env.otp-version }}
       - uses: actions/cache@v3
         with:
-          path: |
-            _build
-            deps
+          path: "_build\ndeps"
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
       - name: Check for unused Mix dependencies
         env:
           MIX_ENV: test
         run: mix deps.unlock --check-unused
-  deploy_production_app:
+  deploy_staging_app:
     name: Deploy production app
     needs:
       - compile
@@ -297,4 +276,4 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-          POOL_SIZE: '49'
+          POOL_SIZE: '1'
