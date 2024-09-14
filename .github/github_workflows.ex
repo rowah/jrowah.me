@@ -228,7 +228,7 @@ defmodule GithubWorkflows do
   end
 
   defp deploy_app_to_production do
-    deploy_job("staging",
+    deploy_job("production",
       steps: [
         checkout_step(),
         [

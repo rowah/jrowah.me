@@ -273,7 +273,7 @@ jobs:
           MIX_ENV: test
         run: mix deps.unlock --check-unused
   deploy_production_app:
-    name: Deploy staging app
+    name: Deploy app
     needs:
       - compile
       - credo
