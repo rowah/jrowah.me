@@ -62,6 +62,11 @@ defmodule GithubWorkflows do
     elixir_job("Install deps and compile",
       steps: [
         [
+          name: "Unlock dependencies",
+          env: [MIX_ENV: "test"],
+          run: "mix deps.unlock --all"
+        ],
+        [
           name: "Install Elixir dependencies",
           env: [MIX_ENV: "test"],
           run: "mix deps.get"

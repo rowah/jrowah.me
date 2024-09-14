@@ -31,6 +31,10 @@ jobs:
             deps
           key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
           restore-keys: ${{ runner.os }}-mix
+      - name: Unlock dependencies
+        env:
+          MIX_ENV: test
+        run: mix deps.unlock --all
       - name: Install Elixir dependencies
         env:
           MIX_ENV: test
