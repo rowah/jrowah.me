@@ -14,8 +14,8 @@ jobs:
     name: Install deps and compile
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,8 +44,8 @@ jobs:
     name: Credo
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -70,8 +70,8 @@ jobs:
     name: Deps audit
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -96,8 +96,8 @@ jobs:
     name: Dialyzer
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -134,8 +134,8 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -160,8 +160,8 @@ jobs:
     name: Hex audit
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -203,8 +203,8 @@ jobs:
     name: Security check
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -229,8 +229,8 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -255,8 +255,8 @@ jobs:
     name: Check unused deps
     runs-on: ubuntu-latest
     env:
-      elixir-version: 1.16.1
-      otp-version: 25.3.2.9
+      elixir-version: 1.17.2
+      otp-version: 26.2.5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
