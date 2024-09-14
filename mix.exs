@@ -63,7 +63,7 @@ defmodule MyWebsite.MixProject do
        app: false,
        compile: false,
        depth: 1,
-       only: [:dev, :test]},
+       override: true},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
       {:telemetry_metrics, "~> 0.6"},
