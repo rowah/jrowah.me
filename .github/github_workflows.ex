@@ -249,7 +249,7 @@ defmodule GithubWorkflows do
       steps: [
         checkout_step(),
         [
-          uses: "superfly/fly-ctl-actions/setup-flyctl@master"
+          uses: "superfly/flyctl-actions/setup-flyctl@master"
         ],
         [
           run: "flyctl deploy --remote-only",
