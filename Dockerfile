@@ -51,6 +51,8 @@ COPY lib lib
 
 COPY assets assets
 
+COPY rel rel
+
 # compile assets
 RUN mix assets.deploy
 
@@ -60,7 +62,6 @@ RUN mix compile
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/
 
-COPY rel rel
 RUN mix release
 
 # start a new build stage so that the final image will only contain
