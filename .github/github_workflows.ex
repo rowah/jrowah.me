@@ -160,22 +160,6 @@ defmodule GithubWorkflows do
     )
   end
 
-  defp migrations_job do
-    elixir_job("Migrations",
-      needs: :compile,
-      services: [
-        db: db_service()
-      ],
-      steps: [
-        [
-          name: "Check if migrations are reversible",
-          env: [MIX_ENV: "test"],
-          run: "mix ci.migrations"
-        ]
-      ]
-    )
-  end
-
   defp prettier_job do
     [
       name: "Check formatting using Prettier",
@@ -254,8 +238,7 @@ defmodule GithubWorkflows do
         [
           run: "flyctl deploy --remote-only",
           env: [
-            FLY_API_TOKEN: "${{ secrets.FLY_API_TOKEN }}",
-            POOL_SIZE: ~c"1"
+            FLY_API_TOKEN: "${{ secrets.FLY_API_TOKEN }}"
           ]
         ]
       ]
