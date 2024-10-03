@@ -4,7 +4,7 @@
 /config/
 /cover/
 /deps/
-deps/**
+/deps/*
 /doc/
 /lib/
 /priv/

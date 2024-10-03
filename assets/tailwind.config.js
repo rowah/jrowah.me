@@ -6,11 +6,10 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
-  darkMode: 'class',
   content: [
     './js/**/*.js',
-    '../lib/my_website_web.ex',
-    '../lib/my_website_web/**/*.*ex',
+    '../lib/jrowah_web.ex',
+    '../lib/jrowah_web/**/*.*ex',
   ],
   theme: {
     extend: {
@@ -26,9 +25,6 @@ module.exports = {
     //
     //     <div class="phx-click-loading:animate-ping">
     //
-    plugin(({ addVariant }) =>
-      addVariant('phx-no-feedback', ['.phx-no-feedback&', '.phx-no-feedback &'])
-    ),
     plugin(({ addVariant }) =>
       addVariant('phx-click-loading', [
         '.phx-click-loading&',

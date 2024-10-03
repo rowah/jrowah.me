@@ -1,8 +1,8 @@
-defmodule MyWebsiteWeb.Telemetry do
+defmodule JrowahWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
-  @spec start_link(any()) :: :ignore | {:error, any()} | {:ok, pid()}
+  @spec start_link(any()) :: {:ok, pid()} | {:error, any()}
   def start_link(arg) do
     Supervisor.start_link(__MODULE__, arg, name: __MODULE__)
   end
@@ -20,7 +20,7 @@ defmodule MyWebsiteWeb.Telemetry do
     Supervisor.init(children, strategy: :one_for_one)
   end
 
-  @spec metrics() :: [Telemetry.Metrics.Summary.t(), ...]
+  @spec metrics() :: list()
   def metrics do
     [
       # Phoenix Metrics
@@ -65,7 +65,7 @@ defmodule MyWebsiteWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {MyWebsiteWeb, :count_users, []}
+      # {JrowahWeb, :count_users, []}
     ]
   end
 end

@@ -7,19 +7,19 @@
 # General application configuration
 import Config
 
-config :my_website,
+config :jrowah,
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :my_website, MyWebsiteWeb.Endpoint,
+config :jrowah, JrowahWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: MyWebsiteWeb.ErrorHTML, json: MyWebsiteWeb.ErrorJSON],
+    formats: [html: JrowahWeb.ErrorHTML, json: JrowahWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: MyWebsite.PubSub,
-  live_view: [signing_salt: "+g+GduYY"]
+  pubsub_server: Jrowah.PubSub,
+  live_view: [signing_salt: "LQVWwB2N"]
 
 # Configures the mailer
 #
@@ -28,12 +28,12 @@ config :my_website, MyWebsiteWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :my_website, MyWebsite.Mailer, adapter: Swoosh.Adapters.Local
+config :jrowah, Jrowah.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
-  my_website: [
+  jrowah: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
@@ -42,8 +42,8 @@ config :esbuild,
 
 # Configure tailwind (the version is required)
 config :tailwind,
-  version: "3.4.0",
-  my_website: [
+  version: "3.4.3",
+  jrowah: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css

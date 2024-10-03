@@ -1,9 +1,9 @@
-defmodule MyWebsite.MixProject do
+defmodule Jrowah.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :my_website,
+      app: :jrowah,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -25,7 +25,7 @@ defmodule MyWebsite.MixProject do
         sobelow: :test
       ],
       test_coverage: [tool: ExCoveralls],
-      dialyzer: [plt_add_apps: [:ex_unit, :mix], ignore_warnings: "config/dialyzer.ignore"]
+      dialyzer: [plt_add_apps: [:ex_unit, :mix]]
     ]
   end
 
@@ -34,7 +34,7 @@ defmodule MyWebsite.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {MyWebsite.Application, []},
+      mod: {Jrowah.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -48,10 +48,11 @@ defmodule MyWebsite.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.11"},
-      {:phoenix_html, "~> 4.0"},
+      {:phoenix, "~> 1.7.14"},
+      {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.20.2"},
+      # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
+      {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
@@ -65,12 +66,12 @@ defmodule MyWebsite.MixProject do
        depth: 1},
       {:swoosh, "~> 1.5"},
       {:finch, "~> 0.13"},
-      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.2"},
+      {:bandit, "~> 1.5"},
       {:github_workflows_generator, "~> 0.1", only: :dev, runtime: false},
       {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
@@ -90,10 +91,10 @@ defmodule MyWebsite.MixProject do
     [
       setup: ["deps.get", "assets.setup", "assets.build"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind my_website", "esbuild my_website"],
+      "assets.build": ["tailwind jrowah", "esbuild jrowah"],
       "assets.deploy": [
-        "tailwind my_website --minify",
-        "esbuild my_website --minify",
+        "tailwind jrowah --minify",
+        "esbuild jrowah --minify",
         "phx.digest",
         "release"
       ],

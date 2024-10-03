@@ -1,7 +1,7 @@
-defmodule MyWebsiteWeb.HomeLive.Index do
+defmodule JrowahWeb.HomeLive.Index do
   @moduledoc false
 
-  use MyWebsiteWeb, :live_view
+  use JrowahWeb, :live_view
 
   @impl Phoenix.LiveView
   def mount(_params, _session, socket) do

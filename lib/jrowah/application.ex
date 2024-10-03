@@ -1,4 +1,4 @@
-defmodule MyWebsite.Application do
+defmodule Jrowah.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -6,32 +6,30 @@ defmodule MyWebsite.Application do
   use Application
 
   @impl Application
-  @spec start(any(), any()) :: {:error, any()} | {:ok, pid()}
   def start(_type, _args) do
     children = [
-      MyWebsiteWeb.Telemetry,
-      {DNSCluster, query: Application.get_env(:my_website, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: MyWebsite.PubSub},
+      JrowahWeb.Telemetry,
+      {DNSCluster, query: Application.get_env(:jrowah, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: Jrowah.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: MyWebsite.Finch},
-      # Start a worker by calling: MyWebsite.Worker.start_link(arg)
-      # {MyWebsite.Worker, arg},
+      {Finch, name: Jrowah.Finch},
+      # Start a worker by calling: Jrowah.Worker.start_link(arg)
+      # {Jrowah.Worker, arg},
       # Start to serve requests, typically the last entry
-      MyWebsiteWeb.Endpoint
+      JrowahWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: MyWebsite.Supervisor]
+    opts = [strategy: :one_for_one, name: Jrowah.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   @impl Application
-  @spec config_change(any(), any(), any()) :: :ok
   def config_change(changed, _new, removed) do
-    MyWebsiteWeb.Endpoint.config_change(changed, removed)
+    JrowahWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

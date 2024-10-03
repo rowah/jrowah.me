@@ -1,12 +1,12 @@
-defmodule MyWebsiteWeb do
+defmodule JrowahWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use MyWebsiteWeb, :controller
-      use MyWebsiteWeb, :html
+      use JrowahWeb, :controller
+      use JrowahWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -17,10 +17,10 @@ defmodule MyWebsiteWeb do
   those modules here.
   """
 
-  @spec static_paths() :: [<<_::40, _::_*8>>, ...]
+  @spec static_paths() :: list(String.t())
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
-  @spec router() :: {:__block__, [], [{:import, [...], [...]} | {:use, [...], [...]}, ...]}
+  @spec router() :: any()
   def router do
     quote do
       use Phoenix.Router, helpers: false
@@ -44,27 +44,26 @@ defmodule MyWebsiteWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: MyWebsiteWeb.Layouts]
+        layouts: [html: JrowahWeb.Layouts]
 
       import Plug.Conn
-      import MyWebsiteWeb.Gettext
+      import JrowahWeb.Gettext
 
       unquote(verified_routes())
     end
   end
 
-  @spec live_view() :: {:__block__, [], [{:__block__, [], [...]} | {:use, [...], [...]}, ...]}
+  @spec live_view() :: any()
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {MyWebsiteWeb.Layouts, :app}
+        layout: {JrowahWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
   end
 
-  @spec live_component() ::
-          {:__block__, [], [{:__block__, [], [...]} | {:use, [...], [...]}, ...]}
+  @spec live_component() :: any()
   def live_component do
     quote do
       use Phoenix.LiveComponent
@@ -73,9 +72,7 @@ defmodule MyWebsiteWeb do
     end
   end
 
-  @spec html() ::
-          {:__block__, [],
-           [{:__block__, [], [...]} | {:import, [...], [...]} | {:use, [...], [...]}, ...]}
+  @spec html() :: any()
   def html do
     quote do
       use Phoenix.Component
@@ -94,8 +91,8 @@ defmodule MyWebsiteWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import MyWebsiteWeb.CoreComponents
-      import MyWebsiteWeb.Gettext
+      import JrowahWeb.CoreComponents
+      import JrowahWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -109,14 +106,14 @@ defmodule MyWebsiteWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: MyWebsiteWeb.Endpoint,
-        router: MyWebsiteWeb.Router,
-        statics: MyWebsiteWeb.static_paths()
+        endpoint: JrowahWeb.Endpoint,
+        router: JrowahWeb.Router,
+        statics: JrowahWeb.static_paths()
     end
   end
 
   @doc """
-  When used, dispatch to the appropriate controller/view/etc.
+  When used, dispatch to the appropriate controller/live_view/etc.
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])

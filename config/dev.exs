@@ -6,17 +6,17 @@ import Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :my_website, MyWebsiteWeb.Endpoint,
+config :jrowah, JrowahWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "lF7RTcl0UU35cjivRGGyhs6kCI3O5ZcBdEqaoW1JG+zpJsWiOu0U3ZfaF9gETgem",
+  secret_key_base: "1XvPtiP9Vb5DaIcW8DqEY/09biedmgyzDUQOyPpxXAb50JBQKPkP2h/PUKgopV5c",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:my_website, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:my_website, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:jrowah, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:jrowah, ~w(--watch)]}
   ]
 
 # ## SSL Support
@@ -43,17 +43,17 @@ config :my_website, MyWebsiteWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :my_website, MyWebsiteWeb.Endpoint,
+config :jrowah, JrowahWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/my_website_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/jrowah_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 
 # Enable dev routes for dashboard and mailbox
-config :my_website, dev_routes: true
+config :jrowah, dev_routes: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
@@ -65,8 +65,11 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-# Include HEEx debug annotations as HTML comments in rendered markup
-config :phoenix_live_view, :debug_heex_annotations, true
+config :phoenix_live_view,
+  # Include HEEx debug annotations as HTML comments in rendered markup
+  debug_heex_annotations: true,
+  # Enable helpful, but potentially expensive runtime checks
+  enable_expensive_runtime_checks: true
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false

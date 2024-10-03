@@ -1,4 +1,4 @@
-defmodule MyWebsiteWeb.CoreComponents do
+defmodule JrowahWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -14,11 +14,25 @@ defmodule MyWebsiteWeb.CoreComponents do
 
   Icons are provided by [heroicons](https://heroicons.com). See `icon/1` for usage.
   """
+  use Gettext, backend: JrowahWeb.Gettext
   use Phoenix.Component
-  use Gettext, backend: MyWebsiteWeb.Gettext
+  use JrowahWeb, :verified_routes
 
   alias Phoenix.HTML.Form
   alias Phoenix.LiveView.JS
+
+  def avatar(assigns) do
+    ~H"""
+    <.link navigate={~p"/"} class="avatar cursor-pointer">
+      <img
+        loading="lazy"
+        src="https://avatars.githubusercontent.com/u/76947107?s=400&u=cd0be7843d2c30ae6f985634ac9966b11242aacb&v=4"
+        alt="Jrowah's Portrait"
+        class="w-10 h-10 rounded-full"
+      />
+    </.link>
+    """
+  end
 
   @doc """
   Renders a button.
@@ -42,7 +56,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     >
       <svg
         id="theme-toggle-dark-icon"
-        class="w-5 h-5 text-transparent hidden"
+        class="w-5 h-5 text-black dark:text-white hidden"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +66,7 @@ defmodule MyWebsiteWeb.CoreComponents do
 
       <svg
         id="theme-toggle-light-icon"
-        class="w-5 h-5 text-transparent"
+        class="w-5 h-5 text-black dark:text-white"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +79,49 @@ defmodule MyWebsiteWeb.CoreComponents do
         </path>
       </svg>
     </button>
+    """
+  end
+
+  @doc """
+  Renders a navigation bar.
+
+  ## Examples
+
+      <.navbar current_url={@current_url}>
+        <.link to="/">Home</.link>
+        <.link to="/about">About</.link>
+      </.navbar>
+  """
+
+  @spec navbar(map()) :: Phoenix.LiveView.Rendered.t()
+  def navbar(assigns) do
+    ~H"""
+    <nav class="flex h-20">
+      <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4">
+        <.avatar />
+
+        <div class="rounded-btn bg-base-300 hidden space-x-2 px-4 py-2 sm:block">
+          <.link
+            :for={%{label: label, to: to} <- main_nav_links()}
+            navigate={to}
+            class={["btn btn-sm", if(active?(@current_url, to), do: "btn-primary", else: "btn-ghost")]}
+          >
+            <%= label %>
+          </.link>
+        </div>
+
+        <div class="rounded-btn bg-base-300 block p-2 sm:hidden">
+          <button
+            class="btn-sm flex items-center font-semibold"
+            onclick="mobile_navigation.showModal()"
+          >
+            <span>Menu</span>
+          </button>
+        </div>
+
+        <%!-- <.theme_switch /> --%>
+      </div>
+    </nav>
     """
   end
 
@@ -139,7 +196,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec flash(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders flash notices.
 
@@ -156,6 +212,7 @@ defmodule MyWebsiteWeb.CoreComponents do
 
   slot :inner_block, doc: "the optional inner block that renders the flash message"
 
+  @spec flash(map()) :: Phoenix.LiveView.Rendered.t()
   def flash(assigns) do
     assigns = assign_new(assigns, :id, fn -> "flash-#{assigns.kind}" end)
 
@@ -185,7 +242,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec flash_group(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Shows the flash group with standard titles and content.
 
@@ -196,6 +252,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   attr :flash, :map, required: true, doc: "the map of flash messages"
   attr :id, :string, default: "flash-group", doc: "the optional id of flash container"
 
+  @spec flash_group(map()) :: Phoenix.LiveView.Rendered.t()
   def flash_group(assigns) do
     ~H"""
     <div id={@id}>
@@ -228,7 +285,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec simple_form(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a simple form.
 
@@ -242,7 +298,7 @@ defmodule MyWebsiteWeb.CoreComponents do
         </:actions>
       </.simple_form>
   """
-  attr :for, :any, required: true, doc: "the datastructure for the form"
+  attr :for, :any, required: true, doc: "the data structure for the form"
   attr :as, :any, default: nil, doc: "the server side parameter to collect all input under"
 
   attr :rest, :global,
@@ -252,6 +308,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   slot :inner_block, required: true
   slot :actions, doc: "the slot for form actions, such as a submit button"
 
+  @spec simple_form(map()) :: Phoenix.LiveView.Rendered.t()
   def simple_form(assigns) do
     ~H"""
     <.form :let={f} for={@for} as={@as} {@rest}>
@@ -265,7 +322,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec button(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a button.
 
@@ -280,6 +336,7 @@ defmodule MyWebsiteWeb.CoreComponents do
 
   slot :inner_block, required: true
 
+  @spec button(map()) :: Phoenix.LiveView.Rendered.t()
   def button(assigns) do
     ~H"""
     <button
@@ -296,7 +353,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec input(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders an input with label and error messages.
 
@@ -315,7 +371,8 @@ defmodule MyWebsiteWeb.CoreComponents do
     * For live file uploads, see `Phoenix.Component.live_file_input/1`
 
   See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
-  for more information.
+  for more information. Unsupported types, such as hidden and radio,
+  are best written directly in your templates.
 
   ## Examples
 
@@ -329,8 +386,8 @@ defmodule MyWebsiteWeb.CoreComponents do
 
   attr :type, :string,
     default: "text",
-    values: ~w(checkbox color date datetime-local email file hidden month number password
-               range radio search select tel text textarea time url week)
+    values: ~w(checkbox color date datetime-local email file month number password
+               range search select tel text textarea time url week)
 
   attr :field, Phoenix.HTML.FormField,
     doc: "a form field struct retrieved from the form, for example: @form[:email]"
@@ -345,17 +402,19 @@ defmodule MyWebsiteWeb.CoreComponents do
     include: ~w(accept autocomplete capture cols disabled form list max maxlength min minlength
                 multiple pattern placeholder readonly required rows size step)
 
-  slot :inner_block
-
+  @spec input(map()) :: Phoenix.LiveView.Rendered.t()
   def input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+    errors = if Phoenix.Component.used_input?(field), do: field.errors, else: []
+
     assigns
     |> assign(field: nil, id: assigns.id || field.id)
-    |> assign(:errors, Enum.map(field.errors, &translate_error(&1)))
+    |> assign(:errors, Enum.map(errors, &translate_error(&1)))
     |> assign_new(:name, fn -> if assigns.multiple, do: field.name <> "[]", else: field.name end)
     |> assign_new(:value, fn -> field.value end)
     |> input()
   end
 
+  @spec input(map()) :: Phoenix.LiveView.Rendered.t()
   def input(%{type: "checkbox"} = assigns) do
     assigns =
       assign_new(assigns, :checked, fn ->
@@ -363,9 +422,9 @@ defmodule MyWebsiteWeb.CoreComponents do
       end)
 
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div>
       <label class="flex items-center gap-4 text-sm leading-6 text-zinc-600">
-        <input type="hidden" name={@name} value="false" />
+        <input type="hidden" name={@name} value="false" disabled={@rest[:disabled]} />
         <input
           type="checkbox"
           id={@id}
@@ -382,9 +441,10 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
+  @spec input(map()) :: Phoenix.LiveView.Rendered.t()
   def input(%{type: "select"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div>
       <.label for={@id}><%= @label %></.label>
       <select
         id={@id}
@@ -394,46 +454,46 @@ defmodule MyWebsiteWeb.CoreComponents do
         {@rest}
       >
         <option :if={@prompt} value=""><%= @prompt %></option>
-        <%= Form.options_for_select(@options, @value) %>
+        <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
       </select>
       <.error :for={msg <- @errors}><%= msg %></.error>
     </div>
     """
   end
 
+  @spec input(map()) :: Phoenix.LiveView.Rendered.t()
   def input(%{type: "textarea"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div>
       <.label for={@id}><%= @label %></.label>
       <textarea
         id={@id}
         name={@name}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          "min-h-[6rem] phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
+          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
           @errors == [] && "border-zinc-300 focus:border-zinc-400",
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}
         {@rest}
-      ><%= Form.normalize_value("textarea", @value) %></textarea>
+      ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
       <.error :for={msg <- @errors}><%= msg %></.error>
     </div>
     """
   end
 
   # All other inputs text, datetime-local, url, password, etc. are handled here...
+  @spec input(map()) :: Phoenix.LiveView.Rendered.t()
   def input(assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div>
       <.label for={@id}><%= @label %></.label>
       <input
         type={@type}
         name={@name}
         id={@id}
-        value={Form.normalize_value(@type, @value)}
+        value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
           "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
           @errors == [] && "border-zinc-300 focus:border-zinc-400",
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}
@@ -444,13 +504,13 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec label(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a label.
   """
   attr :for, :string, default: nil
   slot :inner_block, required: true
 
+  @spec label(map()) :: Phoenix.LiveView.Rendered.t()
   def label(assigns) do
     ~H"""
     <label for={@for} class="block text-sm font-semibold leading-6 text-zinc-800">
@@ -459,22 +519,21 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec error(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Generates a generic error message.
   """
   slot :inner_block, required: true
 
+  @spec error(map()) :: Phoenix.LiveView.Rendered.t()
   def error(assigns) do
     ~H"""
-    <p class="mt-3 flex gap-3 text-sm leading-6 text-rose-600 phx-no-feedback:hidden">
+    <p class="mt-3 flex gap-3 text-sm leading-6 text-rose-600">
       <.icon name="hero-exclamation-circle-mini" class="mt-0.5 h-5 w-5 flex-none" />
       <%= render_slot(@inner_block) %>
     </p>
     """
   end
 
-  @spec header(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a header with title.
   """
@@ -484,6 +543,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   slot :subtitle
   slot :actions
 
+  @spec header(map()) :: Phoenix.LiveView.Rendered.t()
   def header(assigns) do
     ~H"""
     <header class={[@actions != [] && "flex items-center justify-between gap-6", @class]}>
@@ -500,7 +560,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec table(map()) :: Phoenix.LiveView.Rendered.t()
   @doc ~S"""
   Renders a table with generic styling.
 
@@ -526,6 +585,7 @@ defmodule MyWebsiteWeb.CoreComponents do
 
   slot :action, doc: "the slot for showing user actions in the last table column"
 
+  @spec table(map()) :: Phoenix.LiveView.Rendered.t()
   def table(assigns) do
     assigns =
       with %{rows: %Phoenix.LiveView.LiveStream{}} <- assigns do
@@ -579,7 +639,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec list(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a data list.
 
@@ -594,6 +653,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     attr :title, :string, required: true
   end
 
+  @spec list(map()) :: Phoenix.LiveView.Rendered.t()
   def list(assigns) do
     ~H"""
     <div class="mt-14">
@@ -607,7 +667,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec back(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a back navigation link.
 
@@ -618,6 +677,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   attr :navigate, :any, required: true
   slot :inner_block, required: true
 
+  @spec back(map()) :: Phoenix.LiveView.Rendered.t()
   def back(assigns) do
     ~H"""
     <div class="mt-16">
@@ -632,7 +692,6 @@ defmodule MyWebsiteWeb.CoreComponents do
     """
   end
 
-  @spec icon(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Renders a [Heroicon](https://heroicons.com).
 
@@ -654,6 +713,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   attr :name, :string, required: true
   attr :class, :string, default: nil
 
+  @spec icon(map()) :: Phoenix.LiveView.Rendered.t()
   def icon(%{name: "hero-" <> _} = assigns) do
     ~H"""
     <span class={[@name, @class]} />
@@ -662,10 +722,11 @@ defmodule MyWebsiteWeb.CoreComponents do
 
   ## JS Commands
 
-  @spec show(Phoenix.LiveView.JS.t(), String.t()) :: Phoenix.LiveView.JS.t()
+  @spec show(JS.t(), String.t()) :: JS.t()
   def show(js \\ %JS{}, selector) do
     JS.show(js,
       to: selector,
+      time: 300,
       transition:
         {"transition-all transform ease-out duration-300",
          "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95",
@@ -673,7 +734,7 @@ defmodule MyWebsiteWeb.CoreComponents do
     )
   end
 
-  @spec hide(Phoenix.LiveView.JS.t(), String.t()) :: Phoenix.LiveView.JS.t()
+  @spec hide(JS.t(), String.t()) :: JS.t()
   def hide(js \\ %JS{}, selector) do
     JS.hide(js,
       to: selector,
@@ -685,12 +746,13 @@ defmodule MyWebsiteWeb.CoreComponents do
     )
   end
 
-  @spec show_modal(Phoenix.LiveView.JS.t(), binary()) :: Phoenix.LiveView.JS.t()
+  @spec show_modal(JS.t(), String.t()) :: JS.t()
   def show_modal(js \\ %JS{}, id) when is_binary(id) do
     js
     |> JS.show(to: "##{id}")
     |> JS.show(
       to: "##{id}-bg",
+      time: 300,
       transition: {"transition-all transform ease-out duration-300", "opacity-0", "opacity-100"}
     )
     |> show("##{id}-container")
@@ -714,8 +776,7 @@ defmodule MyWebsiteWeb.CoreComponents do
   @doc """
   Translates an error message using gettext.
   """
-
-  @spec translate_error({String.t(), Keyword.t()}) :: String.t()
+  @spec translate_error({String.t(), map()}) :: String.t()
   def translate_error({msg, opts}) do
     # When using gettext, we typically pass the strings we want
     # to translate as a static argument:
@@ -728,17 +789,29 @@ defmodule MyWebsiteWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(MyWebsiteWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(JrowahWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(MyWebsiteWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(JrowahWeb.Gettext, "errors", msg, opts)
     end
   end
 
-  @spec translate_errors([{atom(), {String.t(), Keyword.t()}}], atom()) :: [String.t()]
   @doc """
   Translates the errors for a field from a keyword list of errors.
   """
+  @spec translate_errors(list(), atom()) :: list()
   def translate_errors(errors, field) when is_list(errors) do
     for {^field, {msg, opts}} <- errors, do: translate_error({msg, opts})
+  end
+
+  defp main_nav_links do
+    [
+      %{label: "Home", path: ~p"/"}
+    ]
+  end
+
+  defp active?(current_url, path) do
+    %{path_info: path_info} = URI.parse(current_url)
+
+    if path_info == "/", do: path_info == path, else: String.starts_with?(path_info, path)
   end
 end
