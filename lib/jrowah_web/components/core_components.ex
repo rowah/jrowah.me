@@ -21,6 +21,15 @@ defmodule JrowahWeb.CoreComponents do
   alias Phoenix.HTML.Form
   alias Phoenix.LiveView.JS
 
+  @doc """
+  Renders an avatar.
+
+  ## Examples
+
+      <.avatar />
+
+  """
+  @spec avatar(map()) :: Phoenix.LiveView.Rendered.t()
   def avatar(assigns) do
     ~H"""
     <.link navigate={~p"/"} class="avatar cursor-pointer">
@@ -100,26 +109,31 @@ defmodule JrowahWeb.CoreComponents do
       <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4">
         <.avatar />
 
-        <div class="rounded-btn bg-base-300 hidden space-x-2 px-4 py-2 sm:block">
-          <.link
-            :for={%{label: label, to: to} <- main_nav_links()}
-            navigate={to}
-            class={["btn btn-sm", if(active?(@current_url, to), do: "btn-primary", else: "btn-ghost")]}
-          >
-            <%= label %>
-          </.link>
+        <div class="ml-auto">
+          <div class="bg-base-300 hidden space-x-2 px-4 py-2 sm:block">
+            <.link
+              :for={%{label: label, route: route} <- main_nav_links()}
+              navigate={route}
+              class={[
+                "btn btn-sm",
+                if(active?(@current_url, route), do: "text-black", else: "text-zinc-500")
+              ]}
+            >
+              <%= label %>
+            </.link>
+          </div>
+
+          <div class="rounded-btn bg-base-300 block p-2 sm:hidden">
+            <button
+              class="btn-sm flex items-center font-semibold"
+              onclick="mobile_navigation.showModal()"
+            >
+              <span><.icon name="hero-bars-3-solid" class="h-5 w-5" /></span>
+            </button>
+          </div>
         </div>
 
-        <div class="rounded-btn bg-base-300 block p-2 sm:hidden">
-          <button
-            class="btn-sm flex items-center font-semibold"
-            onclick="mobile_navigation.showModal()"
-          >
-            <span>Menu</span>
-          </button>
-        </div>
-
-        <%!-- <.theme_switch /> --%>
+        <.theme_button />
       </div>
     </nav>
     """
@@ -805,13 +819,16 @@ defmodule JrowahWeb.CoreComponents do
 
   defp main_nav_links do
     [
-      %{label: "Home", path: ~p"/"}
+      %{label: "Home", route: ~p"/"},
+      %{label: "About", route: ~p"/about"},
+      %{label: "Blog", route: ~p"/blog"},
+      %{label: "Projects", route: ~p"/projects"}
     ]
   end
 
-  defp active?(current_url, path) do
-    %{path_info: path_info} = URI.parse(current_url)
+  defp active?(current_url, route) do
+    %{path: path} = URI.parse(current_url)
 
-    if path_info == "/", do: path_info == path, else: String.starts_with?(path_info, path)
+    if route == "/", do: path == route, else: String.starts_with?(path, route)
   end
 end
