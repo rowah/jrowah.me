@@ -4,7 +4,7 @@ import Config
 # you can enable the server option below.
 config :jrowah, JrowahWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "QoZ+ZvEr3wKSloTpsPfyOcdZyVM6wsFaxILAvoIqUvctS1yS6wUvNNyUC7+LOkm9",
+  secret_key_base: "Vaiucndci/XZwX0X1a7LAtNYTdWvfhp/fA7dCale4MyJBScC0VHVg31NhgjXzY8j",
   server: false
 
 # In test we don't send emails

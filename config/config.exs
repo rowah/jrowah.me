@@ -19,7 +19,7 @@ config :jrowah, JrowahWeb.Endpoint,
     layout: false
   ],
   pubsub_server: Jrowah.PubSub,
-  live_view: [signing_salt: "LQVWwB2N"]
+  live_view: [signing_salt: "zTHInd/V"]
 
 # Configures the mailer
 #

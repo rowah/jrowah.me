@@ -13,7 +13,7 @@ config :jrowah, JrowahWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "1XvPtiP9Vb5DaIcW8DqEY/09biedmgyzDUQOyPpxXAb50JBQKPkP2h/PUKgopV5c",
+  secret_key_base: "M0+PCw12TC+3vSXxMGPtkFEOjOdpk9+hHnKrYoHzj6CAUF+DNe7tqneYbhdtF0Zc",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:jrowah, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:jrowah, ~w(--watch)]}
