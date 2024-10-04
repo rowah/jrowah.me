@@ -37,3 +37,5 @@ jrowah-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Ignore system files.
+.DS_Store

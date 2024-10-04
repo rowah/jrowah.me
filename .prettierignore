@@ -1,0 +1,16 @@
+deps/
+_build/
+.elixir_ls
+assets
+priv
+.credo.exs
+.dialyzer_ignore.exs
+.dockerignore
+.env
+.env.prod.sample
+.env.sample
+.formatter.exs
+.gitattributes
+.gitignore
+.iex.exs
+.erl_crash.dump

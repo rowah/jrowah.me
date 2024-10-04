@@ -177,24 +177,24 @@ jobs:
         env:
           MIX_ENV: test
         run: mix hex.audit
-  # prettier:
-  #   name: Check formatting using Prettier
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Restore npm cache
-  #       uses: actions/cache@v3
-  #       id: npm-cache
-  #       with:
-  #         path: ~/.npm
-  #         key: ${{ runner.os }}-node
-  #         restore-keys: ${{ runner.os }}-node
-  #     - name: Install Prettier
-  #       if: steps.npm-cache.outputs.cache-hit != 'true'
-  #       run: npm i -g prettier
-  #     - name: Run Prettier
-  #       run: npx prettier -c .
+  prettier:
+    name: Check formatting using Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Restore npm cache
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node
+          restore-keys: ${{ runner.os }}-node
+      - name: Install Prettier
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm i -g prettier
+      - name: Run Prettier
+        run: npx prettier -c .
   # sobelow:
   #   needs: compile
   #   name: Security check
@@ -282,7 +282,7 @@ jobs:
       - dialyzer
       - format
       - hex_audit
-      # - prettier
+      - prettier
       # - sobelow
       - test
       - unused_deps
