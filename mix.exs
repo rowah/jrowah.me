@@ -10,7 +10,8 @@ defmodule Jrowah.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-      test_coverage: [tool: ExCoveralls]
+      test_coverage: [tool: ExCoveralls],
+      dialyzer: [plt_add_apps: [:ex_unit, :mix]]
     ]
   end
 
@@ -59,7 +60,8 @@ defmodule Jrowah.MixProject do
       {:bandit, "~> 1.5"},
       {:mix_audit, "~> 2.1"},
       {:excoveralls, "~> 0.18.3", only: :test},
-      {:credo, "~> 1.7"}
+      {:credo, "~> 1.7"},
+      {:dialyxir, "~> 1.4"}
     ]
   end
 
