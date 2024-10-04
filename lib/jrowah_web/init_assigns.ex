@@ -12,7 +12,7 @@ defmodule JrowahWeb.InitAssigns do
     {:cont,
      socket
      |> attach_current_url_hook()
-     |> assign(:page_title, "James Rowa - Software Developer")}
+     |> assign(:page_title, "- Software Developer")}
   end
 
   @doc """
