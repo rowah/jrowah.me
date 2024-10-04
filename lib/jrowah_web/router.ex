@@ -17,7 +17,8 @@ defmodule JrowahWeb.Router do
   scope "/", JrowahWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    # get "/", PageController, :home
+    live "/", HomeLive.Home, :home
   end
 
   # Other scopes may use custom stacks.
