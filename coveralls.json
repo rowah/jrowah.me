@@ -3,7 +3,7 @@
     "minimum_coverage": 5.0
   },
   "skip_files": [
-    "lib/my_website_web/telemetry.ex",
-    "lib/my_website_web/components/core_components.ex"
+    "lib/jrowah_web/telemetry.ex",
+    "lib/jrowah_web/components/core_components.ex"
   ]
 }
