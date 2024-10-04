@@ -274,7 +274,18 @@ jobs:
           MIX_ENV: test
         run: mix deps.unlock --check-unused
   deploy:
-    name: Deploy app
+    name: Deploy production app
+    needs:
+      - compile
+      # - credo
+      - deps_audit
+      # - dialyzer
+      - format
+      - hex_audit
+      # - prettier
+      # - sobelow
+      - test
+      - unused_deps
     runs-on: ubuntu-latest
     concurrency: deploy-group # optional: ensure only one action runs at a time
     steps:
