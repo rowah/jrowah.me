@@ -58,7 +58,8 @@ defmodule Jrowah.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:mix_audit, "~> 2.1"},
-      {:excoveralls, "~> 0.18.3", only: :test}
+      {:excoveralls, "~> 0.18.3", only: :test},
+      {:credo, "~> 1.7"}
     ]
   end
 
