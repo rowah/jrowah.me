@@ -283,7 +283,7 @@ jobs:
       - format
       - hex_audit
       - prettier
-      # - sobelow
+      - sobelow
       - test
       - unused_deps
     runs-on: ubuntu-latest

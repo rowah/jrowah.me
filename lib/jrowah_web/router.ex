@@ -17,8 +17,9 @@ defmodule JrowahWeb.Router do
   scope "/", JrowahWeb do
     pipe_through :browser
 
-    # get "/", PageController, :home
-    live "/", HomeLive.Home, :home
+    live_session :default, on_mount: JrowahWeb.InitialAssigns do
+      live "/", HomeLive.Index, :index
+    end
   end
 
   # Other scopes may use custom stacks.
