@@ -195,32 +195,32 @@ jobs:
         run: npm i -g prettier
       - name: Run Prettier
         run: npx prettier -c .
-  # sobelow:
-  #   needs: compile
-  #   name: Security check
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     elixir-version: 1.17.2
-  #     otp-version: 27.0.1
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Set up Elixir
-  #       uses: erlef/setup-beam@v1
-  #       with:
-  #         elixir-version: ${{ env.elixir-version }}
-  #         otp-version: ${{ env.otp-version }}
-  #     - uses: actions/cache@v3
-  #       with:
-  #         path: |
-  #           _build
-  #           deps
-  #         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-  #         restore-keys: ${{ runner.os }}-mix
-  #     - name: Check for security issues using sobelow
-  #       env:
-  #         MIX_ENV: test
-  #       run: mix sobelow --config .sobelow-conf
+  sobelow:
+    needs: compile
+    name: Security check
+    runs-on: ubuntu-latest
+    env:
+      elixir-version: 1.17.2
+      otp-version: 27.0.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ env.elixir-version }}
+          otp-version: ${{ env.otp-version }}
+      - uses: actions/cache@v3
+        with:
+          path: |
+            _build
+            deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix
+      - name: Check for security issues using sobelow
+        env:
+          MIX_ENV: test
+        run: mix sobelow --config .sobelow-conf
   test:
     needs: compile
     name: Test

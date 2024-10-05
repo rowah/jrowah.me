@@ -60,8 +60,9 @@ defmodule Jrowah.MixProject do
       {:bandit, "~> 1.5"},
       {:mix_audit, "~> 2.1"},
       {:excoveralls, "~> 0.18.3", only: :test},
-      {:credo, "~> 1.7"},
-      {:dialyxir, "~> 1.4"}
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
     ]
   end
 
