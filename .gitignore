@@ -39,3 +39,7 @@ npm-debug.log
 
 # Ignore system files.
 .DS_Store
+
+node_modules
+package.json
+package-lock.json

@@ -80,7 +80,8 @@ defmodule Jrowah.MixProject do
         "tailwind jrowah --minify",
         "esbuild jrowah --minify",
         "phx.digest"
-      ]
+      ],
+      prettier: ["cmd --cd assets npx prettier -w .."]
     ]
   end
 end
