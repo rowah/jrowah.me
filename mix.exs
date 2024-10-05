@@ -11,20 +11,6 @@ defmodule Jrowah.MixProject do
       aliases: aliases(),
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        ci: :test,
-        "ci.deps_and_security": :test,
-        "ci.deps": :test,
-        "ci.formatting": :test,
-        "ci.security": :test,
-        "ci.test": :test,
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.html": :test,
-        credo: :test,
-        dialyzer: :test,
-        sobelow: :test
-      ],
       dialyzer: [plt_add_apps: [:ex_unit, :mix]]
     ]
   end
@@ -94,24 +80,7 @@ defmodule Jrowah.MixProject do
       "assets.deploy": [
         "tailwind jrowah --minify",
         "esbuild jrowah --minify",
-        "phx.digest",
-        "release"
-      ],
-      ci: [
-        "ci.deps_and_security",
-        "ci.formatting",
-        "ci.code_quality",
-        "ci.test"
-      ],
-      "ci.deps_and_security": ["sobelow --config .sobelow-config"],
-      "ci.code_quality": [
-        "compile --force --warnings-as-errors",
-        "credo --strict",
-        "dialyzer"
-      ],
-      "ci.formatting": ["format --check-formatted", "cmd --cd assets npx prettier -c .."],
-      "ci.test": [
-        "test --cover --warnings-as-errors"
+        "phx.digest"
       ],
       prettier: ["cmd --cd assets npx prettier -w .."]
     ]
