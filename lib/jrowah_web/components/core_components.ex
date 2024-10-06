@@ -107,7 +107,7 @@ defmodule JrowahWeb.CoreComponents do
   @spec navbar(map()) :: Phoenix.LiveView.Rendered.t()
   def navbar(assigns) do
     ~H"""
-    <nav class="flex h-20">
+    <nav class="flex h-[80px] bg-white w-full">
       <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4">
         <.avatar />
 
@@ -144,34 +144,23 @@ defmodule JrowahWeb.CoreComponents do
   @spec footer(map()) :: Phoenix.LiveView.Rendered.t()
   def footer(assigns) do
     ~H"""
-    <footer class="flex justify-between items-center absolute inset-x-0 bottom-0 footer footer-center p-10 bg-base-200 text-base-content max-w-[1260px] px-4 sm:px-6 lg:px-8 mx-auto">
-      <div class="hidden sm:block">
-        <p>Pages</p>
-        <div class="bg-base-300 hidden space-x-2 px-4 py-2 sm:block">
-          <.link
-            :for={%{label: label, route: route} <- main_nav_links()}
-            navigate={route}
-            class={[
-              "btn btn-sm",
-              if(active?(@current_url, route), do: "text-black", else: "text-zinc-500")
-            ]}
-          >
-            <%= label %>
-          </.link>
-        </div>
-      </div>
-      <div class="md:w-[20%]">
-        <p class="md:text-right">Find Me On</p>
-        <div class="flex justify-between">
-          <.link
-            :for={%{label: label, link: link, svg: svg} <- social_links()}
-            href={link}
-            class="btn btn-sm text-zinc-500"
-            target="_blank"
-          >
-            <span class="hidden md:block"><%= label %></span>
-            <%= raw(svg) %>
-          </.link>
+    <footer class="flex flex-col inset-x-0 footer footer-center absolute w-full max-w-[1260px] px-4 sm:px-6 lg:px-8 mx-auto h-[15%]">
+      <hr />
+      <div class="flex justify-between px-10 py-5 bg-base-200 text-base-content">
+        <div></div>
+        <div class="md:w-[20%]">
+          <p class="md:text-right">Find Me On</p>
+          <div class="flex justify-between">
+            <.link
+              :for={%{label: label, link: link, svg: svg} <- social_links()}
+              href={link}
+              class="btn btn-sm text-zinc-500"
+              target="_blank"
+            >
+              <span class="hidden md:block"><%= label %></span>
+              <%= raw(svg) %>
+            </.link>
+          </div>
         </div>
       </div>
     </footer>
