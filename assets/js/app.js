@@ -19,6 +19,10 @@
 import 'phoenix_html'
 // Establish Phoenix Socket and LiveView configuration.
 import { Socket } from 'phoenix'
+import darkModeHooks from './hooks/dark_mode'
+let Hooks = {
+  ...darkModeHooks,
+}
 import { LiveSocket } from 'phoenix_live_view'
 import topbar from '../vendor/topbar'
 
@@ -27,6 +31,7 @@ let csrfToken = document
   .getAttribute('content')
 let liveSocket = new LiveSocket('/live', Socket, {
   longPollFallbackMs: 2500,
+  hooks: Hooks,
   params: { _csrf_token: csrfToken },
 })
 

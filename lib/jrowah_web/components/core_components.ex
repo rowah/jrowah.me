@@ -67,7 +67,7 @@ defmodule JrowahWeb.CoreComponents do
     >
       <svg
         id="theme-toggle-dark-icon"
-        class="w-5 h-5 text-black dark:text-white hidden"
+        class="w-5 h-5 text-zinc-500 dark:text-zinc-400 hidden"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ defmodule JrowahWeb.CoreComponents do
 
       <svg
         id="theme-toggle-light-icon"
-        class="w-5 h-5 text-black dark:text-white"
+        class="w-5 h-5 text-zinc-500 dark:text-zinc-400"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@ defmodule JrowahWeb.CoreComponents do
   @spec navbar(map()) :: Phoenix.LiveView.Rendered.t()
   def navbar(assigns) do
     ~H"""
-    <nav class="flex h-[80px] bg-white w-full">
+    <nav class="flex h-[80px] bg-white dark:bg-gray-900 w-full text-zinc-500 dark:text-zinc-400">
       <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4">
         <.avatar />
 
@@ -118,7 +118,7 @@ defmodule JrowahWeb.CoreComponents do
               navigate={route}
               class={[
                 "btn btn-sm",
-                if(active?(@current_url, route), do: "text-black", else: "text-zinc-500")
+                active?(@current_url, route) && "underline underline-offset-8"
               ]}
             >
               <%= label %>
@@ -149,7 +149,7 @@ defmodule JrowahWeb.CoreComponents do
       <div class="flex justify-between px-10 py-5 bg-base-200 text-base-content">
         <div></div>
         <div class="md:w-[20%]">
-          <p class="md:text-right">Find Me On</p>
+          <p class="md:text-right text-zinc-500 dark:text-zinc-400">Find Me On</p>
           <div class="flex justify-between">
             <.link
               :for={%{label: label, link: link, svg: svg} <- social_links()}
