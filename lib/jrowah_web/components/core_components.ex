@@ -123,6 +123,41 @@ defmodule JrowahWeb.CoreComponents do
     """
   end
 
+  @doc """
+  Renders a project card
+
+  ## Examples
+
+      <.project_card title="Project Title" description="Project Description" />
+
+  """
+
+  attr :title, :string, required: true
+  attr :src, :string, required: true
+  attr :alt, :string, required: true
+  attr :href, :string, required: true
+  attr :description, :string, required: true
+
+  slot :inner_block, required: true
+  @spec project_card(map()) :: Phoenix.LiveView.Rendered.t()
+  def project_card(assigns) do
+    ~H"""
+    <div class="grid grid-cols-1 gap-8 m-8 md:mt-16 md:grid-cols-2">
+      <div class="lg:flex">
+        <img class="object-cover w-full h-56 rounded-lg lg:w-64" src={@src} alt="Expiry-tracker" />
+        <h2 class="card-title">
+          <%= @title %>
+        </h2>
+        <p>
+          <%= @description %>
+        </p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">View</button>
+        </div>
+      </div>
+    </div>
+    """
+  end
 
   @doc """
   Renders a navigation bar.
@@ -156,11 +191,16 @@ defmodule JrowahWeb.CoreComponents do
             </.link>
           </div>
 
+          <.modal id="mobile_navigation" header="Navigation">
+            <nav class="mt-4 flex flex-col space-y-4">
+              <.link :for={%{label: label, to: to} <- main_nav_links()} navigate={to}>
+                <%= label %>
+              </.link>
+            </nav>
+          </.modal>
+
           <div class="rounded-btn bg-base-300 block p-2 sm:hidden">
-            <button
-              class="btn-sm flex items-center font-semibold"
-              onclick="mobile_navigation.showModal()"
-            >
+            <button class="btn-sm flex items-center font-semibold" onclick="showModal()">
               <span><.icon name="hero-bars-3-solid" class="h-5 w-5" /></span>
             </button>
           </div>
@@ -216,6 +256,7 @@ defmodule JrowahWeb.CoreComponents do
 
   """
   attr :id, :string, required: true
+  attr :header, :string, default: nil
   attr :show, :boolean, default: false
   attr :on_cancel, JS, default: %JS{}
   slot :inner_block, required: true
