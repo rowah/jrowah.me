@@ -94,6 +94,37 @@ defmodule JrowahWeb.CoreComponents do
   end
 
   @doc """
+  Renders the page intro.
+  """
+  attr :title, :string, default: nil
+  slot :inner_block
+
+  @spec page_intro(map()) :: Phoenix.LiveView.Rendered.t()
+  def page_intro(assigns) do
+    ~H"""
+    <.title :if={@title} text={@title} />
+    <div class={@inner_block != [] && "text-pretty my-8 leading-relaxed md:my-12 lg:w-2/3"}>
+      <%= render_slot(@inner_block) %>
+    </div>
+    """
+  end
+
+  @doc """
+  Renders a title.
+  """
+  attr :text, :string, required: true
+
+  @spec title(map()) :: Phoenix.LiveView.Rendered.t()
+  def title(assigns) do
+    ~H"""
+    <h1 class="text-3xl font-semibold">
+      <%= @text %>
+    </h1>
+    """
+  end
+
+
+  @doc """
   Renders a navigation bar.
 
   ## Examples
