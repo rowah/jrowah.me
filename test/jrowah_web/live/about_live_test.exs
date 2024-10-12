@@ -14,38 +14,38 @@ defmodule JrowahWeb.AboutLiveTest do
     end
 
     test "clicking the home link takes you to the home page", %{conn: conn} do
-      {:ok, home_live, _html} = live(conn, "/about")
+      {:ok, about_live, _html} = live(conn, "/about")
 
       assert {:error, {:live_redirect, %{kind: :push, to: "/"}}} =
-               home_live
-               |> element(~s|a:fl-contains("Home")|)
+               about_live
+               |> element(~s|.desktop-home-link|)
                |> render_click()
     end
 
     test "clicking the projects link takes you to the projects page", %{conn: conn} do
-      {:ok, home_live, _html} = live(conn, "/about")
+      {:ok, about_live, _html} = live(conn, "/about")
 
       assert {:error, {:live_redirect, %{kind: :push, to: "/projects"}}} =
-               home_live
-               |> element(~s|a:fl-contains("Projects")|)
+               about_live
+               |> element(~s|.desktop-projects-link|)
                |> render_click()
     end
 
     test "clicking the blog link takes you to the blog page", %{conn: conn} do
-      {:ok, home_live, _html} = live(conn, "/about")
+      {:ok, about_live, _html} = live(conn, "/about")
 
       assert {:error, {:live_redirect, %{kind: :push, to: "/blog"}}} =
-               home_live
-               |> element(~s|a:fl-contains("Blog")|)
+               about_live
+               |> element(~s|.desktop-blog-link|)
                |> render_click()
 
       # TODO: Test the newly rendered liveview
     end
 
     test "disconnected and connected render", %{conn: conn} do
-      {:ok, page_live, disconnected_html} = live(conn, "/about")
+      {:ok, about_live, disconnected_html} = live(conn, "/about")
       assert disconnected_html =~ "About"
-      assert render(page_live) =~ "About"
+      assert render(about_live) =~ "About"
     end
   end
 end

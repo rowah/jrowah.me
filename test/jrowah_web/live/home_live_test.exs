@@ -48,7 +48,7 @@ defmodule JrowahWeb.HomeLiveTest do
 
       assert {:error, {:live_redirect, %{kind: :push, to: "/about"}}} =
                home_live
-               |> element(~s|a:fl-contains("About")|)
+               |> element(~s|.desktop-about-link|)
                |> render_click()
     end
 
@@ -57,7 +57,7 @@ defmodule JrowahWeb.HomeLiveTest do
 
       assert {:error, {:live_redirect, %{kind: :push, to: "/projects"}}} =
                home_live
-               |> element(~s|a:fl-contains("Projects")|)
+               |> element(~s|.desktop-projects-link|)
                |> render_click()
     end
 
@@ -66,7 +66,7 @@ defmodule JrowahWeb.HomeLiveTest do
 
       assert {:error, {:live_redirect, %{kind: :push, to: "/blog"}}} =
                home_live
-               |> element(~s|a:fl-contains("Blog")|)
+               |> element(~s|.desktop-blog-link|)
                |> render_click()
 
       # TODO: Test the newly rendered liveview

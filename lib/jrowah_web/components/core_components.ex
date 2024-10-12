@@ -180,10 +180,10 @@ defmodule JrowahWeb.CoreComponents do
         <div class="ml-auto">
           <div class="bg-base-300 hidden space-x-2 px-4 py-2 sm:block">
             <.link
-              :for={%{label: label, route: route} <- main_nav_links()}
+              :for={%{label: label, unique_class: unique_class, route: route} <- main_nav_links()}
               navigate={route}
               class={[
-                "btn btn-sm",
+                unique_class,
                 active?(@current_url, route) && "underline underline-offset-8"
               ]}
             >
@@ -191,16 +191,26 @@ defmodule JrowahWeb.CoreComponents do
             </.link>
           </div>
 
-          <.modal id="mobile_navigation" header="Navigation">
+          <.mobile_navigation_modal id="mobile_navigation_modal" header="Navigation">
             <nav class="mt-4 flex flex-col space-y-4">
-              <.link :for={%{label: label, to: to} <- main_nav_links()} navigate={to}>
+              <.link
+                :for={%{label: label, route: route} <- main_nav_links()}
+                navigate={route}
+                class={[
+                  active?(@current_url, route) && "underline underline-offset-8"
+                ]}
+              >
                 <%= label %>
               </.link>
+              <%!-- <p>Hi</p> --%>
             </nav>
-          </.modal>
+          </.mobile_navigation_modal>
 
           <div class="rounded-btn bg-base-300 block p-2 sm:hidden">
-            <button class="btn-sm flex items-center font-semibold" onclick="showModal()">
+            <button
+              class="btn-sm flex items-center font-semibold"
+              phx-click={show_modal("mobile_navigation_modal")}
+            >
               <span><.icon name="hero-bars-3-solid" class="h-5 w-5" /></span>
             </button>
           </div>
@@ -303,6 +313,74 @@ defmodule JrowahWeb.CoreComponents do
               </div>
             </.focus_wrap>
           </div>
+        </div>
+      </div>
+    </div>
+    """
+  end
+
+  @doc """
+  Renders a mobile navigation modal.
+
+  ## Examples
+
+      <.mobile_navigation_modal id="confirm-modal">
+        This is a mobile navigation modal.
+      </.mobile_navigation_modal>
+
+  JS commands may be passed to the `:on_cancel` to configure
+  the closing/cancel event, for example:
+
+      <.mobile_navigation_modal id="confirm" on_cancel={JS.navigate(~p"/posts")}>
+        This is another mobile navigation modal.
+      </.mobile_navigation_modal>
+
+  """
+  attr :id, :string, required: true
+  attr :header, :string, default: nil
+  attr :show, :boolean, default: false
+  attr :on_cancel, JS, default: %JS{}
+  slot :inner_block, required: true
+
+  def mobile_navigation_modal(assigns) do
+    ~H"""
+    <div
+      id={@id}
+      phx-mounted={@show && show_modal(@id)}
+      phx-remove={hide_modal(@id)}
+      data-cancel={JS.exec(@on_cancel, "phx-remove")}
+      class="relative z-50 hidden bg-black"
+    >
+      <div
+        class="fixed inset-0 top-16 overflow-y-auto sm:hidden"
+        aria-labelledby={"#{@id}-title"}
+        aria-describedby={"#{@id}-description"}
+        role="dialog"
+        aria-modal="true"
+        tabindex="0"
+      >
+        <div class="w-full max-w-3xl p-4 sm:p-6 lg:py-8">
+          <.focus_wrap
+            id={"#{@id}-container"}
+            phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
+            phx-key="escape"
+            phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
+            class="shadow-zinc-700/10 ring-zinc-700/10 relative hidden rounded-2xl bg-zinc-800 p-8 shadow-lg ring-1 transition"
+          >
+            <div class="absolute top-6 right-5">
+              <button
+                phx-click={JS.exec("data-cancel", to: "##{@id}")}
+                type="button"
+                class="-m-3 flex-none p-3 opacity-20 hover:opacity-40"
+                aria-label={gettext("close")}
+              >
+                <.icon name="hero-x-mark-solid" class="h-5 w-5" />
+              </button>
+            </div>
+            <div id={"#{@id}-content"}>
+              <%= render_slot(@inner_block) %>
+            </div>
+          </.focus_wrap>
         </div>
       </div>
     </div>
@@ -896,10 +974,10 @@ defmodule JrowahWeb.CoreComponents do
 
   defp main_nav_links do
     [
-      %{label: "Home", route: ~p"/"},
-      %{label: "About", route: ~p"/about"},
-      %{label: "Blog", route: ~p"/blog"},
-      %{label: "Projects", route: ~p"/projects"}
+      %{label: "Home", unique_class: "desktop-home-link", route: ~p"/"},
+      %{label: "About", unique_class: "desktop-about-link", route: ~p"/about"},
+      %{label: "Blog", unique_class: "desktop-blog-link", route: ~p"/blog"},
+      %{label: "Projects", unique_class: "desktop-projects-link", route: ~p"/projects"}
     ]
   end
 
