@@ -138,22 +138,24 @@ defmodule JrowahWeb.CoreComponents do
   attr :href, :string, required: true
   attr :description, :string, required: true
 
-  slot :inner_block, required: true
   @spec project_card(map()) :: Phoenix.LiveView.Rendered.t()
   def project_card(assigns) do
     ~H"""
-    <div class="grid grid-cols-1 gap-8 m-8 md:mt-16 md:grid-cols-2">
-      <div class="lg:flex">
-        <img class="object-cover w-full h-56 rounded-lg lg:w-64" src={@src} alt="Expiry-tracker" />
-        <h2 class="card-title">
+    <div class="project-card">
+      <img class="w-full h-56 rounded-lg lg:w-64" src={@src} alt={@alt} />
+      <div class="flex flex-col justify-between py-6 lg:mx-6">
+        <a
+          href={@href}
+          class="text-xl font-semibold text-gray-800 hover:underline dark:text-white"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <%= @title %>
-        </h2>
-        <p>
+        </a>
+
+        <span class="text-sm text-gray-500 dark:text-gray-200">
           <%= @description %>
-        </p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary">View</button>
-        </div>
+        </span>
       </div>
     </div>
     """

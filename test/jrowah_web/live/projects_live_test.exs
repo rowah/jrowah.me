@@ -74,4 +74,11 @@ defmodule JrowahWeb.ProjectsLiveTest do
       assert render(page_live) =~ "Home"
     end
   end
+
+  describe "projects" do
+    test "renders projects", %{conn: conn} do
+      {:ok, projects_live, _html} = live(conn, "/projects")
+      assert has_element?(projects_live, ~s|.project-card|)
+    end
+  end
 end
