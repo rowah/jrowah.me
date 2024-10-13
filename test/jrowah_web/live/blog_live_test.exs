@@ -8,7 +8,7 @@ defmodule JrowahWeb.BlogLiveTest do
       {:ok, _blog_live, html} = live(conn, "/blog")
 
       assert html =~
-               "This blog documents what I learn as I explore new technologies, solve complex problems, and share insights from both successes and challenges."
+               "In these blogs you&#39;ll find in-depth posts on mastering emerging tools, real-world problem-solving, and reflections on growth."
     end
 
     test "has nav links that are clickable and navigate to the correct pages", %{conn: conn} do

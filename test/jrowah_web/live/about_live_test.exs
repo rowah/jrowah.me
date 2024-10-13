@@ -10,7 +10,7 @@ defmodule JrowahWeb.AboutLiveTest do
       assert page_live
 
       assert html =~
-               "I have experience working with Elixir, Phoenix, Postgres, LiveView, and TailwindCSS, along with UI libraries like Flowbite and TailwindUI."
+               "A self-taught software developer with a unique background in Biochemistry and Education. My transition into tech has allowed me to combine my passion for science with modern technologies."
     end
 
     test "clicking the home link takes you to the home page", %{conn: conn} do
