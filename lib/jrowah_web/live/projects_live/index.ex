@@ -28,7 +28,7 @@ defmodule JrowahWeb.ProjectsLive.Index do
         title: "Product Expiry Tracker"
       },
       %{
-        alt: "Landing-Page",
+        alt: "Easy-bills",
         description:
           "This is an invoice generator app that generates and sends invoices. I built this app using Elixir, Phoenix and LiveView.",
         href: "https://easy-bills.fly.dev/",
@@ -37,12 +37,12 @@ defmodule JrowahWeb.ProjectsLive.Index do
         title: "Easy Bills - Invoice Generator"
       },
       %{
-        alt: "Landing-Page",
+        alt: "phx-tools",
         description:
-          "A website that I built for a client who owned a berber shop and salon. The technologies I used to build the website include HTML, CSS and Tailwind.",
-        href: "https://saloun-website.netlify.app/",
-        src: "https://cdn.pixabay.com/photo/2018/04/03/23/04/woman-3288365_960_720.jpg",
-        title: "Ayesha Salon Landing Page"
+          "This is a tool that helps with setting up an Elixir-phoenix development environment. I was part of the team that built this tool using Elixi, Phoenix and Shell.",
+        href: "https://phx.tools/",
+        src: "/images/shell.png",
+        title: "Phx Tools"
       },
       %{
         alt: "portfolio",
