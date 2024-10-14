@@ -150,6 +150,7 @@ defmodule JrowahWeb.CoreComponents do
           target="_blank"
           rel="noopener noreferrer"
         >
+          <.icon name="hero-link" class="w-5 h-5 inline-block" />
           <%= @title %>
         </a>
 
