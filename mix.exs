@@ -108,11 +108,11 @@ defmodule Jrowah.MixProject do
         "credo --strict",
         "dialyzer"
       ],
-      "ci.formatting": ["format --check-formatted", "cmd --cd assets npx prettier -c .."],
+      "ci.formatting": ["format --check-formatted"],
       "ci.test": [
         "test --cover --warnings-as-errors"
       ],
-      prettier: ["cmd --cd assets npx prettier -w .."]
+      prettier: ["cmd --cd assets npx prettier -w ."]
     ]
   end
 end
