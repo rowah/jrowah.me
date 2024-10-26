@@ -23,8 +23,7 @@ defmodule JrowahWeb.ProjectsLive.Index do
         description:
           "PTracker helps minimize food westage by making it easy to track the expiry dates of products. I used NodeJS, Express, MongoDB, Cloudinary, EJS, and TailwindCSS",
         href: "https://github.com/rowah/product-expiry-tracker-app",
-        src:
-          "https://github.com/rowah/product-expiry-tracker-app/blob/main/public/imgs/track.png?raw=true",
+        src: "https://github.com/rowah/product-expiry-tracker-app/raw/main/public/imgs/track.png",
         title: "Product Expiry Tracker"
       },
       %{
