@@ -21,6 +21,9 @@ defmodule JrowahWeb.Router do
       live "/", HomeLive.Index, :index
       live "/about", AboutLive.Index, :index
       live "/blog", BlogLive.Index, :index
+      live "/blog/tag/:tag", BlogLive.Index, :index
+      live "/blog/:slug", BlogLive.Show, :show
+      live "/journey", JourneyLive.Index, :index
       live "/projects", ProjectsLive.Index, :index
     end
   end

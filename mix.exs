@@ -53,7 +53,7 @@ defmodule Jrowah.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
       {:phoenix_live_view, "~> 1.0.0-rc.1", override: true},
-      {:floki, ">= 0.30.0", only: :test},
+      {:floki, ">= 0.30.0"},
       {:phoenix_live_dashboard, "~> 0.8.3"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
@@ -76,7 +76,11 @@ defmodule Jrowah.MixProject do
       {:excoveralls, "~> 0.18.3", only: :test},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:nimble_publisher, "~> 1.1"},
+      {:makeup_elixir, ">= 0.0.0"},
+      {:makeup_erlang, ">= 0.0.0"},
+      {:mdex, "~> 0.2"}
     ]
   end
 

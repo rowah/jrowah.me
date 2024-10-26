@@ -67,7 +67,7 @@ defmodule JrowahWeb.CoreComponents do
     >
       <svg
         id="theme-toggle-dark-icon"
-        class="w-5 h-5 text-zinc-500 dark:text-zinc-400 hidden"
+        class="w-6 h-6 text-blue-400 hidden"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ defmodule JrowahWeb.CoreComponents do
 
       <svg
         id="theme-toggle-light-icon"
-        class="w-5 h-5 text-zinc-500 dark:text-zinc-400"
+        class="w-6 h-6 text-blue-400"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -102,8 +102,8 @@ defmodule JrowahWeb.CoreComponents do
   @spec page_intro(map()) :: Phoenix.LiveView.Rendered.t()
   def page_intro(assigns) do
     ~H"""
-    <.title :if={@title} text={@title} />
-    <div class={@inner_block != [] && "text-pretty my-8 leading-relaxed md:my-12 lg:w-2/3"}>
+    <.title :if={@title} text={@title} class="text-blue-500" />
+    <div class={@inner_block != [] && "text-pretty my-4 leading-relaxed md:my-6 lg:w-2/3"}>
       <%= render_slot(@inner_block) %>
     </div>
     """
@@ -113,11 +113,12 @@ defmodule JrowahWeb.CoreComponents do
   Renders a title.
   """
   attr :text, :string, required: true
+  attr :class, :string, default: nil
 
   @spec title(map()) :: Phoenix.LiveView.Rendered.t()
   def title(assigns) do
     ~H"""
-    <h1 class="text-3xl font-semibold">
+    <h1 class={["text-3xl font-semibold", @class]}>
       <%= @text %>
     </h1>
     """
@@ -163,6 +164,131 @@ defmodule JrowahWeb.CoreComponents do
   end
 
   @doc """
+  Renders an article card
+
+  ## Examples
+
+      <.article_card
+        title="Article Title"
+
+        src="https://picsum.photos/seed/1/200/300"
+        alt="Article Image"
+        href="https://www.google.com"
+      />
+
+
+  """
+
+  attr :title, :string, required: true
+  attr :id, :string, default: nil
+  attr :class, :string, default: nil
+  attr :link, :string, required: true
+  attr :description, :string, required: true
+  attr :tags, :list, default: []
+  attr :date, :any, required: true
+  attr :reading_time, :integer, required: true
+
+  @spec article_card(map()) :: Phoenix.LiveView.Rendered.t()
+  def article_card(assigns) do
+    ~H"""
+    <.link id={@id} navigate={@link} rel="noopener noreferrer">
+      <article class={[
+        "card group h-full w-full cursor-pointer transition-all hover:-translate-y-1",
+        @class
+      ]}>
+        <div class="article-card">
+          <h2 class="card-title text-pretty mb-4 text-blue-400 md:text-2xl">
+            <%= @title %>
+          </h2>
+          <hr class="border border-gray-600 dark:border-white mb-2" />
+          <%!-- <hr class="bg-gray-900 dark:bg-white" /> --%>
+          <div class="mb-4 flex w-fit items-center">
+            <span class="text-xs font-semibold">
+              <%= Calendar.strftime(@date, "%d %B %Y") %>
+            </span>
+            <span class="bg-base-content mx-2 h-px w-4 flex-1 opacity-20" />
+            <span class="text-xs font-semibold">
+              <%= @reading_time %> min read
+            </span>
+          </div>
+          <div :if={@tags != []} class="mb-4 flex flex-wrap gap-x-2 gap-y-2">
+            <span
+              :for={tag <- @tags}
+              class="bg-gray-200 dark:bg-zinc-700 rounded-lg px-2 py-1 transition-transform duration-100 hover:scale-105"
+            >
+              <%= case tag do %>
+                <% "Elixir" -> %>
+                  <span class="text-[#BA68C8]">Elixir</span>
+                <% "Phoenix" -> %>
+                  <span class="text-[#F4511E]">Phoenix</span>
+                <% "LiveView" -> %>
+                  <span class="from-orange-400 to-blue-500 bg-gradient-to-r bg-clip-text text-transparent">
+                    LiveView
+                  </span>
+                <% "Ecto" -> %>
+                  <span class="text-[#66BB6A]">Ecto</span>
+                <% "React" -> %>
+                  <span class="text-[#64B5F6]">React</span>
+                <% _other -> %>
+                  <%= tag %>
+              <% end %>
+            </span>
+          </div>
+          <p class="text-pretty mb-4">
+            <%= @description %>
+          </p>
+          <div class="card-actions justify-end">
+            <div class="flex items-center space-x-2">
+              <span class="text-content group-hover:text-primary group-hover:underline">
+                Read more
+              </span>
+              <.icon name="hero-arrow-right" class="text-content group-hover:text-primary" />
+            </div>
+          </div>
+        </div>
+      </article>
+    </.link>
+    """
+  end
+
+  @doc """
+  Renders blog tags
+
+  ## Examples
+
+      <.blog_tags
+        tags={@tags}
+      />
+
+  """
+  attr :id, :string, default: nil
+  attr :tags, :list, required: true
+  attr :search_tag, :string, default: nil
+  attr :select_event, :string
+
+  @spec blog_tags(map()) :: Phoenix.LiveView.Rendered.t()
+  def blog_tags(assigns) do
+    ~H"""
+    <section id={@id} class="mx-2">
+      <div class="flex flex-wrap gap-2">
+        <button
+          :for={tag <- @tags}
+          phx-click="filter_by_tag"
+          phx-value-tag={tag}
+          class={[
+            "rounded-lg px-2 py-1 transition-transform duration-100 hover:scale-105",
+            (String.downcase(tag) == @search_tag && "bg-blue-500 dark:bg-blue-500 text-white") ||
+              "bg-gray-200 dark:bg-zinc-700"
+          ]}
+        >
+          <%= tag %>
+        </button>
+      </div>
+    </section>
+    """
+  end
+
+  @doc """
   Renders a navigation bar.
 
   ## Examples
@@ -176,20 +302,26 @@ defmodule JrowahWeb.CoreComponents do
   @spec navbar(map()) :: Phoenix.LiveView.Rendered.t()
   def navbar(assigns) do
     ~H"""
-    <nav class="flex h-[80px] bg-white dark:bg-gray-900 w-full text-zinc-500 dark:text-zinc-400">
+    <nav class="flex h-[80px] bg-white dark:bg-gray-900 w-full font-bold text-lg text-zinc-500 text-blue-600 dark:text-blue-400">
       <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4">
         <.avatar />
 
         <div class="ml-auto">
           <div class="bg-base-300 hidden space-x-2 px-4 py-2 sm:block">
             <.link
-              :for={%{label: label, unique_class: unique_class, route: route} <- main_nav_links()}
+              :for={
+                %{label: label, unique_class: unique_class, route: route, icon_name: icon_name} <-
+                  main_nav_links()
+              }
               navigate={route}
               class={[
                 unique_class,
-                active?(@current_url, route) && "underline underline-offset-8"
+                active?(@current_url, route) && "border-b-2 border-current pb-2"
               ]}
             >
+              <span class="inline-flex items-center bg-blue-500 rounded-full text-white">
+                <.icon name={"hero-#{icon_name}"} class="w-5 h-5 m-1" />
+              </span>
               <%= label %>
             </.link>
           </div>
@@ -205,7 +337,6 @@ defmodule JrowahWeb.CoreComponents do
               >
                 <%= label %>
               </.link>
-              <%!-- <p>Hi</p> --%>
             </nav>
           </.mobile_navigation_modal>
 
@@ -230,16 +361,16 @@ defmodule JrowahWeb.CoreComponents do
     ~H"""
     <footer class="flex flex-col inset-x-0 footer footer-center absolute w-full max-w-[1260px] px-4 sm:px-6 lg:px-8 mx-auto h-[15%]">
       <hr />
-      <div class="flex justify-between px-10 py-5 bg-base-200 text-base-content">
+      <div class="flex justify-between px-10 py-5 bg-base-200 text-base-content text-blue-600 dark:text-blue-400">
         <div></div>
         <div class="md:w-[20%]">
-          <p class="md:text-right text-zinc-500 dark:text-zinc-400">Find Me On</p>
+          <p class="md:text-right font-bold text-lg">Find Me On</p>
           <div class="flex justify-between">
             <.link
               :for={%{label: label, link: link, svg: svg} <- social_links()}
               href={link}
-              class="btn btn-sm text-zinc-500"
               target="_blank"
+              class="text-black dark:text-white"
             >
               <span class="hidden md:block"><%= label %></span>
               <%= raw(svg) %>
@@ -977,10 +1108,26 @@ defmodule JrowahWeb.CoreComponents do
 
   defp main_nav_links do
     [
-      %{label: "Home", unique_class: "desktop-home-link", route: ~p"/"},
-      %{label: "About", unique_class: "desktop-about-link", route: ~p"/about"},
-      %{label: "Blog", unique_class: "desktop-blog-link", route: ~p"/blog"},
-      %{label: "Projects", unique_class: "desktop-projects-link", route: ~p"/projects"}
+      %{label: "Home", unique_class: "desktop-home-link", route: ~p"/", icon_name: "home"},
+      %{label: "About", unique_class: "desktop-about-link", route: ~p"/about", icon_name: "user"},
+      %{
+        label: "Blog",
+        unique_class: "desktop-blog-link",
+        route: ~p"/blog",
+        icon_name: "pencil-square"
+      },
+      %{
+        label: "Projects",
+        unique_class: "desktop-projects-link",
+        route: ~p"/projects",
+        icon_name: "folder"
+      },
+      %{
+        label: "Journey",
+        unique_class: "desktop-journey-link",
+        route: ~p"/journey",
+        icon_name: "arrow-trending-up"
+      }
     ]
   end
 

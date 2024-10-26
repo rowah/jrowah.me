@@ -3,3 +3,8 @@
 @import 'tailwindcss/utilities';
 
 /* This file is for your main application CSS */
+
+.markdown-content a {
+  color: #34c6eb; /* Darker blue for light mode */
+  text-decoration: underline;
+}

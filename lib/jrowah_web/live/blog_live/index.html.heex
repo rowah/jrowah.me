@@ -4,4 +4,35 @@
       In these blogs you'll find in-depth posts on mastering emerging tools, real-world problem-solving, and reflections on growth. I hope you find it interesting, and if you do, please share it. Thank you!
     </p>
   </.page_intro>
+
+  <section class="my-4 inline-flex">
+    <span>Top Tags:</span>
+    <.blog_tags
+      id="mobile-tag-list"
+      tags={@all_tags}
+      search_tag={@search_tag}
+      select_event="select-tag"
+    />
+
+    <button
+      phx-click="get_all_articles"
+      class="bg-gray-200 dark:bg-zinc-700 rounded-lg px-2 py-1 transition-transform duration-100 hover:scale-105 focus:bg-blue-500 focus:dark:bg-blue-500 focus:text-white"
+    >
+      All
+    </button>
+  </section>
+
+  <div class="posts grid grid-cols-1 gap-8 m-2 md:mt-8 md:grid-cols-2">
+    <.article_card
+      :for={{dom_id, article} <- @streams.articles}
+      class="bg-zinc-300 dark:bg-zinc-800 p-4 rounded-lg"
+      date={article.date}
+      description={article.description}
+      id={dom_id}
+      link={"/blog/" <> article.slug}
+      reading_time={article.reading_time}
+      tags={article.tags}
+      title={article.title}
+    />
+  </div>
 </div>
