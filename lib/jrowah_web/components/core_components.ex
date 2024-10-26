@@ -45,18 +45,7 @@ defmodule JrowahWeb.CoreComponents do
     """
   end
 
-  @doc """
-  Renders a button.
-
-  ## Examples
-
-      <.button>Send!</.button>
-      <.button phx-click="go" class="ml-2">Send!</.button>
-
-  """
-
-  @spec theme_button(map()) :: Phoenix.LiveView.Rendered.t()
-  def theme_button(assigns) do
+  defp theme_button(assigns) do
     ~H"""
     <button
       id="theme-toggle"
@@ -65,30 +54,12 @@ defmodule JrowahWeb.CoreComponents do
       phx-hook="DarkThemeToggle"
       class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg text-sm p-2"
     >
-      <svg
-        id="theme-toggle-dark-icon"
-        class="w-6 h-6 text-blue-400 hidden"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-      </svg>
-
-      <svg
-        id="theme-toggle-light-icon"
-        class="w-6 h-6 text-blue-400"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-        >
-        </path>
-      </svg>
+      <span id="theme-toggle-dark-icon">
+        <.icon name="hero-moon-solid" class="w-6 h-6 text-blue-400" />
+      </span>
+      <span id="theme-toggle-light-icon">
+        <.icon name="hero-sun-solid" class="w-6 h-6 text-blue-400" />
+      </span>
     </button>
     """
   end
@@ -102,7 +73,7 @@ defmodule JrowahWeb.CoreComponents do
   @spec page_intro(map()) :: Phoenix.LiveView.Rendered.t()
   def page_intro(assigns) do
     ~H"""
-    <.title :if={@title} text={@title} class="text-blue-500" />
+    <.title :if={@title} text={@title} class="text-blue-600 dark:text-blue-500" />
     <div class={@inner_block != [] && "text-pretty my-4 leading-relaxed md:my-6 lg:w-2/3"}>
       <%= render_slot(@inner_block) %>
     </div>
@@ -302,15 +273,15 @@ defmodule JrowahWeb.CoreComponents do
   @spec navbar(map()) :: Phoenix.LiveView.Rendered.t()
   def navbar(assigns) do
     ~H"""
-    <nav class="flex h-[80px] bg-white dark:bg-gray-900 w-full font-bold text-lg text-zinc-500 text-blue-600 dark:text-blue-400">
+    <nav class="flex h-[80px] bg-white dark:bg-gray-800 w-full font-bold text-lg text-zinc-500 text-blue-600 dark:text-blue-400">
       <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4">
         <.avatar />
 
         <div class="ml-auto">
-          <div class="bg-base-300 hidden space-x-2 px-4 py-2 sm:block">
+          <div class="bg-base-300 hidden space-x-4 px-4 py-2 sm:block">
             <.link
               :for={
-                %{label: label, unique_class: unique_class, route: route, icon_name: icon_name} <-
+                %{label: label, unique_class: unique_class, route: route} <-
                   main_nav_links()
               }
               navigate={route}
@@ -319,8 +290,8 @@ defmodule JrowahWeb.CoreComponents do
                 active?(@current_url, route) && "border-b-2 border-current pb-2"
               ]}
             >
-              <span class="inline-flex items-center bg-blue-500 rounded-full text-white">
-                <.icon name={"hero-#{icon_name}"} class="w-5 h-5 m-1" />
+              <span class="inline-flex items-center justify-center text-center bg-blue-500 h-6 w-6 rounded-full text-white">
+                <.icon name={nav_icon_names(label)} class="w-4 h-4" />
               </span>
               <%= label %>
             </.link>
@@ -354,6 +325,16 @@ defmodule JrowahWeb.CoreComponents do
       </div>
     </nav>
     """
+  end
+
+  defp nav_icon_names(label) do
+    case label do
+      "Home" -> "hero-home-solid"
+      "About" -> "hero-user-solid"
+      "Blog" -> "hero-pencil-square-solid"
+      "Projects" -> "hero-folder-solid"
+      "Journey" -> "hero-arrow-trending-up-solid"
+    end
   end
 
   @spec footer(map()) :: Phoenix.LiveView.Rendered.t()
@@ -1108,25 +1089,22 @@ defmodule JrowahWeb.CoreComponents do
 
   defp main_nav_links do
     [
-      %{label: "Home", unique_class: "desktop-home-link", route: ~p"/", icon_name: "home"},
-      %{label: "About", unique_class: "desktop-about-link", route: ~p"/about", icon_name: "user"},
+      %{label: "Home", unique_class: "desktop-home-link", route: ~p"/"},
+      %{label: "About", unique_class: "desktop-about-link", route: ~p"/about"},
       %{
         label: "Blog",
         unique_class: "desktop-blog-link",
-        route: ~p"/blog",
-        icon_name: "pencil-square"
+        route: ~p"/blog"
       },
       %{
         label: "Projects",
         unique_class: "desktop-projects-link",
-        route: ~p"/projects",
-        icon_name: "folder"
+        route: ~p"/projects"
       },
       %{
         label: "Journey",
         unique_class: "desktop-journey-link",
-        route: ~p"/journey",
-        icon_name: "arrow-trending-up"
+        route: ~p"/journey"
       }
     ]
   end
