@@ -17,8 +17,8 @@ defmodule JrowahWeb.HomeLiveTest do
       assert html =~ "Home"
       assert html =~ "href=\"/\""
 
-      assert html =~ "About"
-      assert html =~ "href=\"/about\""
+      assert html =~ "Journey"
+      assert html =~ "href=\"/journey\""
 
       assert html =~ "Blog"
       assert html =~ "href=\"/blog\""
@@ -43,12 +43,12 @@ defmodule JrowahWeb.HomeLiveTest do
       # assert html =~ "href=\"mailto:JlQpW@example.com\""
     end
 
-    test "clicking the about link takes you to the about page", %{conn: conn} do
+    test "clicking the journey link takes you to the journey page", %{conn: conn} do
       {:ok, home_live, _html} = live(conn, "/")
 
-      assert {:error, {:live_redirect, %{kind: :push, to: "/about"}}} =
+      assert {:error, {:live_redirect, %{kind: :push, to: "/journey"}}} =
                home_live
-               |> element(~s|.desktop-about-link|)
+               |> element(~s|.desktop-journey-link|)
                |> render_click()
     end
 

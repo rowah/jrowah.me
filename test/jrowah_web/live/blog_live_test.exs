@@ -40,12 +40,12 @@ defmodule JrowahWeb.BlogLiveTest do
       # assert html =~ "href=\"mailto:JlQpW@example.com\""
     end
 
-    test "clicking the about link takes you to the about page", %{conn: conn} do
+    test "clicking the journey link takes you to the journey page", %{conn: conn} do
       {:ok, blog_live, _html} = live(conn, "/blog")
 
-      assert {:error, {:live_redirect, %{kind: :push, to: "/about"}}} =
+      assert {:error, {:live_redirect, %{kind: :push, to: "/journey"}}} =
                blog_live
-               |> element(~s|.desktop-about-link|)
+               |> element(~s|.desktop-journey-link|)
                |> render_click()
     end
 
