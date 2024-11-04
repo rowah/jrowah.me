@@ -19,7 +19,6 @@ defmodule JrowahWeb.Router do
 
     live_session :default, on_mount: JrowahWeb.InitialAssigns do
       live "/", HomeLive.Index, :index
-      live "/about", AboutLive.Index, :index
       live "/blog", BlogLive.Index, :index
       live "/blog/tag/:tag", BlogLive.Index, :index
       live "/blog/:slug", BlogLive.Show, :show
