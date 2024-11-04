@@ -15,12 +15,7 @@ defmodule JrowahWeb.InitialAssigns do
      |> assign(:page_title, "- Software Developer")}
   end
 
-  @doc """
-  Attaches the current url to the spcket
-  """
-
-  @spec attach_current_url_hook(Phoenix.LiveView.Socket.t()) :: Phoenix.LiveView.Socket.t()
-  def attach_current_url_hook(socket) do
+  defp attach_current_url_hook(socket) do
     attach_hook(socket, :attach_url_hook, :handle_params, fn _params, url, socket ->
       {:cont, assign(socket, :current_url, url)}
     end)
