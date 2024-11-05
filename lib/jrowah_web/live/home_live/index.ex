@@ -5,7 +5,17 @@ defmodule JrowahWeb.HomeLive.Index do
 
   @impl Phoenix.LiveView
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, page_title: "- Home")}
+    start_date = ~D[2023-01-01]
+    current_date = Date.utc_today()
+    experience_duration = Date.diff(current_date, start_date)
+
+    years = div(experience_duration, 365)
+    months = div(rem(experience_duration, 365), 30)
+
+    {:ok,
+     socket
+     |> assign(page_title: "- Home")
+     |> assign(experience: %{years: years, months: months})}
   end
 
   @impl Phoenix.LiveView
