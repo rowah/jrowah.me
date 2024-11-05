@@ -54,7 +54,7 @@ defmodule JrowahWeb.CoreComponents do
       phx-hook="DarkThemeToggle"
       class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-lg text-sm p-2"
     >
-      <span id="theme-toggle-dark-icon">
+      <span id="theme-toggle-dark-icon" class="hidden">
         <.icon name="hero-moon-solid" class="w-6 h-6 text-blue-400" />
       </span>
       <span id="theme-toggle-light-icon">
@@ -68,13 +68,19 @@ defmodule JrowahWeb.CoreComponents do
   Renders the page intro.
   """
   attr :title, :string, default: nil
+  attr :extended_title, :string, default: nil
   slot :inner_block
 
   @spec page_intro(map()) :: Phoenix.LiveView.Rendered.t()
   def page_intro(assigns) do
     ~H"""
-    <.title :if={@title} text={@title} class="text-blue-600 dark:text-blue-500" />
-    <div class={@inner_block != [] && "text-pretty my-4 leading-relaxed md:my-6 lg:w-2/3"}>
+    <.title
+      :if={@title}
+      text={@title}
+      extended_text={@extended_title}
+      class="text-blue-600 dark:text-blue-500 text-3xl md:text-4xl"
+    />
+    <div class={@inner_block != [] && "text-pretty my-4 leading-relaxed md:my-6"}>
       <%= render_slot(@inner_block) %>
     </div>
     """
@@ -85,12 +91,16 @@ defmodule JrowahWeb.CoreComponents do
   """
   attr :text, :string, required: true
   attr :class, :string, default: nil
+  attr :extended_text, :string
 
   @spec title(map()) :: Phoenix.LiveView.Rendered.t()
   def title(assigns) do
     ~H"""
     <h1 class={["text-3xl font-semibold", @class]}>
       <%= @text %>
+      <span class="from-pink-600 to-blue-800 bg-gradient-to-r bg-clip-text text-transparent">
+        <%= @extended_text %>
+      </span>
     </h1>
     """
   end
@@ -105,32 +115,33 @@ defmodule JrowahWeb.CoreComponents do
   """
 
   attr :title, :string, required: true
-  attr :src, :string, required: true
-  attr :alt, :string, required: true
-  attr :href, :string, required: true
+  attr :link, :string, required: true
+  attr :link_label, :string, required: true
   attr :description, :string, required: true
 
   @spec project_card(map()) :: Phoenix.LiveView.Rendered.t()
   def project_card(assigns) do
     ~H"""
-    <div class="project-card">
-      <img class="w-full h-56 rounded-lg lg:w-64" src={@src} alt={@alt} />
-      <div class="flex flex-col justify-between py-6 lg:mx-6">
-        <a
-          href={@href}
-          class="text-xl font-semibold text-gray-800 hover:underline dark:text-white"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <.icon name="hero-link" class="w-5 h-5 inline-block" />
+    <article class="project-card card p-4 group h-full w-full transition-all hover:-translate-y-1 hover:-bg-gray-300 shadow-xl dark:shadow-[0_4px_10px_rgba(255,255,255,0.5)]
+    shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
+      <div class="card-body">
+        <h2 class="text-bold text-pretty mb-4">
           <%= @title %>
-        </a>
-
-        <span class="text-sm text-gray-500 dark:text-gray-200">
+        </h2>
+        <p class="text-pretty mb-4">
           <%= @description %>
-        </span>
+        </p>
+
+        <div class="card-actions justify-end">
+          <div class="flex items-center space-x-2">
+            <.icon name="hero-link" class="text-content group-hover:text-primary" />
+            <span class="text-content group-hover:text-primary group-hover:underline">
+              <.link href={@link} target="_blank" class="text-blue-600"><%= @link_label %></.link>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
     """
   end
 
@@ -266,14 +277,15 @@ defmodule JrowahWeb.CoreComponents do
 
       <.navbar current_url={@current_url}>
         <.link to="/">Home</.link>
-        <.link to="/about">About</.link>
       </.navbar>
   """
+
+  attr :current_url, :string, required: true
 
   @spec navbar(map()) :: Phoenix.LiveView.Rendered.t()
   def navbar(assigns) do
     ~H"""
-    <nav class="flex h-[80px] bg-white dark:bg-gray-800 w-full font-bold text-lg text-zinc-500 text-blue-600 dark:text-blue-400">
+    <nav class="flex h-[80px] bg-white dark:bg-gray-800 w-full font-bold text-sm md:text-base lg:text-lg text-blue-600 dark:text-blue-400">
       <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4">
         <.avatar />
 
@@ -364,6 +376,140 @@ defmodule JrowahWeb.CoreComponents do
   end
 
   @doc """
+  Renders a list of skills
+
+  ## Examples
+
+      <.skillset years={3} months={5} />
+  """
+
+  attr :years, :integer, required: true
+  attr :months, :integer, required: true
+
+  @spec skillset(map()) :: Phoenix.LiveView.Rendered.t()
+  def skillset(assigns) do
+    ~H"""
+    <ul class="pl-5 my-2 text-green-800 dark:text-blue-400">
+      <li>
+        <div class="flex items-center mb-1">
+          <span>
+            <svg
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 89.28 122.88"
+              style="enable-background:new 0 0 89.28 122.88"
+              xml:space="preserve"
+              class="w-6 h-6 fill-current text-blue-600 dark:text-white"
+            >
+              <g>
+                <path
+                  class="st0"
+                  d="M2.86,82.1h9.65c3.1-4.81,9.75-7.32,15.7-9.57c1.47-0.56,2.9-1.09,4.2-1.64c0.69-0.91,1.25-1.88,1.69-2.93 c0.38-0.9,0.66-1.85,0.85-2.85c-1.06-0.63-2.08-1.38-3.05-2.24c-3.95-3.5-6.71-6.36-8.49-9.67c-1.81-3.36-2.56-7.08-2.46-12.26 l0.28-11.86c0-0.17,0.03-0.32,0.08-0.47l-3.49-1.2C17.32,16.04,23.72,9.22,31.63,5.79c2.89-1.25-1.95-7.55,4.69-5.32 c8.87,2.97,28.53,6.84,33.19,12.2c3.79,4.36,3.94,6.75,3.85,12.49c-0.03,1.86-0.32,3.5-1.21,4.1c-0.41,0.27-0.9,0.37-1.46,0.31 v12.46c0,7.1-2.54,13.03-6.44,17.43c-2.2,2.48-4.82,4.46-7.67,5.89c0.17,0.91,0.41,1.79,0.71,2.62c0.35,0.97,0.8,1.9,1.33,2.78 c1.14,0.51,2.27,0.97,3.4,1.43c5.56,2.28,11.21,4.59,14.13,9.91h10.1c1.86,0,3.37,1.85,2.94,4.11L83,118.77 c-0.42,2.22-1.85,4.11-4.11,4.11H11.46c-2.26,0-3.62-1.9-4.11-4.11L0.1,86.21C-0.4,83.95,1.06,82.1,2.86,82.1L2.86,82.1z M44.8,97.44c2.72,0,4.93,2.21,4.93,4.93s-2.21,4.93-4.93,4.93c-2.72,0-4.93-2.21-4.93-4.93S42.08,97.44,44.8,97.44L44.8,97.44z M40.16,67.29c-0.89-0.23-1.76-0.53-2.61-0.88c-0.21,0.91-0.5,1.79-0.85,2.64c-0.45,1.06-1.01,2.08-1.69,3.04 c0.75,0.83,1.59,1.54,2.51,2.13c2.48,1.6,5.46,2.35,8.4,2.28c2.92-0.07,5.77-0.96,8.01-2.65c0.77-0.59,1.47-1.27,2.07-2.04 c-0.52-0.91-0.97-1.87-1.33-2.88c-0.28-0.77-0.51-1.57-0.69-2.39c-2.86,1.02-5.75,1.53-8.58,1.49 C43.61,67.99,41.86,67.75,40.16,67.29L40.16,67.29z M37.25,63.15c0.92,0.49,1.87,0.88,2.83,1.2c1.8,0.56,3.69,0.84,5.58,0.84v0.01 c3,0,6.04-0.68,8.88-1.97c2.84-1.29,5.46-3.19,7.61-5.61c3.47-3.91,5.72-9.2,5.72-15.57v-9.86l0,0c-0.03-0.94-0.16-1.8-0.4-2.58 c-0.23-0.75-0.57-1.42-1.03-1.99c-1.72-2.15-3.35-2.13-5.68-2.12c-0.21,0-0.43,0-0.72,0c-9.21-0.03-15.24-0.33-20.14-0.99 c-4.52-0.61-8.06-1.52-12.18-2.82c-0.39,0.87-0.84,1.71-1.37,2.54c-0.67,1.05-1.46,2.05-2.35,3l-0.27,13.78 c-0.09,4.66,0.57,7.97,2.13,10.89c1.59,2.96,4.17,5.61,7.87,8.9c0.98,0.87,2.03,1.6,3.12,2.21C37.01,63.02,37.14,63.07,37.25,63.15 L37.25,63.15z M57.14,37.01c1.67,0,3.03,1.36,3.03,3.03c0,1.67-1.36,3.03-3.03,3.03c-1.67,0-3.03-1.36-3.03-3.03 C54.11,38.37,55.46,37.01,57.14,37.01L57.14,37.01z M34.28,37.01c1.67,0,3.03,1.36,3.03,3.03c0,1.67-1.36,3.03-3.03,3.03 c-1.67,0-3.03-1.36-3.03-3.03C31.25,38.37,32.61,37.01,34.28,37.01L34.28,37.01z M39.51,54.59c-0.65-0.42-0.83-1.29-0.41-1.94 c0.42-0.65,1.29-0.83,1.94-0.41c1.6,1.04,3.13,1.6,4.59,1.62c1.41,0.02,2.81-0.48,4.19-1.55c0.61-0.48,1.5-0.37,1.97,0.25 c0.48,0.61,0.37,1.49-0.25,1.97c-1.9,1.48-3.89,2.16-5.95,2.14C43.58,56.63,41.55,55.91,39.51,54.59L39.51,54.59z M16.08,82.1 h56.73c-2.7-3.57-7.31-5.46-11.85-7.32c-0.95-0.39-1.89-0.78-2.8-1.17c-0.76,1.03-1.68,1.92-2.72,2.68 c-2.51,1.82-5.75,2.87-9.1,3.03c-3.33,0.16-6.78-0.55-9.72-2.25c-1.47-0.84-2.81-1.93-3.94-3.26c-1.11,0.45-2.28,0.89-3.48,1.34 C24.39,76.97,19.1,78.97,16.08,82.1L16.08,82.1z"
+                />
+              </g>
+            </svg>
+          </span>
+          <span class="ml-2 text-blue-600 text-lg">Skillset:</span>
+        </div>
+        <p class="ml-8 font-bold">
+          Elixir, Phoenix, LiveView, Nodejs, ReactJS, GraphQL, SQL
+        </p>
+      </li>
+      <li>
+        <div class="flex items-center mb-1">
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xml:space="preserve"
+              version="1.1"
+              shape-rendering="geometricPrecision"
+              text-rendering="geometricPrecision"
+              image-rendering="optimizeQuality"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              viewBox="0 0 512 512"
+              class="w-6 h-6 fill-current text-blue-600 dark:text-white"
+            >
+              <path
+                fill-rule="nonzero"
+                d="M423.51 61.53c-5.02,-5.03 -10.92,-7.51 -17.75,-7.51 -6.82,0 -12.8,2.48 -17.75,7.51l-27.05 26.97c-7.25,-4.7 -14.93,-8.8 -22.95,-12.47 -8.02,-3.67 -16.22,-6.82 -24.5,-9.55l0 -41.48c0,-7 -2.38,-12.89 -7.25,-17.75 -4.86,-4.86 -10.75,-7.25 -17.75,-7.25l-52.05 0c-6.66,0 -12.45,2.39 -17.49,7.25 -4.95,4.86 -7.43,10.75 -7.43,17.75l0 37.98c-8.7,2.04 -17.15,4.6 -25.26,7.76 -8.19,3.16 -15.95,6.74 -23.29,10.75l-29.96 -29.53c-4.69,-4.94 -10.4,-7.5 -17.32,-7.5 -6.83,0 -12.71,2.56 -17.75,7.5l-36.43 36.54c-5.03,5.03 -7.51,10.92 -7.51,17.73 0,6.83 2.48,12.81 7.51,17.75l26.97 27.06c-4.7,7.26 -8.79,14.93 -12.46,22.95 -3.68,8.02 -6.83,16.22 -9.56,24.49l-41.47 0c-7.01,0 -12.9,2.39 -17.76,7.26 -4.86,4.86 -7.25,10.75 -7.25,17.75l0 52.05c0,6.65 2.39,12.46 7.25,17.5 4.86,4.94 10.75,7.42 17.76,7.42l37.97 0c2.04,8.7 4.6,17.15 7.76,25.25 3.17,8.2 6.75,16.13 10.75,23.81l-29.52 29.44c-4.95,4.7 -7.51,10.41 -7.51,17.33 0,6.82 2.56,12.71 7.51,17.75l36.53 36.95c5.03,4.69 10.92,7 17.75,7 6.82,0 12.79,-2.31 17.75,-7l27.04 -27.48c7.26,4.69 14.94,8.78 22.96,12.46 8.02,3.66 16.21,6.83 24.49,9.55l0 41.48c0,7 2.39,12.88 7.25,17.74 4.86,4.87 10.76,7.26 17.75,7.26l52.05 0c6.66,0 12.46,-2.39 17.5,-7.26 4.94,-4.86 7.42,-10.74 7.42,-17.74l0 -37.98c8.7,-2.04 17.15,-4.6 25.25,-7.76 8.2,-3.16 16.14,-6.74 23.81,-10.75l29.44 29.53c4.7,4.95 10.49,7.5 17.51,7.5 7.07,0 12.87,-2.55 17.57,-7.5l36.95 -36.53c4.69,-5.04 7,-10.92 7,-17.75 0,-6.82 -2.31,-12.8 -7,-17.75l-27.48 -27.05c4.7,-7.26 8.79,-14.93 12.46,-22.96 3.66,-8.01 6.83,-16.21 9.56,-24.49l41.47 0c7,0 12.88,-2.4 17.74,-7.25 4.87,-4.87 7.26,-10.75 7.26,-17.75l0 -52.05c0,-6.66 -2.39,-12.45 -7.26,-17.5 -4.86,-4.95 -10.74,-7.42 -17.74,-7.42l-37.98 0c-2.04,-8.36 -4.6,-16.73 -7.76,-25 -3.16,-8.37 -6.74,-16.21 -10.75,-23.56l29.53 -29.95c4.95,-4.69 7.5,-10.41 7.5,-17.32 0,-6.83 -2.55,-12.71 -7.5,-17.75l-36.53 -36.43zm-48.41 257.98c-22.72,42.52 -67.54,71.44 -119.1,71.44 -51.58,0 -96.37,-28.92 -119.09,-71.42 2.66,-11.61 7.05,-21.74 19.9,-28.84 17.76,-9.89 48.34,-9.15 62.89,-22.24l20.1 52.78 10.1 -28.77 -4.95 -5.42c-3.72,-5.44 -2.44,-11.62 4.46,-12.74 2.33,-0.37 4.95,-0.14 7.47,-0.14 2.69,0 5.68,-0.25 8.22,0.32 6.41,1.41 7.07,7.62 3.88,12.56l-4.95 5.42 10.11 28.77 18.18 -52.78c13.12,11.8 48.43,14.18 62.88,22.24 12.89,7.22 17.26,17.24 19.9,28.82zm-159.11 -86.45c-1.82,0.03 -3.31,-0.2 -4.93,-1.1 -2.15,-1.19 -3.67,-3.24 -4.7,-5.55 -2.17,-4.86 -3.89,-17.63 1.57,-21.29l-1.02 -0.66 -0.11 -1.41c-0.21,-2.57 -0.26,-5.68 -0.32,-8.95 -0.2,-12 -0.45,-26.56 -10.37,-29.47l-4.25 -1.26 2.81 -3.38c8.01,-9.64 16.38,-18.07 24.82,-24.54 9.55,-7.33 19.26,-12.2 28.75,-13.61 9.77,-1.44 19.23,0.75 27.97,7.62 2.57,2.03 5.08,4.48 7.5,7.33 9.31,0.88 16.94,5.77 22.38,12.75 3.24,4.16 5.71,9.09 7.29,14.33 1.56,5.22 2.24,10.77 1.95,16.23 -0.53,9.8 -4.2,19.35 -11.61,26.33 1.3,0.04 2.53,0.33 3.61,0.91 4.14,2.15 4.27,6.82 3.19,10.75 -1.08,3.28 -2.44,7.08 -3.73,10.28 -1.56,4.31 -3.85,5.12 -8.27,4.65 -9.93,43.45 -69.98,44.93 -82.53,0.04zm40.01 -135.69c87.64,0 158.63,71.04 158.63,158.63 0,87.64 -71.04,158.63 -158.63,158.63 -87.63,0 -158.63,-71.04 -158.63,-158.63 0,-87.64 71.04,-158.63 158.63,-158.63z"
+              />
+            </svg>
+          </span>
+          <span class="ml-2 text-blue-600 text-lg">Experience:</span>
+        </div>
+        <p class="ml-8 font-bold">
+          <%= if @years > 1, do: "#{@years} Years", else: "#{@years} Year" %> and <%= if @months > 1,
+            do: "#{@months} Months",
+            else: "#{@months} Month" %>.
+          Worked at OptimumBA, and now Freelancing and Open Source.
+        </p>
+      </li>
+      <li>
+        <div class="flex items-center mb-1">
+          <span>
+            <svg
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 122.88 110.37"
+              style="enable-background:new 0 0 122.88 110.37"
+              xml:space="preserve"
+              class="w-6 h-6 fill-current text-blue-600 dark:text-white"
+            >
+              <style type="text/css">
+                .st0{fill-rule:evenodd;clip-rule:evenodd;}
+              </style>
+              <g>
+                <path
+                  class="st0"
+                  d="M61.92,0c10.42,0,18.86,8.44,18.86,18.86c0,10.42-8.44,18.86-18.86,18.86c-10.42,0-18.86-8.44-18.86-18.86 C43.07,8.44,51.51,0,61.92,0L61.92,0z M30.19,47.55c2.66-3.81,6.29-4.13,11.61-4.75h39.53c6.14,1.12,10.47,2.19,13.42,7.29 l23.21,31.74c2.65,3.62,4.93,5.88,4.92,10.7c-0.01,3.94-1.91,7.56-5.04,9.59c-4.02,2.62-7.09,1.85-11.15,0.43l-15.93-5.56v13.38 H31.64V97.78l-18.5,5.44c-6.04,1.31-10.35-0.93-12.1-5.14c-2.92-6.99,0.82-11.77,4.65-16.93L30.19,47.55L30.19,47.55z M32.19,76.02 V53.35l29.38,9.97l29.74-10.7V76.2c-20.53-4.3-21.39,14.31-8.7,20.31l-21.4,6.71l-20.67-7.25C53.58,89.97,50.92,70.71,32.19,76.02 L32.19,76.02z"
+                />
+              </g>
+            </svg>
+          </span>
+          <span class="ml-2 text-blue-600 text-lg">Learning:</span>
+        </div>
+        <p class="ml-8 font-bold">Currently Learning Python and React Native</p>
+      </li>
+      <li>
+        <div class="flex items-center mb-1">
+          <span>
+            <svg
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 96.03 122.88"
+              style="enable-background:new 0 0 96.03 122.88"
+              xml:space="preserve"
+              class="w-6 h-6 fill-current text-blue-600 dark:text-white"
+            >
+              <g>
+                <path d="M50.39,0c3.59,0,6.84,1.46,9.19,3.81C61.94,6.16,63.4,9.41,63.4,13c0,3.59-1.46,6.84-3.82,9.19 C57.23,24.55,53.98,26,50.39,26c-3.59,0-6.84-1.46-9.19-3.81c-2.35-2.35-3.81-5.6-3.81-9.19c0-3.59,1.46-6.84,3.81-9.19 C43.55,1.46,46.8,0,50.39,0L50.39,0z M25.72,37.59l9.25-6.06c2.09-1.37,7.78-2.16,13.34-2.2c5.19-0.04,10.42,0.57,12.68,1.97 l9.33,6.11l1.4,0.93c0.33,0.22,0.59,0.43,0.81,0.62c0.28-0.28,0.65-0.61,1.13-0.99l1.55-1.21c0.79-0.61,1.57-1.25,2.36-1.92 c0.77-0.65,1.54-1.34,2.32-2.06c0.81-0.74,1.57-1.46,2.29-2.17c0.72-0.7,1.41-1.41,2.1-2.11l0.09-0.09 c1.31-1.33,3.04-2.02,4.78-2.04c1.7-0.02,3.42,0.59,4.75,1.84l0.1,0.09c1.33,1.31,2.02,3.04,2.04,4.78 c0.02,1.74-0.61,3.49-1.92,4.84c-0.81,0.84-1.64,1.67-2.47,2.49c-0.85,0.84-1.7,1.64-2.53,2.41c-0.87,0.8-1.77,1.6-2.7,2.39 c-0.91,0.77-1.87,1.55-2.89,2.34l-1.4,1.09c-0.02,0.02-0.15,0.13-0.17,0.13c-3.53,2.75-5.32,4.15-8.54,4.41l-0.05,0 c-1.79,0.13-3.2-0.14-4.68-0.79c-1.34-0.59-2.65-1.45-4.37-2.6l0.79,15.3l0.28,0.28c0.25,0.28,0.49,0.56,0.7,0.87 c0.88,1.26,1.77,2.54,2.64,3.84c0.9,1.34,1.82,2.74,2.74,4.21c0.89,1.41,1.76,2.85,2.59,4.32c0.83,1.46,1.63,2.97,2.4,4.54 c3.8,7.75,3.78,7.82,1.63,14.5c-0.08,0.26-0.17,0.52-0.25,0.77c-0.13,0.41-0.26,0.8-0.36,1.13c-0.02,0.02-4.88,15.98-5.33,17.5 c-0.6,1.97-1.94,3.52-3.63,4.42c-1.68,0.9-3.7,1.16-5.67,0.56l-0.02,0c-1.97-0.6-3.52-1.94-4.42-3.63 c-0.9-1.68-1.16-3.71-0.56-5.68l5.29-17.37l0.03-0.12l0.41-1.34l0.26-0.79c0.33-1.03,0.34-1.05-0.77-3.31l-0.04-0.07 c-0.61-1.24-1.28-2.48-1.99-3.73c-0.71-1.25-1.47-2.5-2.25-3.74c-0.42-0.66-0.9-1.39-1.41-2.17l-1.02-1.53l-0.11,0.01 c0.14,0.54,0.26,1.04,0.38,1.52c0.22,0.94,0.42,1.89,0.6,2.85c1.86,9.83,1.35,10.88-2.15,17.55c-0.04,0.09-0.08,0.17-0.13,0.25 l-0.61,1.18l-0.74,1.45l-7.71,15.38c-0.92,1.84-2.5,3.14-4.31,3.74c-1.8,0.6-3.83,0.52-5.67-0.39l-0.03-0.01 c-1.84-0.92-3.14-2.5-3.74-4.31c-0.6-1.8-0.52-3.84,0.39-5.67l7.72-15.41c0.58-1.16,1.05-2.06,1.46-2.84l0.07-0.14 c0.74-1.42,1.17-2.24,1.28-3.15c0.12-1-0.06-2.35-0.54-4.85c-0.15-0.79-0.32-1.58-0.5-2.36c-0.19-0.82-0.38-1.58-0.57-2.28 c-0.18-0.64-0.41-1.41-0.69-2.3l0.01,0c-0.23-0.73-0.51-1.55-0.84-2.48l-0.01-0.03c-0.08-0.24-0.15-0.47-0.2-0.69l-0.1-0.44 c-0.03-0.1-0.06-0.2-0.07-0.31l-3.06-27.98c-1.51,0.99-3.19,2-4.67,3.06c-1.79,1.19-3.13,2.08-4.51,2.68 c-1.48,0.65-2.89,0.92-4.68,0.79c-1.66-0.12-2.97-0.57-4.36-1.36c-1.24-0.71-2.53-1.71-4.22-3.04c-0.53-0.39-1.06-0.82-1.58-1.23 c-1.02-0.78-1.98-1.56-2.89-2.34c-0.93-0.79-1.83-1.59-2.7-2.39c-0.83-0.76-1.67-1.57-2.53-2.41c-0.83-0.82-1.66-1.65-2.47-2.49 c-1.31-1.35-1.95-3.1-1.92-4.84c0.02-1.71,0.68-3.41,1.97-4.71l0.08-0.08c1.35-1.31,3.1-1.95,4.84-1.92 c1.71,0.02,3.41,0.68,4.7,1.97l0.08,0.08c0.71,0.73,1.43,1.46,2.17,2.18c0.72,0.71,1.48,1.43,2.29,2.17 c0.78,0.72,1.56,1.41,2.32,2.06c0.78,0.67,1.57,1.31,2.36,1.92c0.51,0.4,1.03,0.83,1.55,1.21c0.48,0.38,0.85,0.71,1.14,0.99 c0.2-0.18,0.43-0.37,0.73-0.58C24.73,38.23,25.23,37.92,25.72,37.59L25.72,37.59z" />
+              </g>
+            </svg>
+          </span>
+          <span class="ml-2 text-blue-600 text-lg">Funtime:</span>
+        </div>
+        <p class="ml-8 font-bold">
+          I enjoy morning runs, cycling, swimming, cooking, and spending quality time with my daughter as I wait for her to become of age and teach me new stuff 😎.
+        </p>
+      </li>
+    </ul>
+    """
+  end
+
+  @doc """
   Renders a modal.
 
   ## Examples
@@ -434,30 +580,13 @@ defmodule JrowahWeb.CoreComponents do
     """
   end
 
-  @doc """
-  Renders a mobile navigation modal.
-
-  ## Examples
-
-      <.mobile_navigation_modal id="confirm-modal">
-        This is a mobile navigation modal.
-      </.mobile_navigation_modal>
-
-  JS commands may be passed to the `:on_cancel` to configure
-  the closing/cancel event, for example:
-
-      <.mobile_navigation_modal id="confirm" on_cancel={JS.navigate(~p"/posts")}>
-        This is another mobile navigation modal.
-      </.mobile_navigation_modal>
-
-  """
   attr :id, :string, required: true
   attr :header, :string, default: nil
   attr :show, :boolean, default: false
   attr :on_cancel, JS, default: %JS{}
   slot :inner_block, required: true
 
-  def mobile_navigation_modal(assigns) do
+  defp mobile_navigation_modal(assigns) do
     ~H"""
     <div
       id={@id}
@@ -1090,7 +1219,6 @@ defmodule JrowahWeb.CoreComponents do
   defp main_nav_links do
     [
       %{label: "Home", unique_class: "desktop-home-link", route: ~p"/"},
-      %{label: "About", unique_class: "desktop-about-link", route: ~p"/about"},
       %{
         label: "Blog",
         unique_class: "desktop-blog-link",
