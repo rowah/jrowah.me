@@ -1,16 +1,15 @@
-<div class="container mx-auto">
+<div class="container mx-auto mb-4">
   <.page_intro title="My Projects">
     <p>
       These are the projects I have worked on.
     </p>
   </.page_intro>
-  <div class="grid grid-cols-1 gap-8 m-8 md:mt-16 md:grid-cols-2">
+  <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
     <%= for project <- @projects do %>
       <.project_card
-        alt={project.alt}
         description={project.description}
-        href={project.href}
-        src={project.src}
+        link={project.link}
+        link_label={project.link_label}
         title={project.title}
       />
     <% end %>
