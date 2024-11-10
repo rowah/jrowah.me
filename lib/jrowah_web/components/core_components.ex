@@ -68,6 +68,7 @@ defmodule JrowahWeb.CoreComponents do
   Renders the page intro.
   """
   attr :title, :string, default: nil
+  attr :class, :string, default: nil
   attr :extended_title, :string, default: nil
   slot :inner_block
 
@@ -80,7 +81,7 @@ defmodule JrowahWeb.CoreComponents do
       extended_text={@extended_title}
       class="text-blue-600 dark:text-blue-500 text-3xl md:text-4xl"
     />
-    <div class={@inner_block != [] && "text-pretty my-4 leading-relaxed md:my-6"}>
+    <div class={[@inner_block != [] && "text-pretty my-4 leading-relaxed md:my-6", @class]}>
       <%= render_slot(@inner_block) %>
     </div>
     """
@@ -502,7 +503,7 @@ defmodule JrowahWeb.CoreComponents do
           <span class="ml-2 text-blue-600 text-lg">Funtime:</span>
         </div>
         <p class="ml-8 font-bold">
-          I enjoy morning runs, cycling, swimming, cooking, and spending quality time with my daughter as I wait for her to become of age and teach me new stuff 😎.
+          I enjoy morning runs, cycling, swimming, cooking, aprendiendo español, and spending quality time with my daughter as I wait for her to become of age and teach me new stuff 😎.
         </p>
       </li>
     </ul>
