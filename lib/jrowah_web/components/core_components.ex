@@ -210,8 +210,8 @@ defmodule JrowahWeb.CoreComponents do
                   </span>
                 <% "Ecto" -> %>
                   <span class="text-[#66BB6A]">Ecto</span>
-                <% "React" -> %>
-                  <span class="text-[#64B5F6]">React</span>
+                <% "TailwindCSS" -> %>
+                  <span class="text-[#64B5F6]">TailwindCSS</span>
                 <% _other -> %>
                   <%= tag %>
               <% end %>
