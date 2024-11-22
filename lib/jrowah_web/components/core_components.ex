@@ -511,6 +511,78 @@ defmodule JrowahWeb.CoreComponents do
   end
 
   @doc """
+  Renders a modal for sharing blog to other social networks.
+
+  ## Examples
+
+      <.share_blog_modal id="confirm-modal">
+        This is a modal.
+      </.share_blog_modal>
+
+  JS commands may be passed to the `:on_cancel` to configure
+  the closing/cancel event, for example:
+
+      <.share_blog_modal id="share" on_cancel={JS.navigate(~p"/posts")}>
+        This is another modal.
+      </.share_blog_modal>
+
+  """
+
+  attr :id, :string, required: true
+  attr :header, :string, default: nil
+  attr :show, :boolean, default: false
+  attr :on_cancel, JS, default: %JS{}
+  slot :inner_block, required: true
+
+  def share_blog_modal(assigns) do
+    ~H"""
+    <div
+      id={@id}
+      phx-mounted={@show && show_modal(@id)}
+      phx-remove={hide_modal(@id)}
+      data-cancel={JS.exec(@on_cancel, "phx-remove")}
+      class="relative z-50 hidden"
+    >
+      <div
+        class="absolute bottom-0 right-0 w-[15rem]"
+        aria-labelledby={"#{@id}-title"}
+        aria-describedby={"#{@id}-description"}
+        role="dialog"
+        aria-modal="true"
+        tabindex="0"
+      >
+        <div class="w-full max-w-3xl p-4 sm:p-6 lg:py-8">
+          <.focus_wrap
+            id={"#{@id}-container"}
+            phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
+            phx-key="escape"
+            phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
+            class="shadow-zinc-700/10 ring-zinc-700/10 relative hidden rounded-2xl bg-zinc-400 px-4 py-6 shadow-lg ring-1 transition"
+          >
+            <div class="absolute top-2 right-2 text-black">
+              <button
+                phx-click={JS.exec("data-cancel", to: "##{@id}")}
+                type="button"
+                class="-m-3 flex-none p-3 opacity-20 hover:opacity-40"
+                aria-label={gettext("close")}
+              >
+                <.icon name="hero-x-mark-solid" class="h-5 w-5" />
+              </button>
+            </div>
+            <div
+              id={"#{@id}-content"}
+              class="flex items-center justify-center space-x-2 text-black dark:text-white"
+            >
+              <%= render_slot(@inner_block) %>
+            </div>
+          </.focus_wrap>
+        </div>
+      </div>
+    </div>
+    """
+  end
+
+  @doc """
   Renders a modal.
 
   ## Examples
