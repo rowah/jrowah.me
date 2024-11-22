@@ -1,0 +1,31 @@
+.journey-item {
+  border: 1px solid #ccc; /* Example border */
+  margin: 20px 0; /* Spacing between items */
+  padding: 15px; /* Inner spacing */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Background color */
+}
+
+.journey-item h4 {
+  color: #333; /* Title color */
+}
+
+.journey-item .description {
+  font-size: 14px; /* Description font size */
+  color: #666; /* Description color */
+}
+
+.journey-item .tech-stack {
+  display: flex; /* Flexbox for tech stack */
+  flex-wrap: wrap; /* Wrap items */
+}
+
+.tech-stack span {
+  margin-right: 10px; /* Spacing between tech stack items */
+}
+
+@media (max-width: 768px) {
+  .journey-item {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
