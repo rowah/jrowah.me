@@ -1,0 +1,16 @@
+.markdown-content a {
+  color: #34c6eb; /* Darker blue for light mode */
+  text-decoration: underline;
+}
+
+.markdown-content h2 {
+  font: bold;
+  color: #34c6eb;
+  font-size: 25px;
+}
+
+.markdown-content h3 {
+  font: bold;
+  color: orange;
+  font-size: 20px;
+}
