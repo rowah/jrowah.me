@@ -20,9 +20,11 @@ import 'phoenix_html'
 // Establish Phoenix Socket and LiveView configuration.
 import { Socket } from 'phoenix'
 import darkModeHooks from './hooks/dark_mode'
+import CopyHook from './hooks/copy_hook.js'
 // import TypingEffectHooks from './hooks/typing_effect'
 let Hooks = {
   ...darkModeHooks,
+  ...CopyHook,
   // ...TypingEffectHooks,
 }
 import { LiveSocket } from 'phoenix_live_view'
