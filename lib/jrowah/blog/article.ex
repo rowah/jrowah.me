@@ -4,7 +4,17 @@ defmodule Jrowah.Blog.Article do
   """
 
   @words_per_minute 185
-  @enforce_keys [:id, :slug, :title, :body, :description, :tags, :date, :reading_time]
+  @enforce_keys [
+    :id,
+    :slug,
+    :title,
+    :body,
+    :description,
+    :tags,
+    :date,
+    :reading_time,
+    :hero_image
+  ]
   defstruct id: "",
             slug: "",
             title: "",
@@ -14,6 +24,7 @@ defmodule Jrowah.Blog.Article do
             tags: [],
             date: nil,
             heading_links: [],
+            hero_image: "",
             published: false
 
   @type t :: %__MODULE__{}
@@ -34,7 +45,14 @@ defmodule Jrowah.Blog.Article do
 
     struct!(
       __MODULE__,
-      [id: id, date: date, body: body, reading_time: reading_time, heading_links: heading_links] ++
+      [
+        id: id,
+        date: date,
+        body: body,
+        reading_time: reading_time,
+        heading_links: heading_links,
+        hero_image: attrs["hero_image"]
+      ] ++
         Map.to_list(attrs)
     )
   end
