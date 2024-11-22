@@ -14,3 +14,58 @@
   color: orange;
   font-size: 20px;
 }
+
+.copy-wrapper {
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.copy-button:hover {
+  opacity: 1;
+}
+
+.copy-button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: white;
+}
+
+.autumn-hl {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+}
+
+.autumn-hl code {
+  padding-left: 1rem;
+  display: inline-block;
+  line-height: 1.5;
+}
+
+/* For Webkit browsers (Chrome, Safari, etc.) */
+.autumn-hl::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+.autumn-hl::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.autumn-hl::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 4px;
+}
