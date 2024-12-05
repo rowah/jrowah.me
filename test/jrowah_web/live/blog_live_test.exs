@@ -28,7 +28,7 @@ defmodule JrowahWeb.BlogLiveTest do
       {:ok, _blog_live, html} = live(conn, "/blog")
 
       assert html =~ "GitHub"
-      assert html =~ "href=\"https://github.com/rowah\""
+      assert html =~ "href=\"https://github.com/jrowah\""
 
       assert html =~ "LinkedIn"
       assert html =~ "href=\"https://www.linkedin.com/in/james-rowa/\""

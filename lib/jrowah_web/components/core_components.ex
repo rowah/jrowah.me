@@ -1338,7 +1338,7 @@ defmodule JrowahWeb.CoreComponents do
       >
       </path>
     </svg>",
-        link: "https://github.com/rowah"
+        link: "https://github.com/jrowah"
       },
       %{
         label: "LinkedIn",

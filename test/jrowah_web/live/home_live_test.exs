@@ -31,7 +31,7 @@ defmodule JrowahWeb.HomeLiveTest do
       {:ok, _home_live, html} = live(conn, "/")
 
       assert html =~ "GitHub"
-      assert html =~ "href=\"https://github.com/rowah\""
+      assert html =~ "href=\"https://github.com/jrowah\""
 
       assert html =~ "LinkedIn"
       assert html =~ "href=\"https://www.linkedin.com/in/james-rowa/\""
