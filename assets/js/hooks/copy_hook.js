@@ -21,7 +21,7 @@ markdownCopyHooks.Markdown = {
       wrapper.appendChild(block)
 
       // Add copy button
-      const button = document.createElement('button')
+      const button = document.createElement('div')
       button.className = 'copy-button'
       button.innerHTML = copyIcon
 
