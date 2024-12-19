@@ -353,10 +353,25 @@ defmodule JrowahWeb.CoreComponents do
   @spec footer(map()) :: Phoenix.LiveView.Rendered.t()
   def footer(assigns) do
     ~H"""
-    <footer class="flex flex-col inset-x-0 footer footer-center absolute w-full max-w-[1260px] px-4 sm:px-6 lg:px-8 mx-auto h-[15%]">
+    <footer class={[
+      "flex flex-col inset-x-0 footer footer-center absolute w-full max-w-[1260px] px-4 sm:px-6 lg:px-8 mx-auto h-[15%]",
+      URI.parse(@current_url).path in ["/privacy-policy", "/legal-terms", "/cookies-policy"] &&
+        "hidden"
+    ]}>
       <hr />
       <div class="flex justify-between px-10 py-5 bg-base-200 text-base-content text-blue-600 dark:text-blue-400">
-        <div></div>
+        <div class="flex flex-col">
+          <span>Copyright © Jrowah 2024</span>
+          <.link navigate={~p"/privacy-policy"} target="_blank">
+            Privacy Policy
+          </.link>
+          <.link navigate={~p"/cookies-policy"} target="_blank">
+            Cookies Policy
+          </.link>
+          <.link navigate={~p"/legal-terms"} target="_blank">
+            Terms and Conditions
+          </.link>
+        </div>
         <div class="md:w-[20%]">
           <p class="md:text-right font-bold text-lg">Find Me On</p>
           <div class="flex justify-between">
